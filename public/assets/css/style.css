@@ -1788,3 +1788,131 @@ footer p {
   .dual-cta-grid { grid-template-columns: 1fr; }
   .tech-stacks-bar { gap: 2rem; padding: 1.25rem; }
 }
+
+/* ===== ESERVICE CARD ACTIONS ===== */
+.eservice-card-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.eservice-btn-more {
+  border-radius: 100px;
+  background: rgba(0, 114, 255, 0.06);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.eservice-btn-more:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.eservice-btn-demo {
+  border-radius: 100px;
+  background: rgba(249, 115, 22, 0.07);
+  border-color: #f97316;
+  color: #ea6c0a;
+  font-weight: 700;
+}
+
+.eservice-btn-demo:hover {
+  background: #f97316;
+  color: white;
+  border-color: #f97316;
+}
+
+/* ===== MOBILE HERO RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #hero {
+    padding: 110px 1.25rem 4rem;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .hero-split-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-content-left {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-badge-modern {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-title-modern {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .hero-subtitle-modern {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions-modern {
+    justify-content: center;
+  }
+
+  .hero-visual-right {
+    display: none;
+  }
+
+  .eservice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .keunggulan-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dual-cta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .navbar {
+    padding: 0 1.25rem;
+  }
+
+  section {
+    padding: 3.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title-modern {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+
+  .keunggulan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions-modern {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions-modern .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

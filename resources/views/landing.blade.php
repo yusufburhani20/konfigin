@@ -2,6 +2,15 @@
 
 @section('title', $site_name)
 
+@if(session('admin_logged_in'))
+@push('styles')
+<style>
+  /* Admin quick bar (40px) + navbar (72px) + extra space = 150px total top padding on hero */
+  #hero { padding-top: 150px !important; }
+</style>
+@endpush
+@endif
+
 @section('content')
 <!-- ===== HERO SECTION ===== -->
 <section id="hero" aria-label="Hero Section">
@@ -154,22 +163,30 @@
     </div>
     <div class="eservice-grid grid-6">
       @foreach($eservice as $svc)
-      <a href="{{ $svc->url }}"
-         class="eservice-card premium-card animate-on-scroll"
-         target="_blank" rel="noopener"
-         id="eservice-{{ $svc->id }}"
-         aria-label="{{ $svc->nama }}">
+      <div class="eservice-card premium-card animate-on-scroll" id="eservice-{{ $svc->id }}">
         <div class="eservice-icon" style="background: {{ $svc->warna }}">
           <i class="{{ $svc->icon }}"></i>
         </div>
-        <div>
+        <div style="flex:1;">
           <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif;">{{ $svc->nama }}</h3>
           <p>{{ $svc->deskripsi }}</p>
         </div>
-        <span class="btn btn-ghost btn-sm" style="pointer-events:none; margin-top: auto; border-radius: 100px;">
-          <i class="fab fa-whatsapp"></i> Hubungi Kami
-        </span>
-      </a>
+        <div class="eservice-card-actions">
+          @if($svc->blog_slug)
+            <a href="{{ route('blog.show', $svc->blog_slug) }}" class="btn btn-ghost btn-sm eservice-btn-more">
+              <i class="fas fa-book-open"></i> Selengkapnya
+            </a>
+          @endif
+          @if($svc->demo_url)
+            <a href="{{ $svc->demo_url }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm eservice-btn-demo">
+              <i class="fas fa-play-circle"></i> Demo
+            </a>
+          @endif
+          <a href="{{ $svc->url }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="border-radius: 100px;" aria-label="{{ $svc->nama }}">
+            <i class="fab fa-whatsapp"></i> Hubungi Kami
+          </a>
+        </div>
+      </div>
       @endforeach
     </div>
   </div>

@@ -28,6 +28,8 @@ class EserviceController extends Controller
         Eservice::create([
             'nama'      => $request->nama,
             'url'       => $request->url,
+            'blog_slug' => $request->blog_slug ?? null,
+            'demo_url'  => $request->demo_url ?? null,
             'deskripsi' => $request->deskripsi ?? '',
             'icon'      => $request->icon ?? 'fas fa-globe',
             'warna'     => $request->warna ?? '#0d6efd',
@@ -52,6 +54,8 @@ class EserviceController extends Controller
         $eservice->update([
             'nama'      => $request->nama,
             'url'       => $request->url,
+            'blog_slug' => $request->blog_slug ?? null,
+            'demo_url'  => $request->demo_url ?? null,
             'deskripsi' => $request->deskripsi ?? '',
             'icon'      => $request->icon ?? 'fas fa-globe',
             'warna'     => $request->warna ?? '#0d6efd',

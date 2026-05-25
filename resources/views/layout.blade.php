@@ -12,7 +12,7 @@
   {{-- OpenGraph --}}
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ url()->current() }}" />
-  <meta property="og:title" content="@yield('title') – {{ $site_name ?? 'TJKT' }}" />
+  <meta property="og:title" content="@yield('title') – {{ $site_name ?? 'Konfigin IT Solutions' }}" />
   
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,7 +62,7 @@
       background: #0f172a;
       color: #cbd5e1;
       font-size: 0.8rem;
-      padding: 8px 2rem;
+      padding: 0 2rem;
       position: fixed;
       top: 0;
       left: 0;
@@ -70,7 +70,9 @@
       z-index: 99999;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       font-family: 'Inter', sans-serif;
-      height: 38px;
+      height: 40px;
+      display: flex;
+      align-items: center;
     }
     .admin-quick-content {
       display: flex;
@@ -105,23 +107,43 @@
     }
     /* Shift body and navbar down if admin bar exists */
     body {
-      padding-top: 38px !important;
+      padding-top: 40px !important;
     }
     .admin-quick-bar + .navbar {
-      top: 38px !important;
+      top: 40px !important;
+      /* Force navbar to always show white background when admin bar is present */
+      background: rgba(255, 255, 255, 0.97) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04) !important;
+    }
+    /* Ensure navbar links and brand are visible */
+    .admin-quick-bar + .navbar .navbar-nav a {
+      color: #334155 !important;
+    }
+    .admin-quick-bar + .navbar .navbar-title span:first-child {
+      color: #0f172a !important;
     }
     @media (max-width: 768px) {
       .admin-quick-bar {
-        padding: 8px 1rem;
+        padding: 0 1rem;
+        height: 40px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .admin-quick-content {
+        min-width: max-content;
+        padding: 0;
       }
       .admin-quick-links {
         gap: 0.8rem;
+        flex-shrink: 0;
       }
       .admin-quick-content span {
         display: none;
-      }
-      .admin-quick-content {
-        justify-content: center;
       }
     }
   </style>

@@ -2,7 +2,7 @@
 
 @section('title', 'Layanan E-Service')
 @section('page_title', 'Layanan E-Service')
-@section('page_subtitle', 'Kelola daftar layanan digital sekolah')
+@section('page_subtitle', 'Kelola daftar layanan IT Solutions - tambahkan link Blog untuk penjelasan lebih lanjut')
 
 @section('content')
 <div class="card">
@@ -97,8 +97,21 @@
         </div>
         
         <div class="form-group">
-          <label class="form-label" for="url">URL Tujuan</label>
+          <label class="form-label" for="url">URL Tujuan (WA / Eksternal)</label>
           <input type="text" id="url" name="url" class="form-input" placeholder="https://" required>
+          <div class="form-help">URL saat tombol "Hubungi Kami" diklik.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="blog_slug">Slug Blog (Opsional – untuk tombol "Selengkapnya")</label>
+          <input type="text" id="blog_slug" name="blog_slug" class="form-input" placeholder="nama-slug-artikel-blog">
+          <div class="form-help">Masukkan slug postingan blog yang menjelaskan layanan ini. Kosongkan jika tidak ada.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="demo_url">URL Demo (Opsional – untuk tombol "Demo")</label>
+          <input type="text" id="demo_url" name="demo_url" class="form-input" placeholder="https://demo.konfigin.com/...">
+          <div class="form-help">Link halaman demo atau try-out aplikasi. Kosongkan jika tidak tersedia.</div>
         </div>
 
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem">
@@ -144,6 +157,8 @@ function openFormModal() {
     document.getElementById('nama').value = '';
     document.getElementById('deskripsi').value = '';
     document.getElementById('url').value = '';
+    document.getElementById('blog_slug').value = '';
+    document.getElementById('demo_url').value = '';
     document.getElementById('icon').value = 'fas fa-globe';
     document.getElementById('warna').value = '#0d6efd';
     document.getElementById('urutan').value = '0';
@@ -160,6 +175,8 @@ function editData(data) {
     document.getElementById('nama').value = data.nama;
     document.getElementById('deskripsi').value = data.deskripsi;
     document.getElementById('url').value = data.url;
+    document.getElementById('blog_slug').value = data.blog_slug || '';
+    document.getElementById('demo_url').value = data.demo_url || '';
     document.getElementById('icon').value = data.icon;
     document.getElementById('warna').value = data.warna;
     document.getElementById('urutan').value = data.urutan;

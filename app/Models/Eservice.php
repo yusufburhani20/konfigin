@@ -10,7 +10,7 @@ class Eservice extends Model
     protected $table = 'eservice';
     public $timestamps = false;
 
-    protected $fillable = ['nama', 'url', 'deskripsi', 'icon', 'warna', 'urutan', 'aktif'];
+    protected $fillable = ['nama', 'url', 'blog_slug', 'demo_url', 'deskripsi', 'icon', 'warna', 'urutan', 'aktif'];
 
     protected $casts = ['aktif' => 'boolean'];
 
