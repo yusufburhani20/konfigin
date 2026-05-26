@@ -111,19 +111,12 @@
     }
     .admin-quick-bar + .navbar {
       top: 40px !important;
-      /* Force navbar to always show white background when admin bar is present */
-      background: rgba(255, 255, 255, 0.97) !important;
-      backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04) !important;
-    }
-    /* Ensure navbar links and brand are visible */
-    .admin-quick-bar + .navbar .navbar-nav a {
-      color: #334155 !important;
-    }
-    .admin-quick-bar + .navbar .navbar-title span:first-child {
-      color: #0f172a !important;
+      /* Branded light navbar override when admin bar is present */
+      background: rgba(240, 247, 255, 0.95) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.15) !important;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08) !important;
     }
     @media (max-width: 768px) {
       .admin-quick-bar {
@@ -151,36 +144,65 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
-  <a href="{{ route('home') }}" class="navbar-brand" aria-label="{{ $site_name ?? 'Home' }}">
-    <div class="navbar-logo" style="background: transparent; width: auto; height: 48px; padding: 0;">
-      <img src="{{ asset('assets/img/konfigin-logo.png') }}" alt="Logo" style="max-height:100%; object-fit:contain;">
+  <div class="nav-inner">
+    <!-- Logo kustom gaya konfigin -->
+    <a href="{{ route('home') }}" class="logo" aria-label="{{ $site_name ?? 'Home' }}">
+      <div class="logo-icon">
+        <span class="logo-bracket-l">{</span>
+        <div class="logo-dot"></div>
+        <span class="logo-bracket-r">}</span>
+      </div>
+      <div class="logo-text">
+        <div class="logo-name">konfig<em>in</em></div>
+        <div class="logo-sub">IT Solutions</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+      @if(request()->routeIs('home'))
+          <a href="#eservice">Layanan</a>
+          <a href="#kurikulum">Produk</a>
+      @endif
+      <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') ? 'active' : '' }}">Blog</a>
+      <a href="{{ route('home') }}#kontak">Kontak</a>
     </div>
-  </a>
-  <ul class="navbar-nav" role="list">
-    <li><a href="{{ route('home') }}">Home</a></li>
-    @if(request()->routeIs('home'))
-        <li><a href="#eservice">Layanan</a></li>
-        <li><a href="#kurikulum">Produk</a></li>
-        <li><a href="#galeri">Portofolio</a></li>
-    @endif
-    <li><a href="{{ route('blog.index') }}">Blog</a></li>
-    <li><a href="{{ route('home') }}#kontak">Kontak</a></li>
-  </ul>
-  <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+
+    <div class="nav-cta">
+      @if(request()->routeIs('home'))
+        <a href="#galeri" class="btn-nav-ghost">Portofolio</a>
+      @else
+        <a href="{{ route('home') }}#galeri" class="btn-nav-ghost">Portofolio</a>
+      @endif
+      
+      @if($kontak)
+        <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-nav-solid">Konsultasi Gratis →</a>
+      @else
+        <a href="#kontak" class="btn-nav-solid">Konsultasi Gratis →</a>
+      @endif
+    </div>
+
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile Navigation">
-  <a href="{{ route('home') }}">Home</a>
+  <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
   @if(request()->routeIs('home'))
       <a href="#eservice">Layanan</a>
       <a href="#kurikulum">Produk</a>
       <a href="#galeri">Portofolio</a>
   @endif
-  <a href="{{ route('blog.index') }}">Blog</a>
+  <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') ? 'active' : '' }}">Blog</a>
   <a href="{{ route('home') }}#kontak">Kontak</a>
+  
+  @if($kontak)
+    <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-nav-solid" style="margin-top: 10px; text-align: center; display: block;">Konsultasi Gratis →</a>
+  @endif
 </div>
 
 @yield('content')

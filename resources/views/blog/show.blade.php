@@ -2,186 +2,562 @@
 
 @section('title', $post->title)
 
+@if(session('admin_logged_in'))
 @push('styles')
 <style>
-    .post-detail-header {
-        padding: 8rem 1rem 5rem;
-        background: #f8fafc;
-        border-bottom: 1px solid #e2e8f0;
-        margin-top: 60px;
+  #blog-hero { margin-top: 40px !important; }
+</style>
+@endpush
+@endif
+
+@push('styles')
+<style>
+    /* ===== BLOG DETAIL HERO ===== */
+    #blog-hero {
+        background: var(--hero-gradient);
         position: relative;
+        overflow: hidden;
+        padding: 130px 2rem 5rem;
+        margin-top: 0;
     }
-    .post-breadcrumb {
-        margin-bottom: 2rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #94a3b8;
+
+    #blog-hero .hero-gradient-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            -45deg,
+            #f8fafc,
+            #eff6ff,
+            #e0f2fe,
+            #bae6fd,
+            #f8fafc
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        opacity: 0.95;
+        z-index: 0;
     }
-    .post-breadcrumb a {
-        color: var(--primary);
-        text-decoration: none;
+
+    #blog-hero .hero-glow-spots {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
     }
-    .post-category-tag {
-        display: inline-block;
-        background: var(--primary);
-        color: white;
-        padding: 0.5rem 1.25rem;
-        border-radius: 8px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        margin-bottom: 2rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        box-shadow: 0 4px 12px rgba(30,64,175,0.2);
+
+    #blog-hero .hero-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 2;
     }
-    .post-main-title {
-        font-size: 3.5rem;
-        font-weight: 900;
-        line-height: 1.1;
-        color: #0f172a;
-        margin-bottom: 2.5rem;
-        letter-spacing: -1px;
-    }
-    .post-author-bar {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid #e2e8f0;
-    }
-    .author-img-lg {
-        width: 56px;
-        height: 56px;
-        background: #1e293b;
-        color: white;
-        border-radius: 50%;
+
+    .blog-breadcrumb {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 800;
-        font-size: 1.25rem;
-    }
-    
-    /* Article Content Styles */
-    .article-body-wrapper {
-        font-size: 1.2rem;
-        line-height: 1.85;
-        color: #334155;
-    }
-    .article-body-wrapper h1, .article-body-wrapper h2, .article-body-wrapper h3 {
-        color: #0f172a;
-        margin-top: 3rem;
-        margin-bottom: 1.5rem;
-        font-weight: 800;
-    }
-    .article-body-wrapper p {
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #64748b;
         margin-bottom: 1.75rem;
     }
+    .blog-breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .blog-breadcrumb a:hover { color: var(--primary-dark); }
+    .blog-breadcrumb i { font-size: 0.6rem; opacity: 0.5; }
+
+    .blog-post-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: clamp(1.8rem, 4.5vw, 3.25rem);
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .blog-hero-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+    }
+
+    .blog-hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: #475569;
+        font-weight: 500;
+    }
+
+    .blog-hero-meta-item i {
+        color: var(--primary);
+        font-size: 0.85rem;
+    }
+
+    .blog-hero-author-avatar {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 12px rgba(0,114,255,0.3);
+        flex-shrink: 0;
+    }
+
+    /* ===== ARTICLE CONTENT WRAPPER ===== */
+    .blog-article-section {
+        background: #ffffff;
+        padding: 0;
+    }
+
+    .blog-article-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem 5rem;
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    /* Back button row */
+    .blog-back-row {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    /* Article content styles */
+    .article-body-wrapper {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: #334155;
+    }
+    .article-body-wrapper h1,
+    .article-body-wrapper h2,
+    .article-body-wrapper h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: #0f172a;
+        margin-top: 3rem;
+        margin-bottom: 1.25rem;
+        font-weight: 800;
+        line-height: 1.3;
+    }
+    .article-body-wrapper h2 { font-size: 1.75rem; }
+    .article-body-wrapper h3 { font-size: 1.35rem; }
+    .article-body-wrapper p { margin-bottom: 1.5rem; }
     .article-body-wrapper img {
         max-width: 100%;
         height: auto !important;
         border-radius: 20px;
         margin: 3rem 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        display: block;
+    }
+    .article-body-wrapper a {
+        color: var(--primary);
+        text-decoration: underline;
+        text-decoration-style: dotted;
     }
     .article-body-wrapper blockquote {
         margin: 3rem 0;
-        padding: 2.5rem;
-        background: #f8fafc;
-        border-left: 5px solid var(--primary);
-        border-radius: 0 20px 20px 0;
+        padding: 2rem 2.5rem;
+        background: linear-gradient(135deg, rgba(0,114,255,0.04), rgba(0,198,255,0.04));
+        border-left: 4px solid var(--primary);
+        border-radius: 0 16px 16px 0;
         font-style: italic;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: #1e293b;
     }
+    .article-body-wrapper ul, .article-body-wrapper ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .article-body-wrapper li { margin-bottom: 0.5rem; }
 
-    /* Single Page Swiper */
+    /* Featured image */
+    .featured-img-wrap {
+        border-radius: 24px;
+        overflow: hidden;
+        margin-bottom: 3.5rem;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        aspect-ratio: 16/9;
+    }
+    .featured-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* ===== AUTHOR BOX (PREMIUM) ===== */
+    .author-box-premium {
+        margin-top: 4rem;
+        padding: 0;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+        border: 1px solid #e2e8f0;
+    }
+
+    .author-box-header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .author-box-header span {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .author-box-header i {
+        color: #38bdf8;
+        font-size: 0.9rem;
+    }
+
+    .author-box-body {
+        background: #ffffff;
+        padding: 2rem;
+        display: flex;
+        gap: 1.75rem;
+        align-items: flex-start;
+    }
+
+    .author-avatar-xl {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        box-shadow: 0 8px 20px rgba(0,114,255,0.25);
+    }
+
+    .author-info-block h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 0.25rem;
+    }
+
+    .author-role-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(0,114,255,0.08);
+        color: var(--primary);
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-bottom: 0.85rem;
+    }
+
+    .author-info-block p {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .author-box-footer {
+        background: #f8fafc;
+        padding: 1rem 2rem;
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .author-date-info {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .author-date-info i { color: var(--primary); }
+
+    /* ===== SIDEBAR ===== */
+    .blog-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .sidebar-widget {
+        background: white;
+        border-radius: 20px;
+        border: 1px solid #f1f5f9;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .sidebar-widget-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        color: #0f172a;
+    }
+
+    .sidebar-widget-header i {
+        color: var(--primary);
+    }
+
+    .sidebar-widget-body {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .recent-post-item {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        padding: 0.85rem 0;
+        text-decoration: none;
+        border-bottom: 1px solid #f8fafc;
+        transition: transform 0.2s;
+    }
+
+    .recent-post-item:last-child { border-bottom: none; }
+
+    .recent-post-item:hover { transform: translateX(4px); }
+
+    .recent-post-thumb {
+        width: 68px;
+        height: 68px;
+        object-fit: cover;
+        border-radius: 10px;
+        flex-shrink: 0;
+        background: #f1f5f9;
+    }
+
+    .recent-post-thumb-placeholder {
+        width: 68px;
+        height: 68px;
+        background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+        border-radius: 10px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #cbd5e1;
+    }
+
+    .recent-post-info h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #1e293b;
+        line-height: 1.35;
+        margin: 0 0 0.3rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .recent-post-info span {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        font-weight: 500;
+    }
+
+    .sidebar-cta {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        color: white;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sidebar-cta::before {
+        content: '';
+        position: absolute;
+        top: -40px; right: -40px;
+        width: 150px; height: 150px;
+        background: rgba(0,114,255,0.15);
+        border-radius: 50%;
+    }
+
+    .sidebar-cta::after {
+        content: '';
+        position: absolute;
+        bottom: -30px; left: -30px;
+        width: 100px; height: 100px;
+        background: rgba(0,198,255,0.1);
+        border-radius: 50%;
+    }
+
+    .sidebar-cta h4 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+        margin: 0 0 0.75rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .sidebar-cta p {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .sidebar-cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        text-decoration: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 6px 20px rgba(0,114,255,0.4);
+        transition: all 0.2s;
+    }
+
+    .sidebar-cta a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0,114,255,0.5);
+    }
+
+    /* Swiper */
     .show-swiper {
         width: 100%;
         border-radius: 24px;
         overflow: hidden;
-        margin-bottom: 4rem;
+        margin-bottom: 3.5rem;
         box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        aspect-ratio: 16/9;
     }
     .show-swiper-img {
         width: 100%;
-        aspect-ratio: 16/9;
+        height: 100%;
         object-fit: cover;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        width: 36px !important;
+        height: 36px !important;
+        background: rgba(255,255,255,0.95);
+        border-radius: 50%;
+        color: var(--primary) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 12px !important;
+        font-weight: 900;
+    }
+    .swiper-pagination-bullet-active {
+        background: var(--primary) !important;
     }
 
-    .sidebar-widget-modern {
-        background: white;
-        padding: 2rem;
-        border-radius: 20px;
-        border: 1px solid #f1f5f9;
-        margin-bottom: 2.5rem;
-    }
-    .recent-post-link {
-        display: flex;
-        gap: 1.25rem;
-        margin-bottom: 1.5rem;
-        text-decoration: none;
-        align-items: center;
-        transition: transform 0.2s;
-    }
-    .recent-post-link:hover {
-        transform: translateX(5px);
-    }
-    .recent-post-link img {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 12px;
-        flex-shrink: 0;
-    }
-    .recent-post-info h4 {
-        margin: 0;
-        font-size: 1rem;
-        line-height: 1.4;
-        color: #1e293b;
-        font-weight: 700;
-    }
-    
     @media (max-width: 768px) {
-        .post-main-title { font-size: 2.5rem; }
+        #blog-hero { padding: 110px 1.25rem 3rem; }
+        .blog-post-title { font-size: 1.75rem; }
+        .blog-article-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem 1.25rem 3rem; }
+        .blog-sidebar { position: static; }
+        .author-box-body { flex-direction: column; align-items: center; text-align: center; }
     }
 </style>
 @endpush
 
 @section('content')
-<!-- ===== HERO SECTION (Synced) ===== -->
-<section id="hero" aria-label="Post Detail Hero" style="min-height: 45vh; padding: 120px 2rem 3rem;">
-    <!-- Animated mesh gradient background -->
+{{-- ===== BLOG DETAIL HERO ===== --}}
+<section id="blog-hero" aria-label="Post Detail Hero">
+    {{-- Animated mesh gradient background --}}
     <div class="hero-gradient-bg" aria-hidden="true"></div>
-    
-    <!-- Subtle clean soft glowing spots -->
+
+    {{-- Soft glow spots --}}
     <div class="hero-glow-spots" aria-hidden="true">
-        <div class="glow-spot" style="top: 10%; left: 15%; background: rgba(0, 114, 255, 0.12);"></div>
-        <div class="glow-spot" style="bottom: 10%; right: 10%; background: rgba(0, 198, 255, 0.12);"></div>
+        <div class="glow-spot" style="top: 8%; left: 12%; width:350px; height:350px; background: rgba(0, 114, 255, 0.13); position:absolute; border-radius:50%; filter:blur(80px);"></div>
+        <div class="glow-spot" style="bottom: 5%; right: 8%; width:280px; height:280px; background: rgba(0, 198, 255, 0.13); position:absolute; border-radius:50%; filter:blur(80px);"></div>
     </div>
-    
-    <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
-        <nav class="post-breadcrumb" style="margin-bottom: 1.5rem;">
-            <a href="{{ route('home') }}">Beranda</a> / 
-            <a href="{{ route('blog.index') }}">Berita</a>
+
+    <div class="hero-inner">
+        {{-- Breadcrumb --}}
+        <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ route('home') }}"><i class="fas fa-home"></i> Beranda</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="{{ route('blog.index') }}">Blog & Berita</a>
+            @if($post->category)
+                <i class="fas fa-chevron-right"></i>
+                <a href="{{ route('blog.category', $post->category->slug) }}">{{ $post->category->name }}</a>
+            @endif
         </nav>
-        
+
+        {{-- Category Badge --}}
         @if($post->category)
-            <div class="hero-badge-modern" style="margin: 0 auto 1.5rem;">
+            <div class="hero-badge-modern" style="display:inline-flex; margin: 0 auto 0.5rem;">
                 <span class="badge-dot"></span>
-                <span class="badge-text"><i class="fas fa-tag" style="margin-right:6px"></i> {{ $post->category->name }}</span>
+                <span class="badge-text"><i class="fas fa-tag" style="margin-right:5px"></i>{{ $post->category->name }}</span>
             </div>
         @endif
-        
-        <h1 class="hero-title-modern" style="text-align: center; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2;">
-            {{ $post->title }}
-        </h1>
-        
-        <div class="post-author-bar" style="justify-content: center; border-top: none; padding-top: 1rem;">
-            <div class="author-img-lg" style="width: 42px; height: 42px; font-size: 1rem; background: var(--primary); color: white;">{{ substr($post->author->nama ?? 'A', 0, 1) }}</div>
-            <div style="text-align: left;">
-                <div style="font-weight: 800; color: #0f172a; font-size: 1rem;">{{ $post->author->nama ?? 'Redaksi' }}</div>
-                <div style="color: #64748b; font-size: 0.8rem;">{{ $post->created_at->format('d M Y') }}</div>
+
+        {{-- Title --}}
+        <h1 class="blog-post-title">{{ $post->title }}</h1>
+
+        {{-- Meta Row --}}
+        <div class="blog-hero-meta">
+            <div class="blog-hero-meta-item">
+                <div class="blog-hero-author-avatar">{{ substr($post->author->nama ?? 'A', 0, 1) }}</div>
+                <span><strong>{{ $post->author->nama ?? 'Redaksi Konfigin' }}</strong></span>
+            </div>
+            <div class="blog-hero-meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>{{ $post->created_at->translatedFormat('d F Y') }}</span>
+            </div>
+            <div class="blog-hero-meta-item">
+                <i class="fas fa-clock"></i>
+                <span>{{ max(1, intval(str_word_count(strip_tags($post->content)) / 200)) }} menit baca</span>
             </div>
         </div>
     </div>
@@ -189,80 +565,115 @@
 
 <div class="section-divider"></div>
 
-<!-- Content Wrapper with White Background for visibility -->
-<div style="background: white; color: #1e293b;">
-    <div class="container" style="padding: 4rem 1rem;">
-        <div style="margin-bottom: 2rem;">
-            <a href="{{ route('blog.index') }}" class="btn btn-secondary btn-sm">
-                <i class="fas fa-arrow-left"></i> Kembali ke Berita
-            </a>
-        </div>
-        <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem;">
-            
-            <!-- Article Content -->
-            <main>
-                @if($post->images->count() > 1)
-                    <!-- Gallery Slider -->
-                    <div class="swiper show-swiper">
-                        <div class="swiper-wrapper">
-                            @foreach($post->images as $img)
-                            <div class="swiper-slide">
-                                <img src="{{ asset($img->image_path) }}" alt="{{ $post->title }}" class="show-swiper-img">
-                            </div>
-                            @endforeach
+{{-- ===== ARTICLE CONTENT ===== --}}
+<div class="blog-article-section">
+    <div class="blog-article-inner">
+
+        {{-- MAIN CONTENT --}}
+        <main>
+            {{-- Back button --}}
+            <div class="blog-back-row">
+                <a href="{{ route('blog.index') }}" class="btn btn-outline btn-sm" style="border-radius:100px;">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Blog
+                </a>
+            </div>
+
+            {{-- Featured Media --}}
+            @if($post->images->count() > 1)
+                <div class="swiper show-swiper">
+                    <div class="swiper-wrapper">
+                        @foreach($post->images as $img)
+                        <div class="swiper-slide">
+                            <img src="{{ asset($img->image_path) }}" alt="{{ $post->title }}" class="show-swiper-img">
                         </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                        @endforeach
                     </div>
-                @elseif($post->featured_image)
-                    <!-- Single Featured Image -->
-                    <div style="margin-bottom: 4rem;">
-                        <img src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}" style="width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                    </div>
-                @endif
-
-                <div class="article-body-wrapper">
-                    {!! $post->content !!}
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
+            @elseif($post->featured_image)
+                <div class="featured-img-wrap">
+                    <img src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}">
+                </div>
+            @endif
 
-                <!-- Bottom Author Box (Refined) -->
-                <div style="margin-top: 5rem; padding: 2.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; display: flex; gap: 2rem; align-items: center;">
-                    <div class="author-img-lg" style="width: 80px; height: 80px; font-size: 2rem; background: var(--primary); color: white; box-shadow: 0 8px 16px rgba(14,165,233,0.3);">{{ substr($post->author->nama ?? 'A', 0, 1) }}</div>
-                    <div>
-                        <h3 style="margin: 0 0 0.5rem; color: #0f172a; font-weight: 800; font-size: 1.4rem;">Ditulis oleh {{ $post->author->nama ?? 'Admin' }}</h3>
-                        <p style="margin: 0; color: #64748b; line-height: 1.6; font-size: 1rem;">Kontributor aktif yang berfokus pada perkembangan teknologi informasi, jaringan terstruktur, dan rekayasa perangkat lunak di Lingkungan Konfigin IT Solutions.</p>
+            {{-- Article Body --}}
+            <div class="article-body-wrapper">
+                {!! $post->content !!}
+            </div>
+
+            {{-- ===== PREMIUM AUTHOR BOX ===== --}}
+            <div class="author-box-premium">
+                <div class="author-box-header">
+                    <i class="fas fa-pen-nib"></i>
+                    <span>Tentang Penulis</span>
+                </div>
+                <div class="author-box-body">
+                    <div class="author-avatar-xl">{{ substr($post->author->nama ?? 'A', 0, 1) }}</div>
+                    <div class="author-info-block">
+                        <h3>{{ $post->author->nama ?? 'Admin Konfigin' }}</h3>
+                        <div class="author-role-badge">
+                            <i class="fas fa-shield-check"></i> Kontributor Resmi Konfigin IT Solutions
+                        </div>
+                        <p>Kontributor aktif yang berfokus pada perkembangan teknologi informasi, infrastruktur jaringan terstruktur, dan pengembangan perangkat lunak kustom di Konfigin IT Solutions.</p>
                     </div>
                 </div>
-            </main>
+                <div class="author-box-footer">
+                    <div class="author-date-info">
+                        <i class="fas fa-calendar-check"></i>
+                        Dipublikasikan pada {{ $post->created_at->translatedFormat('d F Y, H:i') }} WIB
+                    </div>
+                    @if($post->updated_at->ne($post->created_at))
+                        <div class="author-date-info">
+                            <i class="fas fa-sync-alt"></i>
+                            Diperbarui {{ $post->updated_at->diffForHumans() }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </main>
 
-            <!-- Sidebar -->
-            <aside>
-                <div class="sidebar-widget-modern" style="background: white; border: 1px solid #f1f5f9;">
-                    <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 2rem; color: #0f172a;">Kabar Terbaru</h3>
-                    @foreach($recent_posts as $recent)
-                    <a href="{{ route('blog.show', $recent->slug) }}" class="recent-post-link">
+        {{-- SIDEBAR --}}
+        <aside class="blog-sidebar">
+
+            {{-- Recent Posts Widget --}}
+            <div class="sidebar-widget">
+                <div class="sidebar-widget-header">
+                    <i class="fas fa-newspaper"></i> Kabar Terbaru
+                </div>
+                <div class="sidebar-widget-body">
+                    @forelse($recent_posts as $recent)
+                    <a href="{{ route('blog.show', $recent->slug) }}" class="recent-post-item">
                         @if($recent->featured_image)
-                            <img src="{{ asset($recent->featured_image) }}" alt="{{ $recent->title }}">
+                            <img src="{{ asset($recent->featured_image) }}" alt="{{ $recent->title }}" class="recent-post-thumb">
                         @else
-                            <div style="width:80px; height:80px; background:#f1f5f9; border-radius:12px;"></div>
+                            <div class="recent-post-thumb-placeholder">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
                         @endif
                         <div class="recent-post-info">
-                            <h4>{{ Str::limit($recent->title, 50) }}</h4>
-                            <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">{{ $recent->created_at->format('d M Y') }}</span>
+                            <h4>{{ Str::limit($recent->title, 55) }}</h4>
+                            <span><i class="fas fa-calendar-alt" style="color:var(--primary); margin-right:4px; font-size:0.7rem;"></i>{{ $recent->created_at->format('d M Y') }}</span>
                         </div>
                     </a>
-                    @endforeach
+                    @empty
+                        <p style="color:#94a3b8; font-size:0.9rem; text-align:center; padding: 1rem 0;">Belum ada artikel lain.</p>
+                    @endforelse
                 </div>
+            </div>
 
-                <div class="sidebar-widget-modern" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: none;">
-                    <h3 style="color: white; font-weight: 800; margin-bottom: 1rem;">Ada Pertanyaan?</h3>
-                    <p style="opacity: 0.9; font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">Dapatkan informasi lebih lanjut seputar solusi IT, Jaringan, dan Software Kustom dari Konfigin IT Solutions.</p>
-                    <a href="{{ route('home') }}#kontak" style="display: block; text-align:center; background: white; color: var(--primary); padding: 0.75rem; border-radius: 12px; font-weight: 800; text-decoration: none;">Hubungi Kami</a>
-                </div>
-            </aside>
+            {{-- CTA Widget --}}
+            <div class="sidebar-cta">
+                <h4>Butuh Solusi IT?</h4>
+                <p>Konsultasikan kebutuhan jaringan, aplikasi kustom, atau infrastruktur IT Anda bersama tim ahli kami.</p>
+                <a href="{{ route('home') }}#kontak">
+                    <i class="fab fa-whatsapp"></i> Hubungi Sekarang
+                </a>
+            </div>
 
-        </div>
+        </aside>
+
     </div>
 </div>
 @endsection

@@ -14,110 +14,155 @@
 @section('content')
 <!-- ===== HERO SECTION ===== -->
 <section id="hero" aria-label="Hero Section">
-  <!-- Animated mesh gradient background -->
-  <div class="hero-gradient-bg" aria-hidden="true"></div>
+  <!-- Video Background -->
+  <video class="hero-video-bg" autoplay loop muted playsinline aria-hidden="true">
+    <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
+  </video>
 
-  <!-- Subtle clean soft glowing spots (Professional mesh style) -->
-  <div class="hero-glow-spots" aria-hidden="true">
-    <div class="glow-spot" style="top: 10%; left: 15%; background: rgba(0, 114, 255, 0.15);"></div>
-    <div class="glow-spot" style="bottom: 15%; right: 10%; background: rgba(0, 198, 255, 0.15);"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-dots"></div>
   </div>
 
-  <div class="container hero-container" style="max-width: 1200px; margin: 0 auto; width: 100%;">
+  <div class="hero-container">
     <div class="hero-split-grid">
-      <!-- LEFT SIDE: Text and CTA -->
-      <div class="hero-content-left animate-on-scroll">
-        <div class="hero-badge-modern">
-          <span class="badge-dot"></span>
-          <span class="badge-text"><i class="fas fa-laptop-code" style="margin-right:6px"></i> Premium IT Solutions &amp; Custom Software</span>
+      <!-- LEFT -->
+      <div class="hero-content-left">
+        <div class="eyebrow">
+          <div class="eyebrow-dot"></div>
+          <span class="eyebrow-icon">🖥️</span>
+          <span class="eyebrow-text">Premium IT Solutions & Custom Software</span>
         </div>
-        
-        <h1 class="hero-title-modern">
-          Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="gradient-text">Aplikasi Custom</span>
+
+        <h1 class="headline">
+          Infrastruktur Jaringan<br>
+          Sekolah, Perkantoran &<br>
+          <span class="headline-grad">Aplikasi Custom</span>
         </h1>
-        
-        <p class="hero-subtitle-modern">
-          Konfigin IT Solutions menghadirkan pengembangan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus—kepemilikan penuh selamanya tanpa biaya langganan bulanan.
+
+        <p class="desc">
+          Konfigin IT Solutions menghadirkan <strong>aplikasi kustom premium</strong> dan instalasi jaringan handal berlisensi sekali putus — kepemilikan penuh selamanya tanpa biaya langganan bulanan.
         </p>
-        
-        <div class="hero-actions-modern">
+
+        <div class="cta-row">
           @if($kontak)
-            <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn btn-primary" id="btn-hero-wa" style="border-radius:100px; padding:0.8rem 1.8rem; font-weight:700;">
-              <i class="fab fa-whatsapp"></i> Konsultasi Jaringan &amp; App
+            <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-primary-branded">
+              <span>💬</span> Konsultasi Jaringan & App
             </a>
           @endif
-          <a href="#eservice" class="btn btn-outline" id="btn-hero-layanan" style="border-radius:100px; padding:0.8rem 1.8rem; font-weight:700;">
-            <i class="fas fa-cogs"></i> Layanan Utama
+          <a href="#eservice" class="btn-secondary-branded">
+            <span>⚡</span> Layanan Utama
           </a>
+        </div>
+        
+        <div class="trust-row">
+          <!-- Section Uptime<div class="trust-pill">
+            <span class="tp-icon">✅</span>
+            Uptime <span class="tp-val">&nbsp;99.9%</span>
+          </div>
+          <div class="trust-pill">
+            <span class="tp-icon">🚀</span>
+            Proyek <span class="tp-val">&nbsp;50+</span>
+          </div>
+          <div class="trust-pill">
+            <span class="tp-icon">🛡️</span>
+            Support <span class="tp-val">&nbsp;24/7</span>
+          </div>-->
         </div>
       </div>
 
-      <!-- RIGHT SIDE: Glassmorphic Dashboard & Server Mockup -->
-      <div class="hero-visual-right animate-on-scroll">
-        <div class="dashboard-mockup">
-          <!-- Browser Header Controls -->
-          <div class="mockup-header">
-            <div class="mockup-dots">
-              <span class="dot-red"></span>
-              <span class="dot-yellow"></span>
-              <span class="dot-green"></span>
-            </div>
-            <div class="mockup-search-bar"><i class="fas fa-lock"></i> secure.konfigin.com</div>
+      <!-- RIGHT -->
+      <div class="hero-visual-right">
+        <!-- Float cards -->
+        <div class="float-card fc-1">
+          <div class="fc-icon">⚡</div>
+          <div>
+            <div class="fc-val">99.99%</div>
+            <div class="fc-lbl">Network Uptime</div>
           </div>
-          
-          <!-- Mockup Content -->
-          <div class="mockup-content">
-            <!-- Server Status Bar -->
-            <div class="mockup-status-bar">
-              <div class="status-indicator">
-                <span class="status-pulse-dot"></span>
-                <span>SYSTEM STATUS: <strong>ACTIVE / ONLINE</strong></span>
-              </div>
-              <span class="status-badge-text">v2.4.1</span>
-            </div>
+        </div>
+        <div class="float-card fc-2">
+          <div class="fc-icon">🔒</div>
+          <div>
+            <div class="fc-val">SSL Active</div>
+            <div class="fc-lbl">Enkripsi End-to-End</div>
+          </div>
+        </div>
 
-            <!-- Mini Dashboard Grid -->
-            <div class="mockup-metrics">
-              <div class="metric-mini-card">
-                <div class="metric-header">
-                  <span class="metric-title">NETWORK UPTIME</span>
-                  <i class="fas fa-network-wired" style="color:var(--primary)"></i>
-                </div>
-                <div class="metric-value">99.99%</div>
-              </div>
-              <div class="metric-mini-card">
-                <div class="metric-header">
-                  <span class="metric-title">ACTIVE SOCKETS</span>
-                  <i class="fas fa-server" style="color:var(--secondary)"></i>
-                </div>
-                <div class="metric-value">16 / 16 Nodes</div>
-              </div>
+        <!-- Dashboard -->
+        <div class="dash">
+          <!-- Chrome -->
+          <div class="dash-chrome">
+            <div class="dots">
+              <div class="dot dot-r"></div>
+              <div class="dot dot-y"></div>
+              <div class="dot dot-g"></div>
             </div>
+            <div class="addr">
+              <span class="addr-lock">🔒</span>
+              secure.konfigin.com
+            </div>
+            <div style="width:56px"></div>
+          </div>
 
-            <!-- Network Connections Graph Visual -->
-            <div class="mockup-graph-panel">
-              <div class="graph-nodes-container">
-                <div class="graph-node-center"><i class="fas fa-shield-alt"></i></div>
-                <div class="graph-node satellite-1"><i class="fas fa-database"></i></div>
-                <div class="graph-node satellite-2"><i class="fas fa-wifi"></i></div>
-                <div class="graph-node satellite-3"><i class="fas fa-laptop-code"></i></div>
-                <div class="graph-node satellite-4"><i class="fas fa-terminal"></i></div>
-                <!-- Connecting lines via SVG -->
-                <svg class="graph-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <line x1="50" y1="50" x2="20" y2="25" stroke="rgba(0,114,255,0.15)" stroke-width="0.8" />
-                  <line x1="50" y1="50" x2="80" y2="25" stroke="rgba(0,114,255,0.15)" stroke-width="0.8" />
-                  <line x1="50" y1="50" x2="20" y2="75" stroke="rgba(0,114,255,0.15)" stroke-width="0.8" />
-                  <line x1="50" y1="50" x2="80" y2="75" stroke="rgba(0,114,255,0.15)" stroke-width="0.8" />
-                </svg>
-              </div>
+          <!-- Status -->
+          <div class="dash-status">
+            <div class="status-left">
+              <div class="status-dot-live"></div>
+              <div class="status-txt">SYSTEM STATUS: <b>ACTIVE / ONLINE</b></div>
             </div>
+            <div class="status-ver">v2.4.1</div>
+          </div>
 
-            <!-- Mini Console Logs -->
-            <div class="mockup-console">
-              <div class="console-line"><span class="console-tag-ok">[ OK ]</span> Established secure connection to edge router...</div>
-              <div class="console-line"><span class="console-tag-info">[INFO]</span> Database backup generated successfully.</div>
-              <div class="console-line"><span class="console-tag-sec">[SEC ]</span> Encrypted transmission SSL tunnel active.</div>
+          <!-- Metrics -->
+          <div class="dash-metrics">
+            <div class="metric">
+              <div class="metric-head">Network Uptime <span class="metric-ico">🌐</span></div>
+              <div class="metric-num">99.99<sup>%</sup></div>
+              <div class="metric-hint">↑ Stabil 30 hari terakhir</div>
             </div>
+            <div class="metric">
+              <div class="metric-head">Active Sockets <span class="metric-ico">🔌</span></div>
+              <div class="metric-num">16<sup> / 16</sup></div>
+              <div class="metric-hint">Semua nodes aktif</div>
+            </div>
+          </div>
+
+          <!-- Network visual -->
+          <div class="dash-net">
+            <div class="net-center">🛡️</div>
+            <div class="net-node" style="top:10px;left:24px">💾</div>
+            <div class="net-node" style="top:10px;right:24px">📡</div>
+            <div class="net-node" style="bottom:8px;left:16px">🖥️</div>
+            <div class="net-node" style="bottom:8px;right:16px">⚙️</div>
+            <!-- SVG connections -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2563EB" stop-opacity="0.1"/>
+                  <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0.1"/>
+                </linearGradient>
+              </defs>
+              <line x1="12" y1="18" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
+              <line x1="88" y1="18" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
+              <line x1="8"  y1="82" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
+              <line x1="92" y1="82" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
+              <!-- Pulse dots -->
+              <circle cx="50" cy="50" r="22" fill="none" stroke="rgba(37,99,235,.08)" stroke-width="1" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+
+          <div class="dash-sep"></div>
+
+          <!-- Console -->
+          <div class="dash-console">
+            <div class="c-line"><span class="c-tag c-ok">OK</span><span class="c-msg">Established secure connection to edge router...</span></div>
+            <div class="c-line"><span class="c-tag c-info">INFO</span><span class="c-msg">Database backup generated successfully.</span></div>
+            <div class="c-line"><span class="c-tag c-sec">SEC</span><span class="c-msg">Encrypted transmission SSL tunnel active.</span></div>
           </div>
         </div>
       </div>
@@ -341,4 +386,18 @@
     </div>
   </div>
 </section>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Stagger animations for trust-pills
+  document.querySelectorAll('.trust-pill').forEach((el,i)=>{
+    el.style.opacity='0';el.style.transform='translateY(10px)';
+    el.style.transition=`all .45s cubic-bezier(.4,0,.2,1) ${.7+i*.08}s`;
+    setTimeout(()=>{el.style.opacity='1';el.style.transform='translateY(0)'}, 50);
+  });
+});
+</script>
+@endpush
+
 @endsection
