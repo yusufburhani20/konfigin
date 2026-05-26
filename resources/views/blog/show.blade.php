@@ -8,36 +8,19 @@
 <style>
     /* ===== BLOG DETAIL HERO ===== */
     #blog-hero {
-        background: var(--hero-gradient);
+        background: #0b0f19;
         position: relative;
         overflow: hidden;
-        padding: 130px 2rem 5rem;
+        padding: 140px 2rem 5rem;
         margin-top: 0;
     }
 
     #blog-hero .hero-gradient-bg {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            -45deg,
-            #f8fafc,
-            #eff6ff,
-            #e0f2fe,
-            #bae6fd,
-            #f8fafc
-        );
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        opacity: 0.95;
-        z-index: 0;
+        display: none;
     }
 
     #blog-hero .hero-glow-spots {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-        z-index: 1;
+        display: none;
     }
 
     #blog-hero .hero-inner {
@@ -55,22 +38,22 @@
         gap: 0.5rem;
         font-size: 0.85rem;
         font-weight: 600;
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.6);
         margin-bottom: 1.75rem;
     }
     .blog-breadcrumb a {
-        color: var(--primary);
+        color: #38bdf8;
         text-decoration: none;
         transition: color 0.2s;
     }
-    .blog-breadcrumb a:hover { color: var(--primary-dark); }
-    .blog-breadcrumb i { font-size: 0.6rem; opacity: 0.5; }
+    .blog-breadcrumb a:hover { color: #ffffff; }
+    .blog-breadcrumb i { font-size: 0.6rem; opacity: 0.5; color: rgba(255, 255, 255, 0.4); }
 
     .blog-post-title {
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: clamp(1.8rem, 4.5vw, 3.25rem);
         font-weight: 900;
-        color: #0f172a;
+        color: #ffffff;
         line-height: 1.15;
         letter-spacing: -0.5px;
         margin: 1.5rem 0 2rem;
@@ -90,12 +73,16 @@
         align-items: center;
         gap: 0.5rem;
         font-size: 0.875rem;
-        color: #475569;
+        color: rgba(255, 255, 255, 0.7);
         font-weight: 500;
     }
 
+    .blog-hero-meta-item strong {
+        color: #ffffff;
+    }
+
     .blog-hero-meta-item i {
-        color: var(--primary);
+        color: #38bdf8;
         font-size: 0.85rem;
     }
 
@@ -507,13 +494,13 @@
 @section('content')
 {{-- ===== BLOG DETAIL HERO ===== --}}
 <section id="blog-hero" aria-label="Post Detail Hero">
-    {{-- Animated mesh gradient background --}}
-    <div class="hero-gradient-bg" aria-hidden="true"></div>
+    <!-- Video Background -->
+    <video class="hero-video-bg" autoplay loop muted playsinline aria-hidden="true">
+        <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
+    </video>
 
-    {{-- Soft glow spots --}}
-    <div class="hero-glow-spots" aria-hidden="true">
-        <div class="glow-spot" style="top: 8%; left: 12%; width:350px; height:350px; background: rgba(0, 114, 255, 0.13); position:absolute; border-radius:50%; filter:blur(80px);"></div>
-        <div class="glow-spot" style="bottom: 5%; right: 8%; width:280px; height:280px; background: rgba(0, 198, 255, 0.13); position:absolute; border-radius:50%; filter:blur(80px);"></div>
+    <div class="hero-bg" aria-hidden="true">
+        <div class="hero-dots"></div>
     </div>
 
     <div class="hero-inner">
@@ -530,9 +517,9 @@
 
         {{-- Category Badge --}}
         @if($post->category)
-            <div class="hero-badge-modern" style="display:inline-flex; margin: 0 auto 0.5rem;">
+            <div class="hero-badge-modern" style="display:inline-flex; margin: 0 auto 0.5rem; background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2);">
                 <span class="badge-dot"></span>
-                <span class="badge-text"><i class="fas fa-tag" style="margin-right:5px"></i>{{ $post->category->name }}</span>
+                <span class="badge-text" style="color: #38bdf8;"><i class="fas fa-tag" style="margin-right:5px"></i>{{ $post->category->name }}</span>
             </div>
         @endif
 

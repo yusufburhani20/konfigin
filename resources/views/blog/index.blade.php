@@ -10,48 +10,28 @@
     }
     #hero {
         position: relative;
-        min-height: 40vh !important;
+        min-height: 45vh !important;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 120px 0 60px !important;
-        background: transparent !important;
+        padding: 140px 0 60px !important;
+        background: #0b0f19 !important;
     }
     .hero-gradient-bg {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            -45deg,
-            #f8fafc,
-            #eff6ff,
-            #e0f2fe,
-            #bae6fd,
-            #f8fafc
-        );
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        opacity: 0.95;
-        z-index: 0;
+        display: none;
     }
     .hero-glow-spots {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-        z-index: 1;
+        display: none;
     }
     .glow-spot {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(70px);
-        pointer-events: none;
+        display: none;
     }
     .hero-title-modern {
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 800;
-        color: #1E2D4E;
+        color: #ffffff;
         line-height: 1.25;
         margin-bottom: 1rem;
         letter-spacing: -0.5px;
@@ -59,7 +39,7 @@
     .hero-subtitle-modern {
         font-family: 'Sora', sans-serif;
         font-size: 1rem;
-        color: #5878A8;
+        color: rgba(255, 255, 255, 0.7);
         line-height: 1.6;
         max-width: 640px;
         margin: 0 auto;
@@ -68,8 +48,8 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(37, 99, 235, 0.1);
-        border: 1px solid rgba(37, 99, 235, 0.25);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         padding: 7px 18px;
         border-radius: 100px;
         margin-bottom: 1.5rem;
@@ -261,23 +241,23 @@
 
 @section('content')
 <!-- ===== HERO SECTION (Synced) ===== -->
-<section id="hero" aria-label="Blog Hero Section" style="min-height: 45vh; padding: 120px 2rem 4rem;">
-    <!-- Animated mesh gradient background -->
-    <div class="hero-gradient-bg" aria-hidden="true"></div>
-    
-    <!-- Subtle clean soft glowing spots -->
-    <div class="hero-glow-spots" aria-hidden="true">
-        <div class="glow-spot" style="top: 10%; left: 15%; background: rgba(0, 114, 255, 0.12);"></div>
-        <div class="glow-spot" style="bottom: 10%; right: 10%; background: rgba(0, 198, 255, 0.12);"></div>
+<section id="hero" aria-label="Blog Hero Section" style="min-height: 45vh; padding: 140px 2rem 4rem;">
+    <!-- Video Background -->
+    <video class="hero-video-bg" autoplay loop muted playsinline aria-hidden="true">
+        <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class="hero-bg" aria-hidden="true">
+        <div class="hero-dots"></div>
     </div>
     
     <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
         <div class="hero-badge-modern" style="margin: 0 auto 1.5rem;">
             <span class="badge-dot"></span>
-            <span class="badge-text"><i class="fas fa-newspaper" style="margin-right:6px"></i> Warta &amp; Informasi Terkini</span>
+            <span class="badge-text" style="color: #38bdf8;"><i class="fas fa-newspaper" style="margin-right:6px"></i> Warta &amp; Informasi Terkini</span>
         </div>
         <h1 class="hero-title-modern" style="text-align: center; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2;">
-            {!! isset($current_cat) ? '<i class="fas fa-folder-open text-primary" style="margin-right:8px"></i> Kategori: ' . $current_cat->name : '<i class="fas fa-newspaper text-primary" style="margin-right:8px"></i> Blog &amp; Berita' !!}
+            {!! isset($current_cat) ? '<i class="fas fa-folder-open text-primary" style="margin-right:8px; color:#38bdf8 !important;"></i> Kategori: ' . $current_cat->name : '<i class="fas fa-newspaper text-primary" style="margin-right:8px; color:#38bdf8 !important;"></i> Blog &amp; Berita' !!}
         </h1>
         <p class="hero-subtitle-modern" style="margin: 0 auto; text-align: center;">
             {{ isset($current_cat) ? 'Kumpulan kabar terbaru seputar IT Solutions dalam kategori ' . $current_cat->name : 'Ikuti informasi terhangat seputar IT Solutions, Jaringan, dan Custom Web Development dari tim ahli Konfigin IT Solutions.' }}

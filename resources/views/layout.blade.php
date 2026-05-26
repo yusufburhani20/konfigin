@@ -143,7 +143,7 @@
 @endif
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar {{ request()->routeIs('home') ? 'navbar-home' : 'navbar-page' }}" id="navbar" role="navigation" aria-label="Main Navigation">
+<nav class="navbar {{ request()->routeIs('home') || request()->routeIs('blog.index') || request()->routeIs('blog.show') || request()->routeIs('blog.category') ? 'navbar-home' : 'navbar-page' }}" id="navbar" role="navigation" aria-label="Main Navigation">
   <div class="nav-inner">
     <!-- Logo kustom gaya konfigin -->
     <a href="{{ route('home') }}" class="logo" aria-label="{{ $site_name ?? 'Home' }}">
@@ -157,28 +157,22 @@
         <div class="logo-sub">IT Solutions</div>
       </div>
     </a>
-
+ 
     <div class="nav-links">
       <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-      @if(request()->routeIs('home'))
-          <a href="#eservice">Layanan</a>
-          <a href="#kurikulum">Produk</a>
-      @endif
-      <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') ? 'active' : '' }}">Blog</a>
-      <a href="{{ route('home') }}#kontak">Kontak</a>
+      <a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">Layanan</a>
+      <a href="{{ request()->routeIs('home') ? '#kurikulum' : route('home') . '#kurikulum' }}">Produk</a>
+      <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') || request()->routeIs('blog.show') || request()->routeIs('blog.category') ? 'active' : '' }}">Blog</a>
+      <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a>
     </div>
-
+ 
     <div class="nav-cta">
-      @if(request()->routeIs('home'))
-        <a href="#galeri" class="btn-nav-ghost">Portofolio</a>
-      @else
-        <a href="{{ route('home') }}#galeri" class="btn-nav-ghost">Portofolio</a>
-      @endif
+      <a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}" class="btn-nav-ghost">Portofolio</a>
       
       @if(isset($kontak) && $kontak)
         <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-nav-solid">Konsultasi Gratis →</a>
       @else
-        <a href="#kontak" class="btn-nav-solid">Konsultasi Gratis →</a>
+        <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" class="btn-nav-solid">Konsultasi Gratis →</a>
       @endif
     </div>
 
@@ -192,13 +186,11 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile Navigation">
   <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-  @if(request()->routeIs('home'))
-      <a href="#eservice">Layanan</a>
-      <a href="#kurikulum">Produk</a>
-      <a href="#galeri">Portofolio</a>
-  @endif
-  <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') ? 'active' : '' }}">Blog</a>
-  <a href="{{ route('home') }}#kontak">Kontak</a>
+  <a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">Layanan</a>
+  <a href="{{ request()->routeIs('home') ? '#kurikulum' : route('home') . '#kurikulum' }}">Produk</a>
+  <a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Portofolio</a>
+  <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') || request()->routeIs('blog.show') || request()->routeIs('blog.category') ? 'active' : '' }}">Blog</a>
+  <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a>
   
   @if(isset($kontak) && $kontak)
     <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-nav-solid" style="margin-top: 10px; text-align: center; display: block;">Konsultasi Gratis →</a>
