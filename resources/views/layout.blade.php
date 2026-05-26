@@ -175,7 +175,7 @@
         <a href="{{ route('home') }}#galeri" class="btn-nav-ghost">Portofolio</a>
       @endif
       
-      @if($kontak)
+      @if(isset($kontak) && $kontak)
         <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-nav-solid">Konsultasi Gratis →</a>
       @else
         <a href="#kontak" class="btn-nav-solid">Konsultasi Gratis →</a>
@@ -200,7 +200,7 @@
   <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.index') ? 'active' : '' }}">Blog</a>
   <a href="{{ route('home') }}#kontak">Kontak</a>
   
-  @if($kontak)
+  @if(isset($kontak) && $kontak)
     <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-nav-solid" style="margin-top: 10px; text-align: center; display: block;">Konsultasi Gratis →</a>
   @endif
 </div>
