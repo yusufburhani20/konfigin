@@ -21,7 +21,17 @@
     .hero-gradient-bg {
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, #EEF5FF 0%, #F5F9FF 35%, #EBF4FF 60%, #F8FAFF 100%);
+        background: linear-gradient(
+            -45deg,
+            #f8fafc,
+            #eff6ff,
+            #e0f2fe,
+            #bae6fd,
+            #f8fafc
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        opacity: 0.95;
         z-index: 0;
     }
     .hero-glow-spots {
@@ -103,7 +113,7 @@
     }
     .blog-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 2.5rem;
     }
     .post-card {
@@ -267,7 +277,7 @@
             <span class="badge-text"><i class="fas fa-newspaper" style="margin-right:6px"></i> Warta &amp; Informasi Terkini</span>
         </div>
         <h1 class="hero-title-modern" style="text-align: center; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2;">
-            {{ isset($current_cat) ? '📂 Kategori: ' . $current_cat->name : '📑 Blog &amp; Berita' }}
+            {!! isset($current_cat) ? '<i class="fas fa-folder-open text-primary" style="margin-right:8px"></i> Kategori: ' . $current_cat->name : '<i class="fas fa-newspaper text-primary" style="margin-right:8px"></i> Blog &amp; Berita' !!}
         </h1>
         <p class="hero-subtitle-modern" style="margin: 0 auto; text-align: center;">
             {{ isset($current_cat) ? 'Kumpulan kabar terbaru seputar IT Solutions dalam kategori ' . $current_cat->name : 'Ikuti informasi terhangat seputar IT Solutions, Jaringan, dan Custom Web Development dari tim ahli Konfigin IT Solutions.' }}
@@ -278,15 +288,18 @@
 <div class="section-divider"></div>
 
 <div class="container" style="padding: 5rem 1rem;">
-    <div style="display: grid; grid-template-columns: 2.8fr 1.2fr; gap: 3.5rem;">
+    <div class="blog-main-layout">
         
         <!-- Main Blog List -->
         <div>
             @if($posts->isEmpty())
-                <div style="text-align: center; padding: 6rem 2rem; background: white; border-radius: 20px; border: 2px dashed #e2e8f0;">
-                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">🗞️</div>
-                    <h3 style="font-size: 1.5rem; color: #1e293b;">Belum Ada Kabar Tersedia</h3>
-                    <p style="color: #64748b;">Editor kami sedang merangkum berita menarik untuk Anda. Coba lagi nanti!</p>
+                <div style="text-align: center; padding: 6rem 2rem; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 24px; border: 1px solid rgba(0, 114, 255, 0.1); box-shadow: var(--post-card-shadow);">
+                    <div style="width: 100px; height: 100px; background: rgba(37, 99, 235, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: var(--primary);">
+                        <i class="fas fa-scroll fa-3x"></i>
+                    </div>
+                    <h3 style="font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-bottom: 0.75rem; font-family: 'Plus Jakarta Sans', sans-serif;">Belum Ada Kabar Tersedia</h3>
+                    <p style="color: #64748b; font-size: 1rem; max-width: 480px; margin: 0 auto 2rem; line-height: 1.6;">Editor kami sedang merangkum berita menarik dan informatif untuk Anda. Silakan kembali beberapa saat lagi!</p>
+                    <a href="{{ route('home') }}" class="btn-nav-solid" style="display: inline-block; padding: 12px 30px; font-size: 0.9rem; text-decoration: none;">Kembali ke Beranda</a>
                 </div>
             @else
                 <div class="blog-grid">
@@ -395,20 +408,22 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const swipers = new Swiper('.post-swiper', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
+        document.querySelectorAll('.post-swiper').forEach(function(el) {
+            new Swiper(el, {
+                loop: true,
+                pagination: {
+                    el: el.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: el.querySelector('.swiper-button-next'),
+                    prevEl: el.querySelector('.swiper-button-prev'),
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+            });
         });
     });
 </script>

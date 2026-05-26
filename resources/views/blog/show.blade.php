@@ -2,13 +2,7 @@
 
 @section('title', $post->title)
 
-@if(session('admin_logged_in'))
-@push('styles')
-<style>
-  #blog-hero { margin-top: 40px !important; }
-</style>
-@endpush
-@endif
+
 
 @push('styles')
 <style>
