@@ -565,7 +565,7 @@
                     <div class="swiper-wrapper">
                         @foreach($post->images as $img)
                         <div class="swiper-slide">
-                            <img src="{{ asset($img->image_path) }}" alt="{{ $post->title }}" class="show-swiper-img">
+                            <img src="{{ asset(ltrim($img->image_path, '/')) }}" alt="{{ $post->title }}" class="show-swiper-img">
                         </div>
                         @endforeach
                     </div>
@@ -575,7 +575,7 @@
                 </div>
             @elseif($post->featured_image)
                 <div class="featured-img-wrap">
-                    <img src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}">
+                    <img src="{{ asset(ltrim($post->featured_image, '/')) }}" alt="{{ $post->title }}">
                 </div>
             @endif
 
@@ -627,7 +627,7 @@
                     @forelse($recent_posts as $recent)
                     <a href="{{ route('blog.show', $recent->slug) }}" class="recent-post-item">
                         @if($recent->featured_image)
-                            <img src="{{ asset($recent->featured_image) }}" alt="{{ $recent->title }}" class="recent-post-thumb">
+                            <img src="{{ asset(ltrim($recent->featured_image, '/')) }}" alt="{{ $recent->title }}" class="recent-post-thumb">
                         @else
                             <div class="recent-post-thumb-placeholder">
                                 <i class="fas fa-newspaper"></i>

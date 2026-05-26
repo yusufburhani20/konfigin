@@ -292,7 +292,7 @@
                                     <div class="swiper-wrapper">
                                         @foreach($post->images as $img)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset($img->image_path) }}" alt="{{ $post->title }}" class="post-thumb-img">
+                                            <img src="{{ asset(ltrim($img->image_path, '/')) }}" alt="{{ $post->title }}" class="post-thumb-img">
                                         </div>
                                         @endforeach
                                     </div>
@@ -302,7 +302,7 @@
                                 </div>
                             @elseif($post->featured_image)
                                 <!-- Single Image -->
-                                <img src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}" class="post-thumb-img">
+                                <img src="{{ asset(ltrim($post->featured_image, '/')) }}" alt="{{ $post->title }}" class="post-thumb-img">
                             @else
                                 <!-- No image placeholder -->
                                 <div style="width:100%; height:100%; background: #f8fafc; display:flex; align-items:center; justify-content:center; color: #cbd5e1;">
