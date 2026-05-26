@@ -8,6 +8,83 @@
         --post-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         --post-card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
+    #hero {
+        position: relative;
+        min-height: 40vh !important;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 0 60px !important;
+        background: transparent !important;
+    }
+    .hero-gradient-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #EEF5FF 0%, #F5F9FF 35%, #EBF4FF 60%, #F8FAFF 100%);
+        z-index: 0;
+    }
+    .hero-glow-spots {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .glow-spot {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(70px);
+        pointer-events: none;
+    }
+    .hero-title-modern {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        color: #1E2D4E;
+        line-height: 1.25;
+        margin-bottom: 1rem;
+        letter-spacing: -0.5px;
+    }
+    .hero-subtitle-modern {
+        font-family: 'Sora', sans-serif;
+        font-size: 1rem;
+        color: #5878A8;
+        line-height: 1.6;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+    .hero-badge-modern {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.25);
+        padding: 7px 18px;
+        border-radius: 100px;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+    }
+    .badge-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #10b981;
+        display: inline-block;
+        animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.4); opacity: 0.5; }
+    }
+    .badge-text {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--brand-royal);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
     .blog-hero {
         background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         color: white;

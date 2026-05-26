@@ -80,14 +80,24 @@ body {
   right: 0;
   z-index: 1000;
   padding: 0 48px;
-  background: transparent; /* Completely transparent at top */
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.85); /* Default white glass */
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
   height: 72px;
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
+}
+
+/* Home Navbar - Transparent at top */
+.navbar-home:not(.scrolled) {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  box-shadow: none;
 }
 
 .navbar.scrolled {
@@ -130,9 +140,15 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 30px;
   font-weight: 700;
-  color: var(--brand-cyan); /* Cyan at top */
+  color: var(--brand-royal); /* Default dark blue */
   line-height: 1;
   transition: all 0.3s ease;
+}
+
+/* Cyan logo bracket at home top */
+.navbar-home:not(.scrolled) .logo-bracket-l,
+.navbar-home:not(.scrolled) .logo-bracket-r {
+  color: var(--brand-cyan) !important;
 }
 
 .navbar.scrolled .logo-bracket-l,
@@ -180,15 +196,23 @@ body {
   font-family: 'Sora', sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: #ffffff; /* White text at top */
+  color: var(--brand-navy); /* Default dark navy */
   letter-spacing: -0.01em;
   transition: all 0.3s ease;
 }
 
 .logo-name em {
-  color: var(--brand-cyan);
+  color: var(--brand-royal);
   font-style: normal;
   transition: all 0.3s ease;
+}
+
+/* White logo text at home top */
+.navbar-home:not(.scrolled) .logo-name {
+  color: #ffffff !important;
+}
+.navbar-home:not(.scrolled) .logo-name em {
+  color: var(--brand-cyan) !important;
 }
 
 .navbar.scrolled .logo-name {
@@ -204,9 +228,14 @@ body {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.6); /* White sub text at top */
+  color: var(--ink-mute); /* Default ink mute */
   text-transform: uppercase;
   transition: all 0.3s ease;
+}
+
+/* White sub text at home top */
+.navbar-home:not(.scrolled) .logo-sub {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .navbar.scrolled .logo-sub {
@@ -223,7 +252,7 @@ body {
   font-family: 'Sora', sans-serif;
   font-size: 13.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8); /* Light links at top */
+  color: var(--ink-soft); /* Default dark link */
   text-decoration: none;
   padding: 7px 15px;
   border-radius: 8px;
@@ -232,8 +261,18 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
+  color: var(--brand-royal);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* White link text at home top */
+.navbar-home:not(.scrolled) .nav-links a {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.navbar-home:not(.scrolled) .nav-links a:hover,
+.navbar-home:not(.scrolled) .nav-links a.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
 .navbar.scrolled .nav-links a {
@@ -263,17 +302,28 @@ body {
   padding: 8px 20px;
   border-radius: 9px;
   background: transparent;
-  color: #ffffff; /* White at top */
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--ink-soft); /* Default dark */
+  border: 1.5px solid rgba(37, 99, 235, 0.2);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-nav-ghost:hover {
-  border-color: #ffffff;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--brand-royal);
+  color: var(--brand-royal);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* White button at home top */
+.navbar-home:not(.scrolled) .btn-nav-ghost {
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+}
+.navbar-home:not(.scrolled) .btn-nav-ghost:hover {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
 .navbar.scrolled .btn-nav-ghost {
@@ -324,9 +374,14 @@ body {
   display: block;
   width: 24px;
   height: 2px;
-  background: #ffffff; /* White hamburger at top */
+  background: var(--brand-royal); /* Default dark blue */
   border-radius: 2px;
   transition: all 0.3s ease;
+}
+
+/* White hamburger at home top */
+.navbar-home:not(.scrolled) .navbar-toggle span {
+  background: #ffffff !important;
 }
 
 .navbar.scrolled .navbar-toggle span {

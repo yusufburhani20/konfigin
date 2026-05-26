@@ -143,7 +143,7 @@
 @endif
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+<nav class="navbar {{ request()->routeIs('home') ? 'navbar-home' : 'navbar-page' }}" id="navbar" role="navigation" aria-label="Main Navigation">
   <div class="nav-inner">
     <!-- Logo kustom gaya konfigin -->
     <a href="{{ route('home') }}" class="logo" aria-label="{{ $site_name ?? 'Home' }}">
