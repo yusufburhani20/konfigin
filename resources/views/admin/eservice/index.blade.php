@@ -51,7 +51,7 @@
           </td>
           <td>
             <div style="display:flex; gap:0.5rem">
-              <button class="btn btn-secondary btn-sm" onclick='editData(@json($row))' title="Edit">
+              <button class="btn btn-secondary btn-sm" onclick="editData({{ json_encode($row) }})" title="Edit">
                 <i class="fas fa-edit"></i>
               </button>
               <form method="POST" action="{{ route('admin.eservice.destroy', $row->id) }}" onsubmit="return confirm('Yakin ingin menghapus layanan ini?');" style="margin:0">

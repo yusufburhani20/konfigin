@@ -30,7 +30,7 @@
           <td>{{ Str::limit($row->description, 50) }}</td>
           <td>
             <div style="display:flex; gap:0.5rem">
-              <button class="btn btn-secondary btn-sm" onclick='editData(@json($row))' title="Edit">
+              <button class="btn btn-secondary btn-sm" onclick="editData({{ json_encode($row) }})" title="Edit">
                 <i class="fas fa-edit"></i>
               </button>
               <form method="POST" action="{{ route('admin.categories.destroy', $row->id) }}" onsubmit="return confirm('Menghapus kategori akan mengosongkan kategori dari post terkait. Lanjut?');" style="margin:0">

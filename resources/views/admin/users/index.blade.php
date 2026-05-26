@@ -38,7 +38,7 @@
           </td>
           <td>
             <div style="display:flex; gap:0.5rem">
-              <button class="btn btn-secondary btn-sm" onclick='editData(@json($row))' title="Edit">
+              <button class="btn btn-secondary btn-sm" onclick="editData({{ json_encode($row) }})" title="Edit">
                 <i class="fas fa-edit"></i>
               </button>
               @if($row->id !== 1 && $row->id !== auth()->id())
