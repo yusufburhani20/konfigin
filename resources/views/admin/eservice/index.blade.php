@@ -111,9 +111,9 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="blog_slug">Slug Halaman (Opsional – untuk tombol "Selengkapnya")</label>
-          <input type="text" id="blog_slug" name="blog_slug" class="form-input" placeholder="nama-slug-halaman">
-          <div class="form-help">Masukkan slug halaman (pages) yang menjelaskan layanan ini. Kosongkan jika tidak ada.</div>
+          <label class="form-label" for="blog_slug">Link Selengkapnya (Bisa URL / Slug Halaman / Path)</label>
+          <input type="text" id="blog_slug" name="blog_slug" class="form-input" placeholder="contoh: jasa-it, /blog, atau https://...">
+          <div class="form-help">Bisa berupa slug halaman (misal: <code>jasa-it</code>), path relatif (misal: <code>/blog</code>), atau URL eksternal penuh (misal: <code>https://...</code>).</div>
         </div>
 
         <div class="form-group">

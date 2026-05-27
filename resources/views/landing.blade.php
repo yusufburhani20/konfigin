@@ -218,7 +218,14 @@
         </div>
         <div class="eservice-card-actions">
           @if($svc->blog_slug)
-            <a href="{{ route('page.show', $svc->blog_slug) }}" class="btn btn-ghost btn-sm eservice-btn-more">
+            @php
+              $moreUrl = $svc->blog_slug;
+              $isExternal = str_starts_with($moreUrl, 'http://') || str_starts_with($moreUrl, 'https://');
+              if (!$isExternal && !str_starts_with($moreUrl, '#') && !str_starts_with($moreUrl, 'mailto:') && !str_starts_with($moreUrl, 'tel:')) {
+                  $moreUrl = url($moreUrl);
+              }
+            @endphp
+            <a href="{{ $moreUrl }}" class="btn btn-ghost btn-sm eservice-btn-more" @if($isExternal) target="_blank" rel="noopener" @endif>
               <i class="fas fa-book-open"></i> Selengkapnya
             </a>
           @endif
