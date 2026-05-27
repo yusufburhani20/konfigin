@@ -2,7 +2,7 @@
 
 @section('title', 'Layanan E-Service')
 @section('page_title', 'Layanan E-Service')
-@section('page_subtitle', 'Kelola daftar layanan IT Solutions - tambahkan link Blog untuk penjelasan lebih lanjut')
+@section('page_subtitle', 'Kelola daftar layanan IT Solutions - tambahkan link Halaman untuk penjelasan lebih lanjut')
 
 @section('content')
 <div class="card">
@@ -111,9 +111,9 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="blog_slug">Slug Blog (Opsional – untuk tombol "Selengkapnya")</label>
-          <input type="text" id="blog_slug" name="blog_slug" class="form-input" placeholder="nama-slug-artikel-blog">
-          <div class="form-help">Masukkan slug postingan blog yang menjelaskan layanan ini. Kosongkan jika tidak ada.</div>
+          <label class="form-label" for="blog_slug">Slug Halaman (Opsional – untuk tombol "Selengkapnya")</label>
+          <input type="text" id="blog_slug" name="blog_slug" class="form-input" placeholder="nama-slug-halaman">
+          <div class="form-help">Masukkan slug halaman (pages) yang menjelaskan layanan ini. Kosongkan jika tidak ada.</div>
         </div>
 
         <div class="form-group">
