@@ -49,6 +49,17 @@
             <input type="file" id="site_logo" name="site_logo" class="form-input" accept="image/png,image/jpeg,image/webp">
             <div class="form-help">Biarkan kosong jika tidak ingin mengubah logo. (Rec: PNG Transparan)</div>
           </div>
+          
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label class="form-label" for="site_favicon">Favicon Website</label>
+            @if(!empty($settings['site_favicon']))
+              <div style="margin-bottom: 1rem; background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 8px; display:inline-block">
+                <img src="{{ asset($settings['site_favicon']) }}" alt="Favicon saat ini" style="max-height: 32px; display: block;">
+              </div>
+            @endif
+            <input type="file" id="site_favicon" name="site_favicon" class="form-input" accept="image/png,image/x-icon,image/jpeg,image/webp">
+            <div class="form-help">Biarkan kosong jika tidak ingin mengubah favicon. (Rec: PNG/ICO ukuran 32x32 atau 48x48)</div>
+          </div>
         </div>
 
         <!-- Section Hero & Profil -->

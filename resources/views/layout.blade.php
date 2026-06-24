@@ -14,7 +14,7 @@
   <meta property="og:url" content="{{ url()->current() }}" />
   <meta property="og:title" content="@yield('title') – {{ $site_name ?? 'Konfigin IT Solutions' }}" />
   
-  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <link rel="icon" type="image/x-icon" href="{{ !empty($site_settings['site_favicon']) ? asset($site_settings['site_favicon']) : asset('favicon.ico') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -207,9 +207,9 @@
     </div>
     <p>© {{ date('Y') }} {{ $site_name ?? 'Konfigin IT Solutions' }}. Jasa Jaringan & Custom Web Development Premium.</p>
     <p style="margin-top:0.5rem">
-      <a href="{{ route('admin.login') }}" style="color: var(--text-secondary); font-size:0.8rem; text-decoration:none; opacity:0.6">
+      <!--<a href="{{ route('admin.login') }}" style="color: var(--text-secondary); font-size:0.8rem; text-decoration:none; opacity:0.6">
         Admin Panel
-      </a>
+      </a> -->
     </p>
   </div>
 </footer>

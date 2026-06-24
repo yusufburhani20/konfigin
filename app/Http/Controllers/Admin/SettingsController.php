@@ -25,6 +25,7 @@ class SettingsController extends Controller
             'site_name'          => 'nullable|string|max:100',
             'site_tagline'       => 'nullable|string|max:200',
             'site_logo'          => 'nullable|image|max:2048',
+            'site_favicon'       => 'nullable|image|max:1024',
             'theme_primary_color'   => 'nullable|string|max:20',
             'theme_secondary_color' => 'nullable|string|max:20',
             'theme_border_radius'   => 'nullable|string|max:20',
@@ -68,6 +69,11 @@ class SettingsController extends Controller
         if ($request->hasFile('site_logo')) {
             $path = $request->file('site_logo')->store('uploads', 'public');
             Setting::set('site_logo', Storage::url($path));
+        }
+
+        if ($request->hasFile('site_favicon')) {
+            $path = $request->file('site_favicon')->store('uploads', 'public');
+            Setting::set('site_favicon', Storage::url($path));
         }
 
         return back()->with('success', 'Pengaturan berhasil disimpan.');
