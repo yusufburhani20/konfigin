@@ -228,6 +228,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   #main-header.at-top .logo-text { color: #ffffff; }
+  #main-header.at-top .logo-sub { color: #94a3b8; }
   #main-header.at-top .nav-link { color: #cbd5e1; }
   #main-header.at-top .nav-link:hover { color: #ffffff; }
   #main-header.at-top .nav-container { 
@@ -244,6 +245,7 @@
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   }
   #main-header.scrolled .logo-text { color: #0f172a; }
+  #main-header.scrolled .logo-sub { color: #64748b; }
   #main-header.scrolled .nav-link { color: #475569; }
   #main-header.scrolled .nav-link:hover { color: #0284c7; }
   #main-header.scrolled .nav-container { 
@@ -253,7 +255,7 @@
   #main-header.scrolled .menu-btn { color: #334155; }
   
   /* Smooth color transitions for children */
-  .logo-text, .nav-link, .nav-container, .menu-btn {
+  .logo-text, .logo-sub, .nav-link, .nav-container, .menu-btn {
     transition: all 0.3s ease;
   }
 </style>
@@ -278,7 +280,7 @@
     header { top: 40px !important; }
   </style>
 @endif
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 at-top"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shadow-[0_0_15px_rgba(76,215,246,0.25)]"><span class="material-symbols-outlined text-secondary text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span></div><span class="font-label-caps text-label-caps text-slate-400 uppercase tracking-widest">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md px-space-md py-space-2xs rounded-full border nav-container" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-sky-100 text-sky-700 font-bold rounded-lg shadow" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" href="{{ route('portofolio.index') }}">Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-high border border-slate-700/60"><span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-tertiary">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 at-top"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shadow-[0_0_15px_rgba(76,215,246,0.25)]"><span class="material-symbols-outlined text-secondary text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span></div><span class="font-label-caps text-label-caps uppercase tracking-widest logo-sub">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md px-space-md py-space-2xs rounded-full border nav-container" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-sky-100 text-sky-700 font-bold rounded-lg shadow" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" href="{{ route('portofolio.index') }}">Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-high border border-slate-700/60"><span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-tertiary">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
   <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg menu-btn">
     <span class="material-symbols-outlined">menu</span>
   </button>
