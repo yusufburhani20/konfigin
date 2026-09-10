@@ -213,6 +213,50 @@
     }
   }</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 @stack("styles")
+
+<style>
+  /* Navbar Transition Styles */
+  #main-header {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  
+  /* At top (Dark/Transparent Glass) */
+  #main-header.at-top {
+    background-color: rgba(10, 14, 23, 0.35);
+    backdrop-filter: blur(12px);
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  #main-header.at-top .logo-text { color: #ffffff; }
+  #main-header.at-top .nav-link { color: #cbd5e1; }
+  #main-header.at-top .nav-link:hover { color: #ffffff; }
+  #main-header.at-top .nav-container { 
+    background-color: rgba(24, 27, 37, 0.6); 
+    border-color: rgba(51, 65, 85, 0.5); 
+  }
+  #main-header.at-top .menu-btn { color: #ffffff; }
+  
+  /* Scrolled (Solid White) */
+  #main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  }
+  #main-header.scrolled .logo-text { color: #0f172a; }
+  #main-header.scrolled .nav-link { color: #475569; }
+  #main-header.scrolled .nav-link:hover { color: #0284c7; }
+  #main-header.scrolled .nav-container { 
+    background-color: rgba(241, 245, 249, 0.8); 
+    border-color: rgba(226, 232, 240, 1); 
+  }
+  #main-header.scrolled .menu-btn { color: #334155; }
+  
+  /* Smooth color transitions for children */
+  .logo-text, .nav-link, .nav-container, .menu-btn {
+    transition: all 0.3s ease;
+  }
+</style>
 </head><body class="bg-slate-50 font-body-md text-body-md text-slate-800 antialiased">
 
 @if(session('admin_logged_in'))
@@ -234,8 +278,8 @@
     header { top: 40px !important; }
   </style>
 @endif
-<header class="fixed top-0 left-0 w-full z-50 bg-transparent border-transparent transition-all duration-300"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shadow-[0_0_15px_rgba(76,215,246,0.25)]"><span class="material-symbols-outlined text-secondary text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold text-white tracking-tight">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span></div><span class="font-label-caps text-label-caps text-slate-400 uppercase tracking-widest">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md bg-surface-container-low/60 px-space-md py-space-2xs rounded-full border border-slate-700/50" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-primary-container text-white font-bold rounded-lg shadow" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm text-slate-300 hover:text-white px-space-xs py-space-2xs transition-colors" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm text-slate-300 hover:text-white px-space-xs py-space-2xs transition-colors" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm text-slate-300 hover:text-white px-space-xs py-space-2xs transition-colors" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm text-slate-300 hover:text-white px-space-xs py-space-2xs transition-colors" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm text-slate-300 hover:text-white px-space-xs py-space-2xs transition-colors" href="{{ route('portofolio.index') }}">Portofolio</a><a class="font-body-sm text-body-sm text-slate-300 hover:text-white px-space-xs py-space-2xs transition-colors" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-high border border-slate-700/60"><span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-tertiary">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
-  <button id="mobile-menu-btn" class="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg">
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 at-top"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shadow-[0_0_15px_rgba(76,215,246,0.25)]"><span class="material-symbols-outlined text-secondary text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span></div><span class="font-label-caps text-label-caps text-slate-400 uppercase tracking-widest">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md px-space-md py-space-2xs rounded-full border nav-container" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-sky-100 text-sky-700 font-bold rounded-lg shadow" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" href="{{ route('portofolio.index') }}">Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-high border border-slate-700/60"><span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-tertiary">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+  <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg menu-btn">
     <span class="material-symbols-outlined">menu</span>
   </button>
 </div></header>
@@ -300,18 +344,21 @@
 <footer class="w-full bg-slate-100 py-space-4xl text-slate-700 border-t border-slate-200"><div class="max-w-[1240px] mx-auto px-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl mb-space-3xl"><div class="lg:col-span-4 space-y-space-md"><div class="flex items-center gap-space-xs"><div class="w-10 h-10 rounded-lg bg-sky-600 flex items-center justify-center shadow-md shadow-sky-500/20"><span class="material-symbols-outlined text-slate-900 text-[24px]">terminal</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-slate-900 tracking-tight">konfigin</span><span class="font-label-caps text-label-caps text-slate-500 uppercase font-semibold">IT SOLUTIONS</span></div></div><p class="font-body-md text-body-md text-slate-600 leading-relaxed">Mitra transformasi teknologi digital, integrasi jaringan enterprise, dan perancangan perangkat lunak tersentralisasi tanpa dependensi berlebih.</p><div class="flex items-center gap-space-xs"><div class="flex items-center gap-space-2xs px-space-sm py-1 rounded-md bg-white border border-slate-200 shadow-sm"><span class="material-symbols-outlined text-sky-600 text-[16px]">verified</span><span class="font-code-telemetry text-code-telemetry text-slate-700">SLA Uptime 99.9%</span></div><div class="flex items-center gap-space-2xs px-space-sm py-1 rounded-md bg-white border border-slate-200 shadow-sm"><span class="material-symbols-outlined text-emerald-600 text-[16px]">security</span><span class="font-code-telemetry text-code-telemetry text-slate-700">Zero Latency Arch</span></div></div></div><div class="lg:col-span-3 space-y-space-md"><h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Layanan Inti</h3><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="layanan" href="#layanan-utama">Aplikasi Sekolah &amp; Salira</a></li><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="layanan" href="#layanan-utama">HRIS Enterprise</a></li><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="layanan" href="#layanan-utama">IT Jaringan &amp; MikroTik Cloud</a></li><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="layanan" href="#layanan-utama">Custom Web &amp; SaaS Scalability</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Navigasi Cepat</h3><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="beranda" href="#">Beranda</a></li><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="produk-dan-portofolio" href="#layanan-utama">Portofolio Sistem</a></li><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="keunggulan" href="#keunggulan">Keunggulan Operasional</a></li><li class="font-body-md text-body-md text-slate-600 hover:text-sky-700 transition-colors"><a data-path="paket-harga" href="#paket-harga">Paket Harga Fleksibel</a></li></ul></div><div class="lg:col-span-3 space-y-space-md"><h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Hubungi Kami</h3><div class="space-y-space-xs"><a class="flex items-center gap-space-xs p-space-sm rounded-lg bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-sm transition-all group" data-path="kontak" href="https://wa.me/6281288009910" rel="noopener noreferrer" target="_blank"><div class="w-8 h-8 rounded-md bg-emerald-100 flex items-center justify-center"><span class="material-symbols-outlined text-emerald-700 text-[18px]">chat</span></div><div><p class="font-label-caps text-label-caps text-slate-500 uppercase">WhatsApp Prioritas</p><p class="font-code-telemetry text-code-telemetry text-slate-900 font-semibold">+62 812-8800-9910</p></div></a><a class="flex items-center gap-space-xs p-space-sm rounded-lg bg-white border border-slate-200 hover:border-sky-300 hover:shadow-sm transition-all group" data-path="kontak" href="mailto:halo@konfigin.com"><div class="w-8 h-8 rounded-md bg-sky-100 flex items-center justify-center"><span class="material-symbols-outlined text-sky-700 text-[18px]">mail</span></div><div><p class="font-label-caps text-label-caps text-slate-500 uppercase">Email Official</p><p class="font-code-telemetry text-code-telemetry text-slate-900 font-semibold">halo@konfigin.com</p></div></a></div></div></div><div class="pt-space-xl border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-space-md"><p class="font-body-sm text-body-sm text-slate-500">© 2026 Konfigin IT Solutions. Jasa Jaringan &amp; Custom Web Development Premium.</p><div class="flex items-center gap-space-md"><span class="font-label-caps text-label-caps text-slate-500 uppercase">High Security Node</span><span class="w-1 h-1 rounded-full bg-slate-300"></span><span class="font-label-caps text-label-caps text-slate-500 uppercase">Jakarta, ID</span></div></div></div></footer>@stack("scripts")
 
 
+
 <script>
   window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-      header.classList.remove('bg-transparent', 'border-transparent');
-      header.classList.add('bg-[#0a0e17]/85', 'backdrop-blur-xl', 'border-b', 'border-slate-800/80', 'shadow-md');
+    const header = document.getElementById('main-header');
+    if (!header) return;
+    if (window.scrollY > 60) {
+      header.classList.remove('at-top');
+      header.classList.add('scrolled');
     } else {
-      header.classList.add('bg-transparent', 'border-transparent');
-      header.classList.remove('bg-[#0a0e17]/85', 'backdrop-blur-xl', 'border-b', 'border-slate-800/80', 'shadow-md');
+      header.classList.add('at-top');
+      header.classList.remove('scrolled');
     }
   });
 </script>
+
 
 
 </body></html>
