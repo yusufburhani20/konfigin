@@ -334,18 +334,18 @@
 
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-md z-40 hidden flex-col pt-24 px-6 pb-6 transform transition-transform translate-x-full duration-300">
-  <button id="close-menu-btn" class="absolute top-6 right-6 p-2 text-slate-200 hover:bg-slate-100 rounded-lg">
+<div id="mobile-menu" class="fixed inset-0 bg-[#0a0e17]/97 backdrop-blur-xl z-40 hidden flex-col pt-24 px-6 pb-6 transform transition-transform translate-x-full duration-300">
+  <button id="close-menu-btn" class="absolute top-6 right-6 p-2 text-white hover:bg-white/10 rounded-lg">
     <span class="material-symbols-outlined">close</span>
   </button>
   <nav class="flex flex-col gap-6 text-center mt-8">
-    <a href="#" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Beranda</a>
-    <a href="#layanan-utama" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Layanan</a>
-    <a href="#layanan-utama" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Produk &amp; Portofolio</a>
-    <a href="#keunggulan" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Keunggulan</a>
-    <a href="#paket-harga" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Paket Harga</a>
-    <a href="#kontak-konsultasi" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Kontak</a>
-    <a href="{{ route('portofolio.index') }}" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Galeri</a>
+    <a href="#" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Beranda</a>
+    <a href="#layanan-utama" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Layanan</a>
+    <a href="#layanan-utama" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Produk &amp; Portofolio</a>
+    <a href="#keunggulan" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Keunggulan</a>
+    <a href="#paket-harga" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Paket Harga</a>
+    <a href="#kontak-konsultasi" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Kontak</a>
+    <a href="{{ route('portofolio.index') }}" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Galeri</a>
   </nav>
   <div class="mt-auto pt-8">
     <a href="#kontak-konsultasi" class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[16px] font-bold shadow-lg">

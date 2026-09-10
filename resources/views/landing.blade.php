@@ -16,21 +16,21 @@
   
 <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
 <div class="absolute top-48 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<section class="max-w-[1240px] mx-auto px-space-lg pt-space-2xl pb-space-3xl w-full min-h-screen flex items-center">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<section class="max-w-[1240px] mx-auto px-4 sm:px-space-lg pt-28 sm:pt-32 lg:pt-24 pb-16 sm:pb-space-3xl w-full min-h-screen flex items-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-space-xl items-center">
 <!-- Hero Copy -->
 <div class="lg:col-span-7 space-y-space-md flex flex-col items-start">
 <div class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md shadow-inner shadow-primary/10">
 <span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
-<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
+<span class="text-[10px] sm:text-[11px] text-tertiary uppercase tracking-wider font-semibold">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
 </div>
-<h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-white leading-tight">
+<h1 class="text-[32px] sm:text-[40px] lg:text-[56px] font-extrabold tracking-tight text-white leading-tight">
             Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="text-primary">Aplikasi Custom</span>
 </h1>
-<p class="font-body-lg text-body-lg text-slate-200 max-w-2xl leading-relaxed">
+<p class="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">
             Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus â€” kepemilikan penuh selamanya tanpa biaya langganan bulanan.
           </p>
-<div class="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4 w-full sm:w-auto">
 @if(isset($kontak) && $kontak)
 <a class="relative inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[15px] font-bold hover:bg-primary-fixed transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-[20px]">hub</span>
@@ -44,7 +44,7 @@
 </div>
 </div>
 <!-- Hero Telemetry Console Card -->
-<div class="lg:col-span-5 relative w-full">
+<div class="lg:col-span-5 relative w-full hidden lg:block">
 <div class="relative rounded-2xl bg-[#1c1f29]/90 backdrop-blur-xl p-space-md space-y-space-sm border border-slate-600/50">
 <!-- Window header bar -->
 <div class="flex items-center justify-between pb-space-xs">
