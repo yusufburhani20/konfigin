@@ -6,71 +6,153 @@
 <main class="w-full pt-20">
 <div class="flex flex-col w-full overflow-hidden">
 <!-- 1. HERO SECTION (Dark Mode Preserved) -->
-<div class="relative w-full text-slate-800">
+<div class="relative w-full text-[#dfe2ef]">
   <!-- Video Background -->
-  <video class="absolute inset-0 w-full h-full object-cover -z-20" autoplay loop muted playsinline aria-hidden="true" style="object-position: center; filter: brightness(1.1); opacity: 0.8;">
+  <video class="absolute inset-0 w-full h-full object-cover -z-20" autoplay loop muted playsinline aria-hidden="true" style="object-position: center; filter: brightness(0.7);">
     <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
   </video>
   <!-- Overlay to ensure text readability -->
-  <div class="absolute inset-0 bg-white/40 backdrop-blur-[2px] -z-10"></div>
+  <div class="absolute inset-0 bg-[#0a0e17]/70 backdrop-blur-[2px] -z-10"></div>
   
-<div class="absolute top-0 left-1/4 w-96 h-96 bg-sky-200/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="absolute top-48 right-10 w-80 h-80 bg-cyan-200/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<section class="max-w-[1240px] mx-auto px-space-lg w-full min-h-screen flex items-center">
-<div class="grid grid-cols-1 gap-space-xl items-center text-center w-full">
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-48 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<section class="max-w-[1240px] mx-auto px-space-lg pt-space-2xl pb-space-3xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
 <!-- Hero Copy -->
-<div class="space-y-space-md flex flex-col items-center justify-center w-full">
-<div class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-sky-100 shadow-sm">
-<span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
-<span class="font-label-caps text-label-caps text-sky-700 uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
+<div class="lg:col-span-7 space-y-space-md flex flex-col items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md shadow-inner shadow-primary/10">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
 </div>
-<h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-slate-900 leading-tight">
+<h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-white leading-tight">
             Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="bg-gradient-to-r from-primary via-secondary to-primary-fixed-dim bg-clip-text text-transparent">Aplikasi Custom</span>
 </h1>
-<p class="font-body-lg text-body-lg text-slate-800 max-w-3xl leading-relaxed bg-white/50 backdrop-blur-sm p-4 rounded-xl">
-            Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus — kepemilikan penuh selamanya tanpa biaya langganan bulanan.
+<p class="font-body-lg text-body-lg text-slate-200 max-w-2xl leading-relaxed">
+            Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus â€” kepemilikan penuh selamanya tanpa biaya langganan bulanan.
           </p>
-<div class="flex flex-wrap items-center justify-center gap-space-sm pt-space-xs w-full mt-4">
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
 @if(isset($kontak) && $kontak)
 <a class="relative inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[15px] font-bold shadow-[0_0_30px_rgba(147,204,255,0.35)] hover:bg-primary-fixed hover:shadow-[0_0_40px_rgba(147,204,255,0.5)] transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-[20px]">hub</span>
 <span>Konsultasi Jaringan &amp; App</span>
 </a>
 @endif
-<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-white/80 backdrop-blur-md text-slate-800 hover:bg-slate-50 transition-all font-headline-sm text-[15px] font-semibold border border-slate-300 shadow-sm" href="#layanan-utama">
+<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-surface-container-high/60 backdrop-blur-md text-white hover:bg-surface-bright transition-all font-headline-sm text-[15px] font-semibold border border-slate-700/60" href="#layanan-utama">
 <span>Layanan Utama</span>
 <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
 </a>
 </div>
+<!-- Quick Metrics Ribbon -->
+<div class="pt-space-md grid grid-cols-3 gap-space-md w-full max-w-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-300 uppercase">Biaya Langganan</p>
+<p class="font-headline-sm text-headline-sm text-tertiary font-bold">Rp 0 / bln</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-300 uppercase">SLA Availability</p>
+<p class="font-headline-sm text-headline-sm text-secondary font-bold">99.99%</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-300 uppercase">Kode Sumber</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold">Full Milik</p>
 </div>
 </div>
-
+</div>
+<!-- Hero Telemetry Console Card -->
+<div class="lg:col-span-5 relative w-full">
+<div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary/30 via-primary/30 to-tertiary/30 blur-xl opacity-75"></div>
+<div class="relative rounded-2xl bg-[#1c1f29]/90 backdrop-blur-xl p-space-md shadow-2xl space-y-space-sm border border-slate-600/50">
+<!-- Window header bar -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-error-container"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="ml-2 font-code-telemetry text-code-telemetry text-slate-400 text-[11px]">telemetry.konfigin.cloud</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-label-caps text-[10px] text-tertiary font-semibold uppercase">v2.4.1 Active</span>
+</div>
+<!-- Health row -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="p-space-sm rounded-xl bg-surface-container space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">Network Uptime</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">speed</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">99.99</span>
+<span class="font-label-caps text-label-caps text-secondary">%</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 text-[12px]">Stabil 30 hari terakhir</p>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">Active Sockets</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]">sensors</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">16</span>
+<span class="font-label-caps text-label-caps text-slate-400">/ 16</span>
+</div>
+<p class="font-body-sm text-body-sm text-tertiary text-[12px]">Semua nodes aktif</p>
 </div>
 </div>
-
-</section>
+<!-- Topology visual canvas -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest relative overflow-hidden space-y-2 border border-slate-800">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">Topology Visualizer</span>
 </div>
-
-<style>
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-.animate-marquee {
-  display: inline-flex;
-  animation: marquee 30s linear infinite;
-  white-space: nowrap;
-}
-.marquee-container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-</style>
+<span class="font-code-telemetry text-code-telemetry text-tertiary text-[11px]">Latency: 12ms</span>
+</div>
+<!-- SVG Network Node graph -->
+<div class="w-full h-24 flex items-center justify-center">
+<svg class="w-full h-full stroke-current text-primary-container" fill="none" viewbox="0 0 340 70">
+<path class="opacity-40" d="M 30 35 Q 90 10, 170 35 T 310 35" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<line class="text-primary" stroke-width="1.5" x1="30" x2="95" y1="35" y2="20"></line>
+<line class="text-secondary" stroke-width="1.5" x1="95" x2="170" y1="20" y2="35"></line>
+<line class="text-primary" stroke-width="1.5" x1="170" x2="245" y1="35" y2="50"></line>
+<line class="text-tertiary" stroke-width="1.5" x1="245" x2="310" y1="50" y2="35"></line>
+<!-- Nodes -->
+<circle class="fill-surface-container-high text-primary stroke-current" cx="30" cy="35" r="7" stroke-width="2"></circle>
+<circle class="fill-secondary" cx="95" cy="20" r="5"></circle>
+<circle class="fill-surface-container-highest text-secondary stroke-current" cx="170" cy="35" r="9" stroke-width="2"></circle>
+<circle class="fill-primary" cx="245" cy="50" r="5"></circle>
+<circle class="fill-surface-container-high text-tertiary stroke-current" cx="310" cy="35" r="7" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between text-[11px] font-code-telemetry text-slate-400 px-1">
+<span>GATEWAY [MK-CCR2004]</span>
+<span>CORE-SWITCH</span>
+<span>APP-ENGINE</span>
+</div>
+</div>
+<!-- Terminal log simulation -->
+<div class="p-space-sm rounded-xl bg-surface-container font-code-telemetry text-code-telemetry text-[12px] space-y-1">
+<div class="flex items-center gap-space-2xs text-tertiary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Established secure connection to edge router...</span>
+</div>
+<div class="flex items-center gap-space-2xs text-secondary">
+<span class="material-symbols-outlined text-[14px]">sync_saved_locally</span>
+<span>Database backup generated successfully [142MB].</span>
+</div>
+<div class="flex items-center justify-between text-slate-400 pt-1 text-[11px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">lock</span>
+                  SSL End-to-End Encrypted (TLS 1.3)
+                </span>
+<span class="text-tertiary font-bold">STABLE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- Tech Stack Marquee Row -->
-<div class="mt-space-3xl pt-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-md bg-slate-50-low/50 backdrop-blur-md border border-slate-700/80 px-space-lg py-space-md rounded-2xl relative z-10">
-<span class="font-label-caps text-label-caps text-slate-500 uppercase tracking-widest shrink-0">TECH STACK KAMI:</span>
-<div class="marquee-container flex overflow-hidden"><div class="animate-marquee gap-space-md lg:gap-space-xl px-4 flex items-center">
+<div class="mt-space-3xl pt-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-md bg-surface-container-low/50 backdrop-blur-md border border-slate-700/80 px-space-lg py-space-md rounded-2xl relative z-10">
+<span class="font-label-caps text-label-caps text-slate-300 uppercase tracking-widest shrink-0">TECH STACK KAMI:</span>
+<div class="flex flex-wrap items-center justify-center gap-space-md lg:gap-space-xl text-slate-200">
   @if(!empty($site_settings['tech_stacks']))
     @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
       @php
@@ -85,30 +167,16 @@
         }
         $title = ucwords(str_replace('-', ' ', $tech));
       @endphp
-      <div class="flex items-center gap-1.5 hover:text-sky-600 transition-colors cursor-default" title="{{ $title }}">
-        <i class="{{ $iconClass }} text-sky-600 text-[24px]"></i>
-      </div>
-    @endforeach
-    @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
-      @php
-        $tech = trim($tech);
-        if (empty($tech)) continue;
-        if (str_starts_with($tech, 'fa-') || str_contains($tech, ' ')) {
-            $iconClass = $tech;
-        } else {
-            $fabBrands = ['html5', 'css3-alt', 'js', 'php', 'laravel', 'git-alt', 'node-js', 'react', 'vue', 'angular', 'bootstrap', 'sass', 'wordpress'];
-            $prefix = in_array($tech, $fabBrands) ? 'fab' : 'fas';
-            $iconClass = $prefix . ' fa-' . $tech;
-        }
-        $title = ucwords(str_replace('-', ' ', $tech));
-      @endphp
-      <div class="flex items-center gap-1.5 hover:text-sky-600 transition-colors cursor-default" title="{{ $title }}">
-        <i class="{{ $iconClass }} text-sky-600 text-[24px]"></i>
+      <div class="flex items-center gap-1.5 hover:text-white transition-colors cursor-default" title="{{ $title }}">
+        <i class="{{ $iconClass }} text-primary text-[24px]"></i>
       </div>
     @endforeach
   @endif
-</div></div>
 </div>
+</div>
+</section>
+</div>
+
 <!-- 2. LAYANAN UTAMA SECTION (LIGHT MODE) -->
 <section class="w-full bg-white py-space-4xl relative border-b border-slate-200" id="layanan-utama">
 <div class="max-w-[1240px] mx-auto px-space-lg">
