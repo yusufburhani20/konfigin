@@ -16,7 +16,7 @@
   
 <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
 <div class="absolute top-48 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<section class="max-w-[1240px] mx-auto px-space-lg pt-space-2xl pb-space-3xl w-full">
+<section class="max-w-[1240px] mx-auto px-space-lg pt-space-2xl pb-space-3xl w-full min-h-screen flex items-center">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
 <!-- Hero Copy -->
 <div class="lg:col-span-7 space-y-space-md flex flex-col items-start">
@@ -133,31 +133,7 @@
 </div>
 </div>
 </div>
-<!-- Tech Stack Marquee Row -->
-<div class="mt-space-3xl pt-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-md bg-surface-container-low/50 backdrop-blur-md border border-slate-700/80 px-space-lg py-space-md rounded-2xl relative z-10">
-<span class="font-label-caps text-label-caps text-slate-300 uppercase tracking-widest shrink-0">TECH STACK KAMI:</span>
-<div class="flex flex-wrap items-center justify-center gap-space-md lg:gap-space-xl text-slate-200">
-  @if(!empty($site_settings['tech_stacks']))
-    @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
-      @php
-        $tech = trim($tech);
-        if (empty($tech)) continue;
-        if (str_starts_with($tech, 'fa-') || str_contains($tech, ' ')) {
-            $iconClass = $tech;
-        } else {
-            $fabBrands = ['html5', 'css3-alt', 'js', 'php', 'laravel', 'git-alt', 'node-js', 'react', 'vue', 'angular', 'bootstrap', 'sass', 'wordpress'];
-            $prefix = in_array($tech, $fabBrands) ? 'fab' : 'fas';
-            $iconClass = $prefix . ' fa-' . $tech;
-        }
-        $title = ucwords(str_replace('-', ' ', $tech));
-      @endphp
-      <div class="flex items-center gap-1.5 hover:text-white transition-colors cursor-default" title="{{ $title }}">
-        <i class="{{ $iconClass }} text-primary text-[24px]"></i>
-      </div>
-    @endforeach
-  @endif
-</div>
-</div>
+
 </section>
 </div>
 
