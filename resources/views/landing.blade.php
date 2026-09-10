@@ -42,20 +42,6 @@
 <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
 </a>
 </div>
-<!-- Quick Metrics Ribbon -->
-<div class="pt-space-md grid grid-cols-3 gap-space-md w-full max-w-lg">
-<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
-<p class="font-label-caps text-label-caps text-slate-300 uppercase">Biaya Langganan</p>
-<p class="font-headline-sm text-headline-sm text-tertiary font-bold">Rp 0 / bln</p>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
-<p class="font-label-caps text-label-caps text-slate-300 uppercase">SLA Availability</p>
-<p class="font-headline-sm text-headline-sm text-secondary font-bold">99.99%</p>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
-<p class="font-label-caps text-label-caps text-slate-300 uppercase">Kode Sumber</p>
-<p class="font-headline-sm text-headline-sm text-primary font-bold">Full Milik</p>
-</div>
 </div>
 </div>
 <!-- Hero Telemetry Console Card -->
