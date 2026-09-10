@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" type="image/x-icon" href="{{ !empty($site_settings['site_favicon']) ? asset($site_settings['site_favicon']) : asset('favicon.ico') }}" />
-  <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}?v={{ filemtime(public_path('assets/css/admin.css')) }}" />
   @stack('styles')
 </head>
 <body>
@@ -224,11 +224,17 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(data => {
         deployLog.innerHTML += data.log + '\n';
         if(data.success) {
-          deployStatus.innerHTML = 'Deployment berhasil! Merefresh halaman...';
+          let seconds = 3;
           deployStatus.style.color = 'var(--success)';
-          setTimeout(() => {
-            window.location.reload(true);
-          }, 2000);
+          
+          const countdown = setInterval(() => {
+            deployStatus.innerHTML = `Deployment berhasil! Merefresh halaman dalam ${seconds} detik...`;
+            if(seconds === 0) {
+              clearInterval(countdown);
+              window.location.reload(true);
+            }
+            seconds--;
+          }, 1000);
         } else {
           deployStatus.innerHTML = 'Deployment gagal!';
           deployStatus.style.color = 'var(--danger)';
