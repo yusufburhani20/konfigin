@@ -6,28 +6,28 @@
 <main class="w-full pt-20">
 <div class="flex flex-col w-full overflow-hidden">
 <!-- 1. HERO SECTION (Dark Mode Preserved) -->
-<div class="relative w-full text-[#dfe2ef]">
+<div class="relative w-full text-slate-800">
   <!-- Video Background -->
-  <video class="absolute inset-0 w-full h-full object-cover -z-20" autoplay loop muted playsinline aria-hidden="true" style="object-position: center; filter: brightness(0.7);">
+  <video class="absolute inset-0 w-full h-full object-cover -z-20" autoplay loop muted playsinline aria-hidden="true" style="object-position: center; filter: brightness(0.95); opacity: 0.5;">
     <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
   </video>
   <!-- Overlay to ensure text readability -->
-  <div class="absolute inset-0 bg-[#0a0e17]/70 backdrop-blur-[2px] -z-10"></div>
+  <div class="absolute inset-0 bg-white/85 backdrop-blur-[2px] -z-10"></div>
   
-<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="absolute top-48 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-sky-200/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-48 right-10 w-80 h-80 bg-cyan-200/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
 <section class="max-w-[1240px] mx-auto px-space-lg pt-space-2xl pb-space-3xl w-full">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
 <!-- Hero Copy -->
 <div class="lg:col-span-7 space-y-space-md flex flex-col items-start">
-<div class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md shadow-inner shadow-primary/10">
-<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
-<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-sky-100 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+<span class="font-label-caps text-label-caps text-sky-700 uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
 </div>
-<h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-white leading-tight">
+<h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-slate-900 leading-tight">
             Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="bg-gradient-to-r from-primary via-secondary to-primary-fixed-dim bg-clip-text text-transparent">Aplikasi Custom</span>
 </h1>
-<p class="font-body-lg text-body-lg text-slate-200 max-w-2xl leading-relaxed">
+<p class="font-body-lg text-body-lg text-slate-700 max-w-2xl leading-relaxed">
             Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus — kepemilikan penuh selamanya tanpa biaya langganan bulanan.
           </p>
 <div class="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
@@ -37,122 +37,122 @@
 <span>Konsultasi Jaringan &amp; App</span>
 </a>
 @endif
-<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-surface-container-high/60 backdrop-blur-md text-white hover:bg-surface-bright transition-all font-headline-sm text-[15px] font-semibold border border-slate-700/60" href="#layanan-utama">
+<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-white/80 backdrop-blur-md text-slate-800 hover:bg-slate-50 transition-all font-headline-sm text-[15px] font-semibold border border-slate-300 shadow-sm" href="#layanan-utama">
 <span>Layanan Utama</span>
 <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
 </a>
 </div>
 <!-- Quick Metrics Ribbon -->
 <div class="pt-space-md grid grid-cols-3 gap-space-md w-full max-w-lg">
-<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
-<p class="font-label-caps text-label-caps text-slate-300 uppercase">Biaya Langganan</p>
-<p class="font-headline-sm text-headline-sm text-tertiary font-bold">Rp 0 / bln</p>
+<div class="p-space-sm rounded-lg bg-white/70 backdrop-blur-md border border-slate-200 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-500 uppercase">Biaya Langganan</p>
+<p class="font-headline-sm text-headline-sm text-emerald-600 font-bold">Rp 0 / bln</p>
 </div>
-<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
-<p class="font-label-caps text-label-caps text-slate-300 uppercase">SLA Availability</p>
-<p class="font-headline-sm text-headline-sm text-secondary font-bold">99.99%</p>
+<div class="p-space-sm rounded-lg bg-white/70 backdrop-blur-md border border-slate-200 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-500 uppercase">SLA Availability</p>
+<p class="font-headline-sm text-headline-sm text-cyan-600 font-bold">99.99%</p>
 </div>
-<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
-<p class="font-label-caps text-label-caps text-slate-300 uppercase">Kode Sumber</p>
-<p class="font-headline-sm text-headline-sm text-primary font-bold">Full Milik</p>
+<div class="p-space-sm rounded-lg bg-white/70 backdrop-blur-md border border-slate-200 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-500 uppercase">Kode Sumber</p>
+<p class="font-headline-sm text-headline-sm text-sky-600 font-bold">Full Milik</p>
 </div>
 </div>
 </div>
 <!-- Hero Telemetry Console Card -->
 <div class="lg:col-span-5 relative w-full">
 <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary/30 via-primary/30 to-tertiary/30 blur-xl opacity-75"></div>
-<div class="relative rounded-2xl bg-[#1c1f29]/90 backdrop-blur-xl p-space-md shadow-2xl space-y-space-sm border border-slate-600/50">
+<div class="relative rounded-2xl bg-white/95 backdrop-blur-xl p-space-md shadow-2xl space-y-space-sm border border-slate-200">
 <!-- Window header bar -->
 <div class="flex items-center justify-between pb-space-xs">
 <div class="flex items-center gap-1.5">
 <span class="w-3 h-3 rounded-full bg-error-container"></span>
 <span class="w-3 h-3 rounded-full bg-secondary-container"></span>
 <span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
-<span class="ml-2 font-code-telemetry text-code-telemetry text-slate-400 text-[11px]">telemetry.konfigin.cloud</span>
+<span class="ml-2 font-code-telemetry text-code-telemetry text-slate-500 text-[11px]">telemetry.konfigin.cloud</span>
 </div>
-<span class="px-space-xs py-0.5 rounded bg-surface-container font-label-caps text-[10px] text-tertiary font-semibold uppercase">v2.4.1 Active</span>
+<span class="px-space-xs py-0.5 rounded bg-slate-50 font-label-caps text-[10px] text-emerald-600 font-semibold uppercase">v2.4.1 Active</span>
 </div>
 <!-- Health row -->
 <div class="grid grid-cols-2 gap-space-xs">
-<div class="p-space-sm rounded-xl bg-surface-container space-y-1">
+<div class="p-space-sm rounded-xl bg-slate-50 space-y-1">
 <div class="flex items-center justify-between">
-<span class="font-label-caps text-label-caps text-slate-400 uppercase">Network Uptime</span>
-<span class="material-symbols-outlined text-secondary text-[16px]">speed</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Network Uptime</span>
+<span class="material-symbols-outlined text-cyan-600 text-[16px]">speed</span>
 </div>
 <div class="flex items-baseline gap-1">
-<span class="font-headline-lg text-headline-lg font-bold text-white">99.99</span>
-<span class="font-label-caps text-label-caps text-secondary">%</span>
+<span class="font-headline-lg text-headline-lg font-bold text-slate-900">99.99</span>
+<span class="font-label-caps text-label-caps text-cyan-600">%</span>
 </div>
-<p class="font-body-sm text-body-sm text-slate-400 text-[12px]">Stabil 30 hari terakhir</p>
+<p class="font-body-sm text-body-sm text-slate-500 text-[12px]">Stabil 30 hari terakhir</p>
 </div>
-<div class="p-space-sm rounded-xl bg-surface-container space-y-1">
+<div class="p-space-sm rounded-xl bg-slate-50 space-y-1">
 <div class="flex items-center justify-between">
-<span class="font-label-caps text-label-caps text-slate-400 uppercase">Active Sockets</span>
-<span class="material-symbols-outlined text-tertiary text-[16px]">sensors</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Active Sockets</span>
+<span class="material-symbols-outlined text-emerald-600 text-[16px]">sensors</span>
 </div>
 <div class="flex items-baseline gap-1">
-<span class="font-headline-lg text-headline-lg font-bold text-white">16</span>
-<span class="font-label-caps text-label-caps text-slate-400">/ 16</span>
+<span class="font-headline-lg text-headline-lg font-bold text-slate-900">16</span>
+<span class="font-label-caps text-label-caps text-slate-500">/ 16</span>
 </div>
-<p class="font-body-sm text-body-sm text-tertiary text-[12px]">Semua nodes aktif</p>
+<p class="font-body-sm text-body-sm text-emerald-600 text-[12px]">Semua nodes aktif</p>
 </div>
 </div>
 <!-- Topology visual canvas -->
-<div class="p-space-sm rounded-xl bg-surface-container-lowest relative overflow-hidden space-y-2 border border-slate-800">
+<div class="p-space-sm rounded-xl bg-slate-50-lowest relative overflow-hidden space-y-2 border border-slate-200">
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-space-2xs">
 <span class="w-2 h-2 rounded-full bg-secondary"></span>
-<span class="font-label-caps text-label-caps text-slate-400 uppercase">Topology Visualizer</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Topology Visualizer</span>
 </div>
-<span class="font-code-telemetry text-code-telemetry text-tertiary text-[11px]">Latency: 12ms</span>
+<span class="font-code-telemetry text-code-telemetry text-emerald-600 text-[11px]">Latency: 12ms</span>
 </div>
 <!-- SVG Network Node graph -->
 <div class="w-full h-24 flex items-center justify-center">
-<svg class="w-full h-full stroke-current text-primary-container" fill="none" viewbox="0 0 340 70">
+<svg class="w-full h-full stroke-current text-sky-600-container" fill="none" viewbox="0 0 340 70">
 <path class="opacity-40" d="M 30 35 Q 90 10, 170 35 T 310 35" stroke-dasharray="4 4" stroke-width="1.5"></path>
-<line class="text-primary" stroke-width="1.5" x1="30" x2="95" y1="35" y2="20"></line>
-<line class="text-secondary" stroke-width="1.5" x1="95" x2="170" y1="20" y2="35"></line>
-<line class="text-primary" stroke-width="1.5" x1="170" x2="245" y1="35" y2="50"></line>
-<line class="text-tertiary" stroke-width="1.5" x1="245" x2="310" y1="50" y2="35"></line>
+<line class="text-sky-600" stroke-width="1.5" x1="30" x2="95" y1="35" y2="20"></line>
+<line class="text-cyan-600" stroke-width="1.5" x1="95" x2="170" y1="20" y2="35"></line>
+<line class="text-sky-600" stroke-width="1.5" x1="170" x2="245" y1="35" y2="50"></line>
+<line class="text-emerald-600" stroke-width="1.5" x1="245" x2="310" y1="50" y2="35"></line>
 <!-- Nodes -->
-<circle class="fill-surface-container-high text-primary stroke-current" cx="30" cy="35" r="7" stroke-width="2"></circle>
+<circle class="fill-slate-100 text-sky-600 stroke-current" cx="30" cy="35" r="7" stroke-width="2"></circle>
 <circle class="fill-secondary" cx="95" cy="20" r="5"></circle>
-<circle class="fill-surface-container-highest text-secondary stroke-current" cx="170" cy="35" r="9" stroke-width="2"></circle>
+<circle class="fill-slate-100est text-cyan-600 stroke-current" cx="170" cy="35" r="9" stroke-width="2"></circle>
 <circle class="fill-primary" cx="245" cy="50" r="5"></circle>
-<circle class="fill-surface-container-high text-tertiary stroke-current" cx="310" cy="35" r="7" stroke-width="2"></circle>
+<circle class="fill-slate-100 text-emerald-600 stroke-current" cx="310" cy="35" r="7" stroke-width="2"></circle>
 </svg>
 </div>
-<div class="flex items-center justify-between text-[11px] font-code-telemetry text-slate-400 px-1">
+<div class="flex items-center justify-between text-[11px] font-code-telemetry text-slate-500 px-1">
 <span>GATEWAY [MK-CCR2004]</span>
 <span>CORE-SWITCH</span>
 <span>APP-ENGINE</span>
 </div>
 </div>
 <!-- Terminal log simulation -->
-<div class="p-space-sm rounded-xl bg-surface-container font-code-telemetry text-code-telemetry text-[12px] space-y-1">
-<div class="flex items-center gap-space-2xs text-tertiary">
+<div class="p-space-sm rounded-xl bg-slate-50 font-code-telemetry text-code-telemetry text-[12px] space-y-1">
+<div class="flex items-center gap-space-2xs text-emerald-600">
 <span class="material-symbols-outlined text-[14px]">check_circle</span>
 <span>Established secure connection to edge router...</span>
 </div>
-<div class="flex items-center gap-space-2xs text-secondary">
+<div class="flex items-center gap-space-2xs text-cyan-600">
 <span class="material-symbols-outlined text-[14px]">sync_saved_locally</span>
 <span>Database backup generated successfully [142MB].</span>
 </div>
-<div class="flex items-center justify-between text-slate-400 pt-1 text-[11px]">
+<div class="flex items-center justify-between text-slate-500 pt-1 text-[11px]">
 <span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-primary text-[14px]">lock</span>
+<span class="material-symbols-outlined text-sky-600 text-[14px]">lock</span>
                   SSL End-to-End Encrypted (TLS 1.3)
                 </span>
-<span class="text-tertiary font-bold">STABLE</span>
+<span class="text-emerald-600 font-bold">STABLE</span>
 </div>
 </div>
 </div>
 </div>
 </div>
 <!-- Tech Stack Marquee Row -->
-<div class="mt-space-3xl pt-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-md bg-surface-container-low/50 backdrop-blur-md border border-slate-700/80 px-space-lg py-space-md rounded-2xl relative z-10">
-<span class="font-label-caps text-label-caps text-slate-300 uppercase tracking-widest shrink-0">TECH STACK KAMI:</span>
-<div class="flex flex-wrap items-center justify-center gap-space-md lg:gap-space-xl text-slate-200">
+<div class="mt-space-3xl pt-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-md bg-slate-50-low/50 backdrop-blur-md border border-slate-700/80 px-space-lg py-space-md rounded-2xl relative z-10">
+<span class="font-label-caps text-label-caps text-slate-500 uppercase tracking-widest shrink-0">TECH STACK KAMI:</span>
+<div class="flex flex-wrap items-center justify-center gap-space-md lg:gap-space-xl text-slate-500">
   @if(!empty($site_settings['tech_stacks']))
     @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
       @php
@@ -167,8 +167,8 @@
         }
         $title = ucwords(str_replace('-', ' ', $tech));
       @endphp
-      <div class="flex items-center gap-1.5 hover:text-white transition-colors cursor-default" title="{{ $title }}">
-        <i class="{{ $iconClass }} text-primary text-[24px]"></i>
+      <div class="flex items-center gap-1.5 hover:text-sky-600 transition-colors cursor-default" title="{{ $title }}">
+        <i class="{{ $iconClass }} text-sky-600 text-[24px]"></i>
       </div>
     @endforeach
   @endif
@@ -221,7 +221,7 @@
                 $moreUrl = url($moreUrl);
             }
           @endphp
-          <a class="flex-1 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-800 hover:text-white text-center font-headline-sm text-[13px] font-semibold text-slate-800 transition-colors" href="{{ $moreUrl }}" @if($isExternal) target="_blank" rel="noopener" @endif>
+          <a class="flex-1 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-800 hover:text-sky-600 text-center font-headline-sm text-[13px] font-semibold text-slate-800 transition-colors" href="{{ $moreUrl }}" @if($isExternal) target="_blank" rel="noopener" @endif>
             Selengkapnya
           </a>
         @endif
@@ -301,7 +301,7 @@
     </div>
     <div class="space-y-space-md">
       <div>
-        <h3 class="font-headline-md text-headline-md font-bold text-white">{{ $pkg->nama_mapel }}</h3>
+        <h3 class="font-headline-md text-headline-md font-bold text-slate-900">{{ $pkg->nama_mapel }}</h3>
       </div>
       <div>
         <div class="flex items-baseline gap-1 mt-2">
@@ -360,7 +360,7 @@
               $featureText = $isCrossed ? ltrim($feature, '- ') : $feature;
             @endphp
             <div class="flex items-start gap-space-2xs text-body-sm font-body-sm text-slate-700 {{ $isCrossed ? 'opacity-50 line-through' : '' }}">
-              <span class="material-symbols-outlined {{ $isCrossed ? 'text-slate-400' : 'text-emerald-600' }} text-[18px] shrink-0 mt-0.5">{{ $isCrossed ? 'cancel' : 'check_circle' }}</span>
+              <span class="material-symbols-outlined {{ $isCrossed ? 'text-slate-500' : 'text-emerald-600' }} text-[18px] shrink-0 mt-0.5">{{ $isCrossed ? 'cancel' : 'check_circle' }}</span>
               <span>{{ $featureText }}</span>
             </div>
           @endforeach
@@ -397,7 +397,7 @@
 <div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center">
 <span class="material-symbols-outlined text-[28px] text-white">chat</span>
 </div>
-<h3 class="font-headline-md text-headline-md font-bold text-white">Konsultasi Kilat via WhatsApp</h3>
+<h3 class="font-headline-md text-headline-md font-bold text-slate-900">Konsultasi Kilat via WhatsApp</h3>
 <p class="font-body-md text-body-md text-emerald-50 leading-relaxed">
               Hubungi tim technical consultant kami secara langsung untuk respon cepat seputar harga, penyesuaian modul fitur, dan survei teknis lokasi instalasi jaringan.
             </p>
@@ -417,7 +417,7 @@
 <div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center">
 <span class="material-symbols-outlined text-[28px] text-white">mail</span>
 </div>
-<h3 class="font-headline-md text-headline-md font-bold text-white">Kirim Penawaran via Email</h3>
+<h3 class="font-headline-md text-headline-md font-bold text-slate-900">Kirim Penawaran via Email</h3>
 <p class="font-body-md text-body-md text-sky-50 leading-relaxed">
               Ajukan dokumen Kerangka Acuan Kerja (KAK), spesifikasi teknis, atau permintaan penawaran harga resmi (RFP) langsung ke tim engineering kami.
             </p>
