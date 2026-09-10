@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SettingsController;
 
 // ===== PUBLIC ROUTES =====
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/portofolio', [App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 Route::get('/category/{slug}', [App\Http\Controllers\BlogController::class, 'category'])->name('blog.category');

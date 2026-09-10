@@ -234,7 +234,66 @@
     header { top: 40px !important; }
   </style>
 @endif
-<header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-[0_1px_12px_rgba(0,0,0,0.05)]"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center border border-sky-100"><span class="material-symbols-outlined text-sky-600 text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold text-slate-900 tracking-tight">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span></div><span class="font-label-caps text-label-caps text-slate-500 uppercase tracking-widest">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md bg-white px-space-md py-space-2xs rounded-full border border-slate-200 shadow-sm" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-sky-100 text-sky-700 font-bold rounded-lg shadow" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-emerald-50 border border-emerald-100"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-emerald-600">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div></div></header>
+<header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-[0_1px_12px_rgba(0,0,0,0.05)]"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center border border-sky-100"><span class="material-symbols-outlined text-sky-600 text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold text-slate-900 tracking-tight">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span></div><span class="font-label-caps text-label-caps text-slate-500 uppercase tracking-widest">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md bg-white px-space-md py-space-2xs rounded-full border border-slate-200 shadow-sm" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-sky-100 text-sky-700 font-bold rounded-lg shadow" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" href="{{ route('portofolio.index') }}">Portofolio</a><a class="font-body-sm text-body-sm text-slate-600 hover:text-sky-600 px-space-xs py-space-2xs transition-colors" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-emerald-50 border border-emerald-100"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-emerald-600">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+<button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+  <span class="material-symbols-outlined">menu</span>
+</button>
+</div></header>
+
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-md z-40 hidden flex-col pt-24 px-6 pb-6 transform transition-transform translate-x-full duration-300">
+  <button id="close-menu-btn" class="absolute top-6 right-6 p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <nav class="flex flex-col gap-6 text-center mt-8">
+    <a href="#" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Beranda</a>
+    <a href="#layanan-utama" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Layanan</a>
+    <a href="#layanan-utama" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Produk &amp; Portofolio</a>
+    <a href="#keunggulan" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Keunggulan</a>
+    <a href="#paket-harga" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Paket Harga</a>
+    <a href="#kontak-konsultasi" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Kontak</a>
+    <a href="{{ route('portofolio.index') }}" class="mobile-link text-xl font-headline-sm font-bold text-slate-800">Galeri</a>
+  </nav>
+  <div class="mt-auto pt-8">
+    <a href="#kontak-konsultasi" class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[16px] font-bold shadow-lg">
+      <span>Konsultasi Gratis</span>
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openMenu() {
+    mobileMenu.classList.remove('hidden');
+    // slight delay to allow display block to apply before transform
+    setTimeout(() => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('translate-x-full');
+    setTimeout(() => {
+      mobileMenu.classList.add('hidden');
+    }, 300);
+    document.body.style.overflow = '';
+  }
+
+  if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+  if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>
 
 @yield('content')
 
