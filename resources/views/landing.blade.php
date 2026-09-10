@@ -88,7 +88,8 @@
       <div class="flex items-center gap-1.5 hover:text-sky-600 transition-colors cursor-default" title="{{ $title }}">
         <i class="{{ $iconClass }} text-sky-600 text-[24px]"></i>
       </div>
-    @endforeach@foreach(explode(',', $site_settings['tech_stacks']) as $tech)
+    @endforeach
+    @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
       @php
         $tech = trim($tech);
         if (empty($tech)) continue;
