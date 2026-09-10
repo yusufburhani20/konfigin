@@ -217,55 +217,56 @@
 <style>
   /* Navbar Transition Styles */
   #main-header {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
-    /* At top — Transparan Hitam (Black Glass) */
-    #main-header.at-top {
-      background-color: rgba(0, 0, 0, 0.0);
-      backdrop-filter: none;
-      box-shadow: none;
-      border-bottom: 1px solid transparent;
-    }
-    #main-header.at-top .logo-text { color: #ffffff; font-weight: 800; }
-    #main-header.at-top .logo-sub { color: rgba(255,255,255,0.55); letter-spacing: 0.15em; }
-    #main-header.at-top .nav-link { color: rgba(255,255,255,0.80); font-weight: 500; }
-    #main-header.at-top .nav-link:hover { color: #ffffff; }
-    #main-header.at-top .nav-container { 
-      background-color: rgba(0, 0, 0, 0.35);
-      border-color: rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-    }
-    #main-header.at-top .active-nav-link {
-      background-color: rgba(255,255,255,0.15);
-      color: #ffffff !important;
-    }
-    #main-header.at-top .menu-btn { color: #ffffff; }
-
-    /* Scrolled — Solid Hitam Tipis */
-    #main-header.scrolled {
-      background-color: rgba(8, 10, 18, 0.92);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 1px 20px rgba(0,0,0,0.35);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    #main-header.scrolled .logo-text { color: #ffffff; font-weight: 800; }
-    #main-header.scrolled .logo-sub { color: rgba(255,255,255,0.45); letter-spacing: 0.15em; }
-    #main-header.scrolled .nav-link { color: rgba(255,255,255,0.70); font-weight: 500; }
-    #main-header.scrolled .nav-link:hover { color: #ffffff; }
-    #main-header.scrolled .nav-container { 
-      background-color: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.10);
-    }
-    #main-header.scrolled .active-nav-link {
-      background-color: rgba(255,255,255,0.12);
-      color: #ffffff !important;
-    }
-    #main-header.scrolled .menu-btn { color: rgba(255,255,255,0.85); }
+  /* At top — Fully Transparent, teks putih */
+  #main-header.at-top {
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    border-bottom: none;
+  }
+  #main-header.at-top .logo-text { color: #ffffff; font-weight: 700; }
+  #main-header.at-top .logo-sub  { color: rgba(255,255,255,0.50); letter-spacing: 0.12em; }
+  #main-header.at-top .nav-link  { color: rgba(255,255,255,0.85); font-size: 14px; }
+  #main-header.at-top .nav-link:hover { color: #ffffff; }
+  #main-header.at-top .nav-active { color: #ffffff; font-weight: 600; }
+  #main-header.at-top .btn-outlined {
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    background: transparent;
+  }
+  #main-header.at-top .btn-outlined:hover {
+    background: rgba(255,255,255,0.10);
+  }
+  #main-header.at-top .menu-btn { color: #ffffff; }
   
-  /* Smooth color transitions for children */
-  .logo-text, .logo-sub, .nav-link, .nav-container, .menu-btn {
-    transition: all 0.3s ease;
+  /* Scrolled — Hitam Gelap */
+  #main-header.scrolled {
+    background-color: rgba(8, 10, 18, 0.90);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 1px 20px rgba(0,0,0,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  #main-header.scrolled .logo-text { color: #ffffff; font-weight: 700; }
+  #main-header.scrolled .logo-sub  { color: rgba(255,255,255,0.45); letter-spacing: 0.12em; }
+  #main-header.scrolled .nav-link  { color: rgba(255,255,255,0.75); font-size: 14px; }
+  #main-header.scrolled .nav-link:hover { color: #ffffff; }
+  #main-header.scrolled .nav-active { color: #ffffff; font-weight: 600; }
+  #main-header.scrolled .btn-outlined {
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.30);
+    background: transparent;
+  }
+  #main-header.scrolled .btn-outlined:hover {
+    background: rgba(255,255,255,0.08);
+  }
+  #main-header.scrolled .menu-btn { color: rgba(255,255,255,0.85); }
+  
+  /* Transitions */
+  .logo-text, .logo-sub, .nav-link, .btn-outlined, .menu-btn {
+    transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
 </style>
 </head><body class="bg-slate-50 font-body-md text-body-md text-slate-800 antialiased">
@@ -289,11 +290,47 @@
     header { top: 40px !important; }
   </style>
 @endif
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 at-top"><div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between"><a class="flex items-center gap-space-xs group" data-path="beranda" href="#"><div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shadow-[0_0_15px_rgba(76,215,246,0.25)]"><span class="material-symbols-outlined text-secondary text-[24px]">terminal</span></div><div class="flex flex-col"><div class="flex items-center gap-space-2xs"><span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">konfigin</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span></div><span class="font-label-caps text-label-caps uppercase tracking-widest logo-sub">IT SOLUTIONS</span></div></a><nav class="hidden lg:flex items-center gap-space-md px-space-md py-space-2xs rounded-full border nav-container" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="px-space-xs py-space-2xs transition-colors active-nav-link font-bold rounded-lg" data-path="beranda" href="#">Beranda</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="layanan" href="#layanan-utama">Layanan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="produk-dan-portofolio" href="#layanan-utama">Produk &amp; Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="keunggulan" href="#keunggulan">Keunggulan</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="paket-harga" href="#paket-harga">Paket Harga</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" href="{{ route('portofolio.index') }}">Portofolio</a><a class="font-body-sm text-body-sm px-space-xs py-space-2xs nav-link" data-path="kontak" href="#kontak-konsultasi">Kontak</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-high border border-slate-700/60"><span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span><span class="font-code-telemetry text-code-telemetry text-tertiary">ONLINE 24/7</span></div><a class="relative inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[14px] font-bold shadow-[0_0_20px_rgba(14,165,233,0.35)] transition-all" data-path="konsultasi" href="#kontak-konsultasi"><span>Konsultasi Gratis</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
-  <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg menu-btn">
-    <span class="material-symbols-outlined">menu</span>
-  </button>
-</div></header>
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 at-top">
+  <div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a class="flex items-center gap-3 group" href="#">
+      <div class="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+        <span class="material-symbols-outlined text-secondary text-[22px]">terminal</span>
+      </div>
+      <div class="flex flex-col leading-none">
+        <div class="flex items-center gap-1.5">
+          <span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">konfigin</span>
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+        </div>
+        <span class="font-label-caps text-[10px] uppercase tracking-widest mt-0.5 logo-sub">IT SOLUTIONS</span>
+      </div>
+    </a>
+    
+    <!-- Nav Links (Desktop) -->
+    <nav class="hidden lg:flex items-center gap-space-md">
+      <a class="px-3 py-1 nav-link nav-active font-semibold" data-path="beranda" href="#">Home</a>
+      <a class="px-3 py-1 nav-link" data-path="layanan" href="#layanan-utama">Layanan</a>
+      <a class="px-3 py-1 nav-link" data-path="produk" href="#layanan-utama">Produk</a>
+      <a class="px-3 py-1 nav-link" data-path="keunggulan" href="#keunggulan">Blog</a>
+      <a class="px-3 py-1 nav-link" data-path="kontak" href="#kontak-konsultasi">Kontak</a>
+    </nav>
+    
+    <!-- Right Actions -->
+    <div class="hidden lg:flex items-center gap-3">
+      <a class="px-4 py-2 rounded-lg text-sm font-semibold btn-outlined transition-all" href="{{ route('portofolio.index') }}">Portofolio</a>
+      <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white text-sm font-bold transition-all" href="#kontak-konsultasi">
+        <span>Konsultasi Gratis</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+    
+    <!-- Hamburger (Mobile) -->
+    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg menu-btn">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
 
 
 <!-- Mobile Menu Overlay -->
