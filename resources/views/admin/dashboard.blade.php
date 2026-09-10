@@ -79,9 +79,9 @@
       <i class="fas fa-phone-alt"></i>
       <span>Kontak</span>
     </a>
-    <form action="{{ route('admin.deploy') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin melakukan deployment (tarik kode terbaru dari GitHub & build)?');" style="display: block;">
+    <form action="{{ route('admin.deploy') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin melakukan deployment (tarik kode terbaru dari GitHub & build)?');" style="display: contents;">
       @csrf
-      <button type="submit" class="quick-card" style="width: 100%; border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: inherit; border-color: rgba(220, 38, 38, 0.25);">
+      <button type="submit" class="quick-card" style="width: 100%; height: 100%; cursor: pointer; font-family: inherit; font-size: inherit; border-color: rgba(220, 38, 38, 0.25);">
         <i class="fas fa-rocket" style="color: #dc2626;"></i>
         <span>Deploy Production</span>
       </button>
