@@ -105,6 +105,9 @@
         <div class="header-subtitle">@yield('page_subtitle', 'Konfigin IT Solutions – Panel Admin')</div>
       </div>
       <div class="header-actions">
+        <button type="button" class="btn btn-danger btn-sm" id="btn-deploy-server" style="background: var(--danger);">
+          <i class="fas fa-rocket"></i> Deploy
+        </button>
         <a href="{{ route('home') }}" class="btn btn-secondary btn-sm" target="_blank" id="btn-view-site">
           <i class="fas fa-eye"></i> Lihat Website
         </a>
@@ -146,7 +149,104 @@
   </main>
 </div>
 
+<!-- Deploy Modal -->
+<div class="modal-overlay" id="deploy-modal">
+  <div class="modal" style="max-width: 800px;">
+    <div class="modal-header">
+      <h3><i class="fas fa-rocket" style="color: var(--danger);"></i> Deployment Server</h3>
+      <button class="modal-close" id="close-deploy-modal"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <p id="deploy-status" style="margin-bottom: 15px; font-weight: 600;">Menunggu perintah deploy...</p>
+      <pre id="deploy-log" style="background: #0f172a; color: #10b981; padding: 15px; border-radius: 8px; min-height: 200px; max-height: 400px; overflow-y: auto; font-family: monospace; font-size: 0.85rem; border: 1px solid var(--border); white-space: pre-wrap;"></pre>
+    </div>
+    <div class="modal-footer">
+      <form action="{{ route('admin.deploy') }}" method="POST" id="deploy-form">
+        @csrf
+        <button type="button" class="btn btn-secondary" id="btn-cancel-deploy">Batal</button>
+        <button type="submit" class="btn btn-danger" id="btn-confirm-deploy" style="background: var(--danger);"><i class="fas fa-play"></i> Mulai Deploy</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script src="{{ asset('assets/js/admin.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const btnDeployServer = document.getElementById('btn-deploy-server');
+  const deployModal = document.getElementById('deploy-modal');
+  const closeDeployModal = document.getElementById('close-deploy-modal');
+  const btnCancelDeploy = document.getElementById('btn-cancel-deploy');
+  const deployForm = document.getElementById('deploy-form');
+  const deployStatus = document.getElementById('deploy-status');
+  const deployLog = document.getElementById('deploy-log');
+  const btnConfirmDeploy = document.getElementById('btn-confirm-deploy');
+
+  if(btnDeployServer && deployModal) {
+    btnDeployServer.addEventListener('click', function() {
+      deployModal.classList.add('open');
+      deployStatus.innerHTML = 'Siap melakukan deployment (tarik kode terbaru dari GitHub & build). Klik "Mulai Deploy" untuk melanjutkan.';
+      deployStatus.style.color = 'var(--text-primary)';
+      deployLog.innerHTML = '> _\n';
+      btnConfirmDeploy.disabled = false;
+      btnConfirmDeploy.innerHTML = '<i class="fas fa-play"></i> Mulai Deploy';
+    });
+  }
+
+  if(closeDeployModal) closeDeployModal.addEventListener('click', () => deployModal.classList.remove('open'));
+  if(btnCancelDeploy) btnCancelDeploy.addEventListener('click', () => deployModal.classList.remove('open'));
+
+  if(deployForm) {
+    deployForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if(!confirm('Apakah Anda yakin ingin memulai proses deployment sekarang? Web mungkin tidak dapat diakses selama beberapa detik.')) {
+        return;
+      }
+
+      btnConfirmDeploy.disabled = true;
+      btnConfirmDeploy.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Proses...';
+      deployStatus.innerHTML = 'Sedang menjalankan proses deployment, harap tunggu...';
+      deployStatus.style.color = 'var(--accent)';
+      deployLog.innerHTML = '> Menjalankan script deploy.sh...\n';
+
+      const formData = new FormData(deployForm);
+
+      fetch(deployForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        deployLog.innerHTML += data.log + '\n';
+        if(data.success) {
+          deployStatus.innerHTML = 'Deployment berhasil! Merefresh halaman...';
+          deployStatus.style.color = 'var(--success)';
+          setTimeout(() => {
+            window.location.reload(true);
+          }, 2000);
+        } else {
+          deployStatus.innerHTML = 'Deployment gagal!';
+          deployStatus.style.color = 'var(--danger)';
+          btnConfirmDeploy.disabled = false;
+          btnConfirmDeploy.innerHTML = '<i class="fas fa-redo"></i> Coba Lagi';
+        }
+      })
+      .catch(error => {
+        deployLog.innerHTML += '\nError koneksi atau server: ' + error.message;
+        deployStatus.innerHTML = 'Terjadi kesalahan sistem saat komunikasi dengan server.';
+        deployStatus.style.color = 'var(--danger)';
+        btnConfirmDeploy.disabled = false;
+        btnConfirmDeploy.innerHTML = '<i class="fas fa-redo"></i> Coba Lagi';
+      });
+    });
+  }
+});
+</script>
 @stack('scripts')
 </body>
 </html>

@@ -23,25 +23,34 @@ class DashboardController extends Controller
             'admin_nama'       => session('admin_nama', 'Admin'),
         ]);
     }
-    public function deploy()
+    public function deploy(\Illuminate\Http\Request $request)
     {
         $deployScriptPath = base_path('deploy.sh');
         
         if (!file_exists($deployScriptPath)) {
-            return redirect()->back()->with('error', 'Script deploy.sh tidak ditemukan.');
+            $msg = 'Script deploy.sh tidak ditemukan.';
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'log' => $msg]);
+            }
+            return redirect()->back()->with('error', $msg);
         }
 
-        // Jalankan script deploy.sh.
-        // Kita menggunakan exec dan menangkap outputnya.
-        // Tambahkan 2>&1 agar error juga tertangkap di output.
         exec("bash " . escapeshellarg($deployScriptPath) . " 2>&1", $output, $return_var);
 
         $outputStr = implode("\n", $output);
 
         if ($return_var !== 0) {
-            return redirect()->back()->with('error', 'Deployment gagal (Kode: ' . $return_var . '). Output: ' . substr($outputStr, 0, 500));
+            $msg = 'Deployment gagal (Kode: ' . $return_var . ').';
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'log' => $msg . "\n\n" . $outputStr]);
+            }
+            return redirect()->back()->with('error', $msg . ' Output: ' . substr($outputStr, 0, 500));
         }
 
-        return redirect()->back()->with('success', 'Deployment berhasil dijalankan!');
+        $msg = 'Deployment berhasil dijalankan!';
+        if ($request->ajax()) {
+            return response()->json(['success' => true, 'log' => $outputStr]);
+        }
+        return redirect()->back()->with('success', $msg);
     }
 }
