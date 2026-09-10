@@ -25,14 +25,14 @@
 <span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
 </div>
 <h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-white leading-tight">
-            Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="bg-gradient-to-r from-primary via-secondary to-primary-fixed-dim bg-clip-text text-transparent">Aplikasi Custom</span>
+            Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="text-primary">Aplikasi Custom</span>
 </h1>
 <p class="font-body-lg text-body-lg text-slate-200 max-w-2xl leading-relaxed">
             Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus â€” kepemilikan penuh selamanya tanpa biaya langganan bulanan.
           </p>
 <div class="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
 @if(isset($kontak) && $kontak)
-<a class="relative inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[15px] font-bold shadow-[0_0_30px_rgba(147,204,255,0.35)] hover:bg-primary-fixed hover:shadow-[0_0_40px_rgba(147,204,255,0.5)] transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener">
+<a class="relative inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[15px] font-bold hover:bg-primary-fixed transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-[20px]">hub</span>
 <span>Konsultasi Jaringan &amp; App</span>
 </a>
@@ -45,8 +45,7 @@
 </div>
 <!-- Hero Telemetry Console Card -->
 <div class="lg:col-span-5 relative w-full">
-<div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary/30 via-primary/30 to-tertiary/30 blur-xl opacity-75"></div>
-<div class="relative rounded-2xl bg-[#1c1f29]/90 backdrop-blur-xl p-space-md shadow-2xl space-y-space-sm border border-slate-600/50">
+<div class="relative rounded-2xl bg-[#1c1f29]/90 backdrop-blur-xl p-space-md space-y-space-sm border border-slate-600/50">
 <!-- Window header bar -->
 <div class="flex items-center justify-between pb-space-xs">
 <div class="flex items-center gap-1.5">
