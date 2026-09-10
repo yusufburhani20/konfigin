@@ -1,410 +1,439 @@
-@extends('layout')
+@extends('landing-layout')
 
-@section('title', $site_name)
-
-@if(session('admin_logged_in'))
-@push('styles')
-<style>
-  /* Admin quick bar (40px) + navbar (72px) + extra space = 150px total top padding on hero */
-  #hero { padding-top: 150px !important; }
-</style>
-@endpush
-@endif
+@section('title', $site_name ?? 'Konfigin IT Solutions')
 
 @section('content')
-<!-- ===== HERO SECTION ===== -->
-<section id="hero" aria-label="Hero Section">
+<main class="w-full pt-20">
+<div class="flex flex-col w-full overflow-hidden">
+<!-- 1. HERO SECTION (Dark Mode Preserved) -->
+<div class="relative w-full text-[#dfe2ef]">
   <!-- Video Background -->
-  <video class="hero-video-bg" autoplay loop muted playsinline aria-hidden="true">
+  <video class="absolute inset-0 w-full h-full object-cover -z-20" autoplay loop muted playsinline aria-hidden="true" style="object-position: center; filter: brightness(0.7);">
     <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
   </video>
-
-  <div class="orb orb-1" aria-hidden="true"></div>
-  <div class="orb orb-2" aria-hidden="true"></div>
-  <div class="orb orb-3" aria-hidden="true"></div>
-
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-dots"></div>
-  </div>
-
-  <div class="hero-container">
-    <div class="hero-split-grid">
-      <!-- LEFT -->
-      <div class="hero-content-left">
-        <div class="eyebrow">
-          <div class="eyebrow-dot"></div>
-          <span class="eyebrow-icon">🖥️</span>
-          <span class="eyebrow-text">Premium IT Solutions & Custom Software</span>
-        </div>
-
-        <h1 class="headline">
-          Infrastruktur Jaringan<br>
-          Sekolah, Perkantoran &<br>
-          <span class="headline-grad">Aplikasi Custom</span>
-        </h1>
-
-        <p class="desc">
-          Konfigin IT Solutions menghadirkan <strong>aplikasi kustom premium</strong> dan instalasi jaringan handal berlisensi sekali putus — kepemilikan penuh selamanya tanpa biaya langganan bulanan.
-        </p>
-
-        <div class="cta-row">
-          @if($kontak)
-            <a href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn-primary-branded">
-              <span>💬</span> Konsultasi Jaringan & App
-            </a>
-          @endif
-          <a href="#eservice" class="btn-secondary-branded">
-            <span>⚡</span> Layanan Utama
-          </a>
-        </div>
-        
-        <div class="trust-row">
-          <!-- Section Uptime<div class="trust-pill">
-            <span class="tp-icon">✅</span>
-            Uptime <span class="tp-val">&nbsp;99.9%</span>
-          </div>
-          <div class="trust-pill">
-            <span class="tp-icon">🚀</span>
-            Proyek <span class="tp-val">&nbsp;50+</span>
-          </div>
-          <div class="trust-pill">
-            <span class="tp-icon">🛡️</span>
-            Support <span class="tp-val">&nbsp;24/7</span>
-          </div>-->
-        </div>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="hero-visual-right">
-        <!-- Float cards -->
-        <div class="float-card fc-1">
-          <div class="fc-icon">⚡</div>
-          <div>
-            <div class="fc-val">99.99%</div>
-            <div class="fc-lbl">Network Uptime</div>
-          </div>
-        </div>
-        <div class="float-card fc-2">
-          <div class="fc-icon">🔒</div>
-          <div>
-            <div class="fc-val">SSL Active</div>
-            <div class="fc-lbl">Enkripsi End-to-End</div>
-          </div>
-        </div>
-
-        <!-- Dashboard -->
-        <div class="dash">
-          <!-- Chrome -->
-          <div class="dash-chrome">
-            <div class="dots">
-              <div class="dot dot-r"></div>
-              <div class="dot dot-y"></div>
-              <div class="dot dot-g"></div>
-            </div>
-            <div class="addr">
-              <span class="addr-lock">🔒</span>
-              secure.konfigin.com
-            </div>
-            <div style="width:56px"></div>
-          </div>
-
-          <!-- Status -->
-          <div class="dash-status">
-            <div class="status-left">
-              <div class="status-dot-live"></div>
-              <div class="status-txt">SYSTEM STATUS: <b>ACTIVE / ONLINE</b></div>
-            </div>
-            <div class="status-ver">v2.4.1</div>
-          </div>
-
-          <!-- Metrics -->
-          <div class="dash-metrics">
-            <div class="metric">
-              <div class="metric-head">Network Uptime <span class="metric-ico">🌐</span></div>
-              <div class="metric-num">99.99<sup>%</sup></div>
-              <div class="metric-hint">↑ Stabil 30 hari terakhir</div>
-            </div>
-            <div class="metric">
-              <div class="metric-head">Active Sockets <span class="metric-ico">🔌</span></div>
-              <div class="metric-num">16<sup> / 16</sup></div>
-              <div class="metric-hint">Semua nodes aktif</div>
-            </div>
-          </div>
-
-          <!-- Network visual -->
-          <div class="dash-net">
-            <div class="net-center">🛡️</div>
-            <div class="net-node" style="top:10px;left:24px">💾</div>
-            <div class="net-node" style="top:10px;right:24px">📡</div>
-            <div class="net-node" style="bottom:8px;left:16px">🖥️</div>
-            <div class="net-node" style="bottom:8px;right:16px">⚙️</div>
-            <!-- SVG connections -->
-            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#2563EB" stop-opacity="0.1"/>
-                  <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.5"/>
-                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0.1"/>
-                </linearGradient>
-              </defs>
-              <line x1="12" y1="18" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
-              <line x1="88" y1="18" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
-              <line x1="8"  y1="82" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
-              <line x1="92" y1="82" x2="50" y2="50" stroke="url(#lg)" stroke-width="1"/>
-              <!-- Pulse dots -->
-              <circle cx="50" cy="50" r="22" fill="none" stroke="rgba(37,99,235,.08)" stroke-width="1" stroke-dasharray="4 4"/>
-            </svg>
-          </div>
-
-          <div class="dash-sep"></div>
-
-          <!-- Console -->
-          <div class="dash-console">
-            <div class="c-line"><span class="c-tag c-ok">OK</span><span class="c-msg">Established secure connection to edge router...</span></div>
-            <div class="c-line"><span class="c-tag c-info">INFO</span><span class="c-msg">Database backup generated successfully.</span></div>
-            <div class="c-line"><span class="c-tag c-sec">SEC</span><span class="c-msg">Encrypted transmission SSL tunnel active.</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tech Stacks Bar -->
-<div class="tech-stacks-bar" aria-label="Technology Stacks">
-  <span class="tech-stacks-title">Tech Stack Kami:</span>
-  <div class="tech-stacks-list">
-    @if(!empty($site_settings['tech_stacks']))
-      @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
-        @php
-          $tech = trim($tech);
-          if (empty($tech)) continue;
-          if (str_starts_with($tech, 'fa-') || str_contains($tech, ' ')) {
-              $iconClass = $tech;
-          } else {
-              $fabBrands = ['html5', 'css3-alt', 'js', 'php', 'laravel', 'git-alt', 'node-js', 'react', 'vue', 'angular', 'bootstrap', 'sass', 'wordpress'];
-              $prefix = in_array($tech, $fabBrands) ? 'fab' : 'fas';
-              $iconClass = $prefix . ' fa-' . $tech;
-          }
-          $title = ucwords(str_replace('-', ' ', $tech));
-        @endphp
-        <i class="{{ $iconClass }}" title="{{ $title }}"></i>
-      @endforeach
-    @endif
-  </div>
+  <!-- Overlay to ensure text readability -->
+  <div class="absolute inset-0 bg-[#0a0e17]/70 backdrop-blur-[2px] -z-10"></div>
+  
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-48 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<section class="max-w-[1240px] mx-auto px-space-lg pt-space-2xl pb-space-3xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Hero Copy -->
+<div class="lg:col-span-7 space-y-space-md flex flex-col items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md shadow-inner shadow-primary/10">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
 </div>
-
-
-
-
-
-<!-- ===== E-SERVICE (LAYANAN UTAMA) SECTION ===== -->
-<section id="eservice" aria-labelledby="eservice-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-cogs"></i> Layanan Utama</div>
-      <h2 class="section-title" id="eservice-heading">Paket Software untuk Bisnis &amp; Kebutuhan</h2>
-      <p class="section-desc">Pilih layanan solusi digital terintegrasi yang dirancang untuk mempercepat pertumbuhan bisnis Anda.</p>
-    </div>
-    <div class="eservice-grid grid-6">
-      @foreach($eservice as $svc)
-      <div class="eservice-card premium-card animate-on-scroll" id="eservice-{{ $svc->id }}">
-        <div class="eservice-icon" style="background: {{ $svc->warna }}">
-          <i class="{{ $svc->icon }}"></i>
-        </div>
-        <div style="flex:1;">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif;">{{ $svc->nama }}</h3>
-          <p>{{ $svc->deskripsi }}</p>
-        </div>
-        <div class="eservice-card-actions">
-          @if($svc->blog_slug)
-            @php
-              $moreUrl = $svc->blog_slug;
-              $isExternal = str_starts_with($moreUrl, 'http://') || str_starts_with($moreUrl, 'https://');
-              if (!$isExternal && !str_starts_with($moreUrl, '#') && !str_starts_with($moreUrl, 'mailto:') && !str_starts_with($moreUrl, 'tel:')) {
-                  $moreUrl = url($moreUrl);
-              }
-            @endphp
-            <a href="{{ $moreUrl }}" class="btn btn-ghost btn-sm eservice-btn-more" @if($isExternal) target="_blank" rel="noopener" @endif>
-              <i class="fas fa-book-open"></i> Selengkapnya
-            </a>
-          @endif
-          @if($svc->demo_url)
-            <a href="{{ $svc->demo_url }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm eservice-btn-demo">
-              <i class="fas fa-play-circle"></i> Demo
-            </a>
-          @endif
-          <a href="{{ $svc->url }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="border-radius: 100px;" aria-label="{{ $svc->nama }}">
-            <i class="fab fa-whatsapp"></i> Hubungi Kami
-          </a>
-        </div>
-      </div>
-      @endforeach
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== KEUNGGULAN (DARK WHY CHOOSE US) SECTION ===== -->
-<section id="keunggulan" class="dark-why-us" aria-labelledby="keunggulan-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-star"></i> Keunggulan</div>
-      <h2 class="section-title" id="keunggulan-heading">Kenapa Pilih Konfigin?</h2>
-      <p class="section-desc">Komitmen penuh kami dalam memberikan keandalan teknologi terbaik untuk kesuksesan operasional Anda.</p>
-    </div>
-    <div class="keunggulan-grid grid-8">
-      @foreach($keunggulan as $k)
-      <div class="keunggulan-card premium-dark-card animate-on-scroll">
-        <div class="keunggulan-icon" aria-hidden="true">
-          <i class="{{ $k->icon }}"></i>
-        </div>
-        <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff;">{{ $k->judul }}</h3>
-        <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">{{ $k->deskripsi }}</p>
-      </div>
-      @endforeach
-    </div>
-
-
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== PRICING (PAKET LISENSI) SECTION ===== -->
-<section id="kurikulum" class="pricing-section" aria-labelledby="pricing-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-tags"></i> Paket Harga</div>
-      <h2 class="section-title" id="pricing-heading">Paket Software untuk Semua Skala Bisnis</h2>
-      <p class="section-desc">Pilih model lisensi sekali putus yang sesuai dengan kapasitas dan proyeksi bisnis Anda.</p>
-    </div>
-    
-    <div class="pricing-grid-4">
-      @foreach($kurikulum as $pkg)
+<h1 class="font-display-hero text-display-hero font-extrabold tracking-tight text-white leading-tight">
+            Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="bg-gradient-to-r from-primary via-secondary to-primary-fixed-dim bg-clip-text text-transparent">Aplikasi Custom</span>
+</h1>
+<p class="font-body-lg text-body-lg text-slate-200 max-w-2xl leading-relaxed">
+            Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus — kepemilikan penuh selamanya tanpa biaya langganan bulanan.
+          </p>
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
+@if(isset($kontak) && $kontak)
+<a class="relative inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[15px] font-bold shadow-[0_0_30px_rgba(147,204,255,0.35)] hover:bg-primary-fixed hover:shadow-[0_0_40px_rgba(147,204,255,0.5)] transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+<span>Konsultasi Jaringan &amp; App</span>
+</a>
+@endif
+<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-xl bg-surface-container-high/60 backdrop-blur-md text-white hover:bg-surface-bright transition-all font-headline-sm text-[15px] font-semibold border border-slate-700/60" href="#layanan-utama">
+<span>Layanan Utama</span>
+<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+</a>
+</div>
+<!-- Quick Metrics Ribbon -->
+<div class="pt-space-md grid grid-cols-3 gap-space-md w-full max-w-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-300 uppercase">Biaya Langganan</p>
+<p class="font-headline-sm text-headline-sm text-tertiary font-bold">Rp 0 / bln</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-300 uppercase">SLA Availability</p>
+<p class="font-headline-sm text-headline-sm text-secondary font-bold">99.99%</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low/60 backdrop-blur-md border border-slate-700 shadow-sm">
+<p class="font-label-caps text-label-caps text-slate-300 uppercase">Kode Sumber</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold">Full Milik</p>
+</div>
+</div>
+</div>
+<!-- Hero Telemetry Console Card -->
+<div class="lg:col-span-5 relative w-full">
+<div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary/30 via-primary/30 to-tertiary/30 blur-xl opacity-75"></div>
+<div class="relative rounded-2xl bg-[#1c1f29]/90 backdrop-blur-xl p-space-md shadow-2xl space-y-space-sm border border-slate-600/50">
+<!-- Window header bar -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-error-container"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="ml-2 font-code-telemetry text-code-telemetry text-slate-400 text-[11px]">telemetry.konfigin.cloud</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-label-caps text-[10px] text-tertiary font-semibold uppercase">v2.4.1 Active</span>
+</div>
+<!-- Health row -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="p-space-sm rounded-xl bg-surface-container space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">Network Uptime</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">speed</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">99.99</span>
+<span class="font-label-caps text-label-caps text-secondary">%</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 text-[12px]">Stabil 30 hari terakhir</p>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">Active Sockets</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]">sensors</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">16</span>
+<span class="font-label-caps text-label-caps text-slate-400">/ 16</span>
+</div>
+<p class="font-body-sm text-body-sm text-tertiary text-[12px]">Semua nodes aktif</p>
+</div>
+</div>
+<!-- Topology visual canvas -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest relative overflow-hidden space-y-2 border border-slate-800">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">Topology Visualizer</span>
+</div>
+<span class="font-code-telemetry text-code-telemetry text-tertiary text-[11px]">Latency: 12ms</span>
+</div>
+<!-- SVG Network Node graph -->
+<div class="w-full h-24 flex items-center justify-center">
+<svg class="w-full h-full stroke-current text-primary-container" fill="none" viewbox="0 0 340 70">
+<path class="opacity-40" d="M 30 35 Q 90 10, 170 35 T 310 35" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<line class="text-primary" stroke-width="1.5" x1="30" x2="95" y1="35" y2="20"></line>
+<line class="text-secondary" stroke-width="1.5" x1="95" x2="170" y1="20" y2="35"></line>
+<line class="text-primary" stroke-width="1.5" x1="170" x2="245" y1="35" y2="50"></line>
+<line class="text-tertiary" stroke-width="1.5" x1="245" x2="310" y1="50" y2="35"></line>
+<!-- Nodes -->
+<circle class="fill-surface-container-high text-primary stroke-current" cx="30" cy="35" r="7" stroke-width="2"></circle>
+<circle class="fill-secondary" cx="95" cy="20" r="5"></circle>
+<circle class="fill-surface-container-highest text-secondary stroke-current" cx="170" cy="35" r="9" stroke-width="2"></circle>
+<circle class="fill-primary" cx="245" cy="50" r="5"></circle>
+<circle class="fill-surface-container-high text-tertiary stroke-current" cx="310" cy="35" r="7" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between text-[11px] font-code-telemetry text-slate-400 px-1">
+<span>GATEWAY [MK-CCR2004]</span>
+<span>CORE-SWITCH</span>
+<span>APP-ENGINE</span>
+</div>
+</div>
+<!-- Terminal log simulation -->
+<div class="p-space-sm rounded-xl bg-surface-container font-code-telemetry text-code-telemetry text-[12px] space-y-1">
+<div class="flex items-center gap-space-2xs text-tertiary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Established secure connection to edge router...</span>
+</div>
+<div class="flex items-center gap-space-2xs text-secondary">
+<span class="material-symbols-outlined text-[14px]">sync_saved_locally</span>
+<span>Database backup generated successfully [142MB].</span>
+</div>
+<div class="flex items-center justify-between text-slate-400 pt-1 text-[11px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]">lock</span>
+                  SSL End-to-End Encrypted (TLS 1.3)
+                </span>
+<span class="text-tertiary font-bold">STABLE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tech Stack Marquee Row -->
+<div class="mt-space-3xl pt-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-md bg-surface-container-low/50 backdrop-blur-md border border-slate-700/80 px-space-lg py-space-md rounded-2xl relative z-10">
+<span class="font-label-caps text-label-caps text-slate-300 uppercase tracking-widest shrink-0">TECH STACK KAMI:</span>
+<div class="flex flex-wrap items-center justify-center gap-space-md lg:gap-space-xl text-slate-200">
+  @if(!empty($site_settings['tech_stacks']))
+    @foreach(explode(',', $site_settings['tech_stacks']) as $tech)
       @php
-        $isPopular = !empty($pkg->badge) && strtolower($pkg->badge) === 'populer';
+        $tech = trim($tech);
+        if (empty($tech)) continue;
+        if (str_starts_with($tech, 'fa-') || str_contains($tech, ' ')) {
+            $iconClass = $tech;
+        } else {
+            $fabBrands = ['html5', 'css3-alt', 'js', 'php', 'laravel', 'git-alt', 'node-js', 'react', 'vue', 'angular', 'bootstrap', 'sass', 'wordpress'];
+            $prefix = in_array($tech, $fabBrands) ? 'fab' : 'fas';
+            $iconClass = $prefix . ' fa-' . $tech;
+        }
+        $title = ucwords(str_replace('-', ' ', $tech));
       @endphp
-      <div class="pricing-card {{ $isPopular ? 'popular' : '' }} animate-on-scroll">
-        @if(!empty($pkg->badge))
-          <div class="pricing-badge">{{ $pkg->badge }}</div>
-        @endif
-        <div class="pricing-name" style="font-family:'Plus Jakarta Sans'; font-weight:800;">{{ $pkg->nama_mapel }}</div>
-        <div class="pricing-price">
-          <span class="amount">{{ $pkg->harga }}</span>
-          <span class="period" style="{{ $isPopular ? 'color:rgba(255,255,255,0.8)' : '' }}">/ Sekali Bayar</span>
-        </div>
-        <ul class="pricing-features">
-          @if(!empty($pkg->fitur))
-            @foreach(explode("\n", str_replace("\r", "", $pkg->fitur)) as $feature)
-              @php
-                $feature = trim($feature);
-                if (empty($feature)) continue;
-                $isCrossed = str_starts_with($feature, '-');
-                $featureText = $isCrossed ? ltrim($feature, '- ') : $feature;
-              @endphp
-              <li>
-                @if($isCrossed)
-                  <i class="fas fa-times-circle" style="color:#ef4444; opacity:0.5"></i>
-                @else
-                  <i class="fas fa-check-circle"></i>
-                @endif
-                {{ $featureText }}
-              </li>
-            @endforeach
-          @endif
-        </ul>
-        @php
-          $waLink = $pkg->roadmap_url;
-          if (empty($waLink) || $waLink === '#') {
-              $waLink = $kontak ? 'https://wa.me/' . str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) . '?text=Halo%20Konfigin,%20saya%20tertarik%20dengan%20' . rawurlencode($pkg->nama_mapel) : '#';
-          }
-        @endphp
-        @if($isPopular)
-          <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn" style="width:100%; justify-content:center; background:#ffffff; color:#0072ff; box-shadow:none; border-radius:100px; font-weight:700;">Pilih Paket</a>
-        @else
-          <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%; justify-content:center; border-radius:100px;">Pilih Paket</a>
-        @endif
+      <div class="flex items-center gap-1.5 hover:text-white transition-colors cursor-default" title="{{ $title }}">
+        <i class="{{ $iconClass }} text-primary text-[24px]"></i>
       </div>
-      @endforeach
-    </div>
-  </div>
+    @endforeach
+  @endif
+</div>
+</div>
 </section>
-
-
-
-<!-- ===== PORTFOLIO (HASIL KARYA KAMI) SECTION ===== 
-<section id="galeri" aria-labelledby="galeri-heading" style="background:#f8fafc;">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-laptop-code"></i> Portofolio</div>
-      <p class="section-desc">Lihat portofolio pengerjaan instalasi jaringan dan sistem aplikasi kustom yang telah sukses kami deplosikan.</p>
-    </div>
-
-    <div class="eservice-grid">
-      @foreach($galeri as $g)
-      <div class="portfolio-card-premium animate-on-scroll">
-        <div class="portfolio-thumbnail-wrap">
-          <img src="{{ asset($g->foto_url) }}" alt="{{ $g->judul }}">
-          <div class="portfolio-hover-overlay">
-            <span class="btn-view-project"><i class="fas fa-search-plus"></i> Lihat Detail</span>
-          </div>
-        </div>
-        <div class="portfolio-details">
-          <div class="portfolio-category">{{ $g->instagram_url ?? 'IT Solution Project' }}</div>
-          <h3>{{ $g->judul }}</h3>
-        </div>
+</div>
+<!-- 2. LAYANAN UTAMA SECTION (LIGHT MODE) -->
+<section class="w-full bg-white py-space-4xl relative border-b border-slate-200" id="layanan-utama">
+<div class="max-w-[1240px] mx-auto px-space-lg">
+<div class="text-center max-w-3xl mx-auto space-y-space-xs mb-space-3xl">
+<div class="inline-flex items-center gap-space-2xs px-3 py-1 rounded-full bg-sky-50 border border-sky-100">
+<span class="material-symbols-outlined text-sky-600 text-[16px]">apps</span>
+<span class="font-label-caps text-label-caps text-sky-700 font-semibold uppercase">LAYANAN UTAMA</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl font-bold text-slate-900">Paket Software &amp; IT Solutions</h2>
+<p class="font-body-lg text-body-lg text-slate-600">Pilih layanan solusi digital terintegrasi yang dirancang untuk mempercepat pertumbuhan bisnis Anda.</p>
+</div>
+<!-- Grid Dinamis E-Service -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+  @foreach($eservice as $svc)
+  @php
+    $colorClass = 'sky';
+    if($loop->index % 3 == 1) $colorClass = 'cyan';
+    if($loop->index % 3 == 2) $colorClass = 'emerald';
+    
+    // Check if it's the 4th item (index 3) to make it span 2 columns like in the design
+    $colSpan = ($loop->index == 3) ? 'md:col-span-1 lg:col-span-2' : '';
+  @endphp
+  <div class="group p-space-xl rounded-2xl bg-white border border-slate-200 hover:border-{{$colorClass}}-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-sm relative overflow-hidden {{ $colSpan }}">
+    <div class="space-y-space-md">
+      <div class="w-14 h-14 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform" style="background-color: {{ $svc->warna }}15; color: {{ $svc->warna }}; border: 1px solid {{ $svc->warna }}30;">
+        <i class="{{ $svc->icon }} text-[30px]"></i>
       </div>
-      @endforeach
-    </div>
-  </div>
-</section>-->
-
-<!-- ===== DUAL CTA SECTION ===== -->
-<section id="kontak" class="dual-cta-section" aria-labelledby="kontak-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-phone-alt"></i> Kontak Kami</div>
-      <h2 class="section-title" id="kontak-heading">Siap Punya Software Profesional?</h2>
-      <p class="section-desc">Konsultasikan kebutuhan IT Solutions atau instalasi jaringan Anda secara gratis bersama tim ahli kami.</p>
+      <div>
+        <span class="font-label-caps text-label-caps font-semibold uppercase" style="color: {{ $svc->warna }}">{{ $svc->nama }}</span>
+        <h3 class="font-headline-md text-headline-md font-bold text-slate-900 mt-1">{{ $svc->nama }}</h3>
+      </div>
+      <p class="font-body-md text-body-md text-slate-600 leading-relaxed">{{ $svc->deskripsi }}</p>
     </div>
     
-    <div class="dual-cta-grid">
-      <!-- WHATSAPP CTA -->
-      <div class="cta-card whatsapp animate-on-scroll">
-        <div class="cta-card-icon"><i class="fab fa-whatsapp"></i></div>
-        <h3>Konsultasi Kilat via WhatsApp</h3>
-        <p>Hubungi tim technical consultant kami secara langsung untuk respon cepat seputar harga, fitur, dan survei lokasi instalasi jaringan.</p>
-        @if($kontak)
-        <a href="https://wa.me/{{ $kontak->whatsapp_formatted }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" target="_blank" rel="noopener" class="btn" style="background:#ffffff; color:#059669; border-radius:100px; margin-top:1.5rem; font-weight:700;">Hubungi WhatsApp</a>
+    <div class="pt-space-lg space-y-space-xs flex flex-col mt-4">
+      @if($svc->blog_slug || $svc->demo_url)
+      <div class="flex items-center gap-space-xs">
+        @if($svc->blog_slug)
+          @php
+            $moreUrl = $svc->blog_slug;
+            $isExternal = str_starts_with($moreUrl, 'http://') || str_starts_with($moreUrl, 'https://');
+            if (!$isExternal && !str_starts_with($moreUrl, '#') && !str_starts_with($moreUrl, 'mailto:') && !str_starts_with($moreUrl, 'tel:')) {
+                $moreUrl = url($moreUrl);
+            }
+          @endphp
+          <a class="flex-1 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-800 hover:text-white text-center font-headline-sm text-[13px] font-semibold text-slate-800 transition-colors" href="{{ $moreUrl }}" @if($isExternal) target="_blank" rel="noopener" @endif>
+            Selengkapnya
+          </a>
+        @endif
+        @if($svc->demo_url)
+          <a class="px-4 py-2.5 rounded-lg text-center font-headline-sm text-[13px] font-semibold transition-colors border" style="background-color: {{ $svc->warna }}10; color: {{ $svc->warna }}; border-color: {{ $svc->warna }}30;" href="{{ $svc->demo_url }}" target="_blank" rel="noopener">
+            Demo
+          </a>
         @endif
       </div>
-
-      <!-- EMAIL CTA -->
-      <div class="cta-card email animate-on-scroll">
-        <div class="cta-card-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Kirim Penawaran via Email</h3>
-        <p>Ajukan dokumen Kerangka Acuan Kerja (KAK), spesifikasi teknis, atau permintaan penawaran harga resmi (RFP) langsung ke email kami.</p>
-        @if($kontak)
-        <a href="mailto:{{ $kontak->email }}" class="btn" style="background:#ffffff; color:#0072ff; border-radius:100px; margin-top:1.5rem; font-weight:700;">Kirim Email Resmi</a>
+      @endif
+      <a class="w-full block py-2.5 rounded-lg text-center font-body-sm text-[13px] font-semibold transition-colors border shadow-sm" style="background-color: {{ $svc->warna }}; color: white; border-color: {{ $svc->warna }};" href="{{ $svc->url }}" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp mr-1"></i> Hubungi Kami
+      </a>
+    </div>
+  </div>
+  @endforeach
+</div>
+</div>
+</section>
+<!-- 3. KENAPA PILIH KONFIGIN SECTION (LIGHT MODE) -->
+<section class="w-full py-space-4xl relative bg-slate-50/70 border-b border-slate-200" id="keunggulan">
+<div class="max-w-[1240px] mx-auto px-space-lg">
+<div class="text-center max-w-2xl mx-auto space-y-space-xs mb-space-3xl">
+<div class="inline-flex items-center gap-space-2xs px-3 py-1 rounded-full bg-sky-50 border border-sky-100">
+<span class="material-symbols-outlined text-sky-600 text-[16px]">verified_user</span>
+<span class="font-label-caps text-label-caps text-sky-700 font-semibold uppercase">KEUNGGULAN OPERASIONAL</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl font-bold text-slate-900">Kenapa Pilih Konfigin?</h2>
+<p class="font-body-lg text-body-lg text-slate-600">Komitmen penuh kami dalam memberikan keandalan teknologi terbaik untuk kesuksesan jangka panjang Anda.</p>
+</div>
+<!-- Keunggulan Dinamis Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+  @foreach($keunggulan as $k)
+  @php
+    $colorClass = 'sky';
+    if($loop->index % 3 == 1) $colorClass = 'cyan';
+    if($loop->index % 3 == 2) $colorClass = 'emerald';
+  @endphp
+  <div class="p-space-lg rounded-2xl bg-white border border-slate-200 hover:border-{{$colorClass}}-300 hover:shadow-md transition-all group space-y-space-xs shadow-sm flex flex-col items-start text-left">
+    <div class="w-12 h-12 rounded-xl bg-{{$colorClass}}-50 border border-{{$colorClass}}-100 flex items-center justify-center text-{{$colorClass}}-600 group-hover:scale-110 transition-transform mb-2">
+      <i class="{{ $k->icon }} text-[24px]"></i>
+    </div>
+    <h3 class="font-headline-sm text-headline-sm font-semibold text-slate-900">{{ $k->judul }}</h3>
+    <p class="font-body-sm text-body-sm text-slate-600 leading-relaxed">{{ $k->deskripsi }}</p>
+  </div>
+  @endforeach
+</div>
+</div>
+</section>
+<!-- 4. PAKET SOFTWARE UNTUK SEMUA SKALA BISNIS (LIGHT PRICING) -->
+<section class="w-full bg-white py-space-4xl relative border-b border-slate-200" id="paket-harga">
+<div class="max-w-[1240px] mx-auto px-space-lg">
+<div class="text-center max-w-3xl mx-auto space-y-space-xs mb-space-3xl">
+<div class="inline-flex items-center gap-space-2xs px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100">
+<span class="material-symbols-outlined text-emerald-600 text-[16px]">sell</span>
+<span class="font-label-caps text-label-caps text-emerald-700 font-semibold uppercase">TRANSPARANSI INVESTASI</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl font-bold text-slate-900">Paket Harga &amp; Solusi</h2>
+<p class="font-body-lg text-body-lg text-slate-600">Pilih model lisensi sekali putus yang proporsional dengan proyeksi pertumbuhan bisnis dan volume tim Anda.</p>
+</div>
+<!-- Pricing Dinamis Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg items-stretch">
+  @foreach($kurikulum as $pkg)
+  @php
+    $isPopular = !empty($pkg->badge) && strtolower($pkg->badge) === 'populer';
+    $waLink = $pkg->roadmap_url;
+    if (empty($waLink) || $waLink === '#') {
+        $waLink = isset($kontak) && $kontak ? 'https://wa.me/' . str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) . '?text=Halo%20Konfigin,%20saya%20tertarik%20dengan%20' . rawurlencode($pkg->nama_mapel) : '#';
+    }
+  @endphp
+  
+  @if($isPopular)
+  <!-- Popular Tier -->
+  <div class="rounded-2xl p-space-xl bg-gradient-to-b from-sky-600 to-sky-700 text-white flex flex-col justify-between shadow-xl relative transform lg:-translate-y-2 ring-4 ring-sky-200/70">
+    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-space-sm py-1 rounded-full bg-amber-400 text-slate-900 font-label-caps text-[11px] uppercase tracking-wider font-extrabold shadow-md">
+      {{ $pkg->badge }}
+    </div>
+    <div class="space-y-space-md">
+      <div>
+        <h3 class="font-headline-md text-headline-md font-bold text-white">{{ $pkg->nama_mapel }}</h3>
+      </div>
+      <div>
+        <div class="flex items-baseline gap-1 mt-2">
+          <span class="font-display-hero text-[34px] font-extrabold text-white leading-none">{{ $pkg->harga }}</span>
+        </div>
+        <span class="font-label-caps text-label-caps text-sky-200 uppercase mt-1 inline-block">/ Sekali Bayar</span>
+      </div>
+      <div class="space-y-space-xs pt-space-xs mt-4">
+        @if(!empty($pkg->fitur))
+          @foreach(explode("\n", str_replace("\r", "", $pkg->fitur)) as $feature)
+            @php
+              $feature = trim($feature);
+              if (empty($feature)) continue;
+              $isCrossed = str_starts_with($feature, '-');
+              $featureText = $isCrossed ? ltrim($feature, '- ') : $feature;
+            @endphp
+            <div class="flex items-start gap-space-2xs text-body-sm font-body-sm text-white font-medium {{ $isCrossed ? 'opacity-50 line-through' : '' }}">
+              <span class="material-symbols-outlined text-white text-[18px] shrink-0 mt-0.5">{{ $isCrossed ? 'cancel' : 'check_circle' }}</span>
+              <span>{{ $featureText }}</span>
+            </div>
+          @endforeach
         @endif
       </div>
     </div>
+    <div class="pt-space-xl mt-6">
+      <a class="w-full block py-3 rounded-xl bg-white text-sky-700 hover:bg-slate-50 text-center font-headline-sm text-[15px] font-extrabold shadow-md hover:shadow-lg transition-all" href="{{ $waLink }}" target="_blank" rel="noopener">
+        Pilih Paket
+      </a>
+    </div>
   </div>
+  @else
+  <!-- Standard Tier -->
+  <div class="rounded-2xl p-space-xl bg-white border border-slate-200 flex flex-col justify-between shadow-sm hover:shadow-md transition-all relative">
+    @if(!empty($pkg->badge))
+      <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-space-sm py-1 rounded-full bg-slate-200 text-slate-800 font-label-caps text-[11px] uppercase tracking-wider font-extrabold shadow-sm border border-slate-300">
+        {{ $pkg->badge }}
+      </div>
+    @endif
+    <div class="space-y-space-md">
+      <div>
+        <h3 class="font-headline-md text-headline-md font-bold text-slate-900 mt-2">{{ $pkg->nama_mapel }}</h3>
+      </div>
+      <div>
+        <div class="flex items-baseline gap-1 mt-2">
+          <span class="font-display-hero text-[34px] font-extrabold text-slate-900 leading-none">{{ $pkg->harga }}</span>
+        </div>
+        <span class="font-label-caps text-label-caps text-slate-500 uppercase mt-1 inline-block">/ Sekali Bayar</span>
+      </div>
+      <div class="space-y-space-xs pt-space-xs mt-4">
+        @if(!empty($pkg->fitur))
+          @foreach(explode("\n", str_replace("\r", "", $pkg->fitur)) as $feature)
+            @php
+              $feature = trim($feature);
+              if (empty($feature)) continue;
+              $isCrossed = str_starts_with($feature, '-');
+              $featureText = $isCrossed ? ltrim($feature, '- ') : $feature;
+            @endphp
+            <div class="flex items-start gap-space-2xs text-body-sm font-body-sm text-slate-700 {{ $isCrossed ? 'opacity-50 line-through' : '' }}">
+              <span class="material-symbols-outlined {{ $isCrossed ? 'text-slate-400' : 'text-emerald-600' }} text-[18px] shrink-0 mt-0.5">{{ $isCrossed ? 'cancel' : 'check_circle' }}</span>
+              <span>{{ $featureText }}</span>
+            </div>
+          @endforeach
+        @endif
+      </div>
+    </div>
+    <div class="pt-space-xl mt-6">
+      <a class="w-full block py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-center font-headline-sm text-[14px] font-bold text-slate-800 transition-colors border border-slate-200" href="{{ $waLink }}" target="_blank" rel="noopener">
+        Pilih Paket
+      </a>
+    </div>
+  </div>
+  @endif
+  
+  @endforeach
+</div>
+</div>
 </section>
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Stagger animations for trust-pills
-  document.querySelectorAll('.trust-pill').forEach((el,i)=>{
-    el.style.opacity='0';el.style.transform='translateY(10px)';
-    el.style.transition=`all .45s cubic-bezier(.4,0,.2,1) ${.7+i*.08}s`;
-    setTimeout(()=>{el.style.opacity='1';el.style.transform='translateY(0)'}, 50);
-  });
-});
-</script>
-@endpush
-
+<!-- 5. DUAL CTA SECTION -->
+<section id="kontak-konsultasi" class="w-full bg-slate-50 py-space-4xl relative border-b border-slate-200">
+<div class="max-w-[1240px] mx-auto px-space-lg">
+<div class="text-center max-w-3xl mx-auto space-y-space-xs mb-space-3xl">
+<div class="inline-flex items-center gap-space-2xs px-3 py-1 rounded-full bg-sky-50 border border-sky-100">
+<span class="material-symbols-outlined text-sky-600 text-[16px]">contact_support</span>
+<span class="font-label-caps text-label-caps text-sky-700 font-semibold uppercase">KONTAK KAMI</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl font-bold text-slate-900">Siap Punya Software Profesional?</h2>
+<p class="font-body-lg text-body-lg text-slate-600">Konsultasikan kebutuhan IT Solutions atau instalasi jaringan Anda secara gratis bersama tim ahli kami.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg items-stretch">
+<!-- WhatsApp Priority Card -->
+<div class="p-space-xl rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+<div class="space-y-space-sm">
+<div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px] text-white">chat</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-white">Konsultasi Kilat via WhatsApp</h3>
+<p class="font-body-md text-body-md text-emerald-50 leading-relaxed">
+              Hubungi tim technical consultant kami secara langsung untuk respon cepat seputar harga, penyesuaian modul fitur, dan survei teknis lokasi instalasi jaringan.
+            </p>
+</div>
+<div class="pt-space-xl mt-6">
+@if(isset($kontak) && $kontak)
+<a class="inline-flex items-center justify-center gap-space-xs w-full py-3.5 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 font-headline-sm text-[15px] font-bold shadow-md hover:shadow-lg transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>Hubungi WhatsApp ({{ $kontak->whatsapp }})</span>
+</a>
+@endif
+</div>
+</div>
+<!-- Official RFP / Email Card -->
+<div class="p-space-xl rounded-2xl bg-gradient-to-br from-sky-600 to-blue-700 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+<div class="space-y-space-sm">
+<div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px] text-white">mail</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-white">Kirim Penawaran via Email</h3>
+<p class="font-body-md text-body-md text-sky-50 leading-relaxed">
+              Ajukan dokumen Kerangka Acuan Kerja (KAK), spesifikasi teknis, atau permintaan penawaran harga resmi (RFP) langsung ke tim engineering kami.
+            </p>
+</div>
+<div class="pt-space-xl mt-6">
+@if(isset($kontak) && $kontak)
+<a class="inline-flex items-center justify-center gap-space-xs w-full py-3.5 rounded-xl bg-white hover:bg-sky-50 text-sky-800 font-headline-sm text-[15px] font-bold shadow-md hover:shadow-lg transition-all" href="mailto:{{ $kontak->email }}">
+<span class="material-symbols-outlined text-[20px]">drafts</span>
+<span>Kirim Email Resmi ({{ $kontak->email }})</span>
+</a>
+@endif
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
 @endsection
