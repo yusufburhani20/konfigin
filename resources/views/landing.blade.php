@@ -3,7 +3,7 @@
 @section('title', $site_name ?? 'Konfigin IT Solutions')
 
 @section('content')
-<main class="w-full pt-20">
+<main class="w-full">
 <div class="flex flex-col w-full overflow-hidden">
 <!-- 1. HERO SECTION (Dark Mode Preserved) -->
 <div class="relative w-full text-[#dfe2ef]">

@@ -269,7 +269,7 @@
     transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
 </style>
-</head><body class="bg-[#0a0e17] font-body-md text-body-md text-slate-800 antialiased">
+</head><body class="font-body-md text-body-md text-slate-800 antialiased">
 
 @if(session('admin_logged_in'))
   <!-- ===== TOP ADMIN BAR ===== -->
