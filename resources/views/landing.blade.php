@@ -43,7 +43,6 @@
 </a>
 </div>
 </div>
-</div>
 <!-- Hero Telemetry Console Card -->
 <div class="lg:col-span-5 relative w-full">
 <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary/30 via-primary/30 to-tertiary/30 blur-xl opacity-75"></div>
@@ -54,7 +53,6 @@
 <span class="w-3 h-3 rounded-full bg-error-container"></span>
 <span class="w-3 h-3 rounded-full bg-secondary-container"></span>
 <span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
-<span class="ml-2 font-code-telemetry text-code-telemetry text-slate-400 text-[11px]">telemetry.konfigin.cloud</span>
 </div>
 <span class="px-space-xs py-0.5 rounded bg-surface-container font-label-caps text-[10px] text-tertiary font-semibold uppercase">v2.4.1 Active</span>
 </div>
