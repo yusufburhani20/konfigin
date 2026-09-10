@@ -29,6 +29,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('admin.auth')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/deploy', [DashboardController::class, 'deploy'])->name('deploy');
 
         // Kurikulum
         Route::get('/kurikulum',              [KurikulumController::class, 'index'])->name('kurikulum.index');
