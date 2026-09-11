@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
 
                 $global_menus = \App\Models\Menu::active()->ordered()->get();
                 $view->with('global_menus', $global_menus);
+                
+                $global_kontak = \App\Models\Kontak::first();
+                $view->with('global_kontak', $global_kontak);
             } catch (\Exception $e) {
                 // Ignore if table doesn't exist yet
             }
