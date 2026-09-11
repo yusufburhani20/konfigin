@@ -35,7 +35,7 @@ class ClientController extends Controller
             'name'     => $request->name ?? '',
             'logo_url' => $logo_url,
             'url'      => $request->url ?? '#',
-            'urutan'   => $request->urutan ?? 0,
+            'urutan'   => $request->filled('urutan') ? (int)$request->urutan : 0,
             'aktif'    => $request->has('aktif') ? 1 : 0,
         ]);
 
@@ -54,7 +54,7 @@ class ClientController extends Controller
         $data = [
             'name'   => $request->name ?? '',
             'url'    => $request->url ?? '#',
-            'urutan' => $request->urutan ?? 0,
+            'urutan' => $request->filled('urutan') ? (int)$request->urutan : 0,
             'aktif'  => $request->has('aktif') ? 1 : 0,
         ];
 

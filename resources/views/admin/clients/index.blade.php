@@ -53,7 +53,7 @@
           <td>
             <div style="display:flex; gap:8px;">
               <button class="btn btn-sm" style="background:var(--warning); color:white; padding:6px 10px;" 
-                onclick="openFormModal({{ $item->id }}, '{{ addslashes($item->name) }}', '{{ addslashes($item->url) }}', {{ $item->urutan }}, {{ $item->aktif ? 'true' : 'false' }})">
+                onclick="openFormModal({{ $item->id }}, '{{ addslashes($item->name ?? '') }}', '{{ addslashes($item->url ?? '') }}', {{ $item->urutan }}, {{ $item->aktif ? 'true' : 'false' }})">
                 <i class="fas fa-edit"></i>
               </button>
               <form action="{{ route('admin.clients.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus klien ini?')">
@@ -85,7 +85,7 @@
       <h3 id="modalTitle">Tambah Klien</h3>
       <button class="modal-close" onclick="closeFormModal()">&times;</button>
     </div>
-    <form id="clientForm" action="{{ route('admin.clients.store') }}" method="POST" enctype="multipart/form-data">
+    <form id="clientForm" action="/admin/clients" method="POST" enctype="multipart/form-data">
       @csrf
       <input type="hidden" name="_method" id="formMethod" value="POST">
       
@@ -193,7 +193,7 @@ function openFormModal(id = null, name = '', url = '', urutan = 0, aktif = true)
     document.getElementById('logo').removeAttribute('required');
   } else {
     title.innerText = 'Tambah Klien';
-    form.action = `{{ route('admin.clients.store') }}`;
+    form.action = `/admin/clients`;
     methodInput.value = 'POST';
     
     form.reset();
