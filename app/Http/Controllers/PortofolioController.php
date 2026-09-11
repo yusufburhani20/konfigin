@@ -12,7 +12,7 @@ class PortofolioController extends Controller
     {
         $settings = Setting::allAsArray();
         
-        $galeri = Galeri::aktif()->latest()->get();
+        $galeri = Galeri::aktif()->get();
         
         return view('portofolio', [
             'galeri' => $galeri,

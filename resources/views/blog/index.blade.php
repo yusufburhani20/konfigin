@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('landing-layout')
 
 @section('title', $title)
 
