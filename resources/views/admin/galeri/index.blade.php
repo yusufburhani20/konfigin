@@ -47,8 +47,9 @@
             @endif
           </td>
           <td>
-            <div style="display:flex; gap:0.5rem">
-              <button class="btn btn-secondary btn-sm" onclick="editData({{ json_encode($row) }})" title="Edit">
+            <div style="display:flex; gap:8px;">
+              <button class="btn btn-sm" style="background:var(--warning); color:white; padding:6px 10px;" 
+                onclick="editFormModal({{ $row->id }}, '{{ addslashes($row->judul) }}', '{{ addslashes($row->deskripsi ?? '') }}', '{{ addslashes($row->instagram_url) }}', {{ $row->urutan }}, {{ $row->aktif ? 'true' : 'false' }})" title="Edit">
                 <i class="fas fa-edit"></i>
               </button>
               <form method="POST" action="{{ route('admin.galeri.destroy', $row->id) }}" onsubmit="return confirm('Yakin ingin menghapus foto ini? File foto tidak akan terhapus dari server.');" style="margin:0">
@@ -95,6 +96,11 @@
         </div>
         
         <div class="form-group">
+          <label class="form-label" for="deskripsi">Penjelasan / Deskripsi Proyek (Opsional)</label>
+          <textarea id="deskripsi" name="deskripsi" class="form-input" rows="4"></textarea>
+        </div>
+        
+        <div class="form-group">
           <label class="form-label" for="instagram_url">URL Post Instagram (Opsional)</label>
           <input type="text" id="instagram_url" name="instagram_url" class="form-input" value="#">
           <div class="form-help">Link lengap ke postingan IG-nya.</div>
@@ -129,6 +135,7 @@ function openFormModal() {
     document.getElementById('form-method').value = 'POST';
     
     document.getElementById('judul').value = '';
+    document.getElementById('deskripsi').value = '';
     document.getElementById('instagram_url').value = '#';
     document.getElementById('urutan').value = '0';
     document.getElementById('aktif').checked = true;
@@ -140,15 +147,16 @@ function openFormModal() {
     window.openModal('modal-form');
 }
 
-function editData(data) {
+function editFormModal(id, judul, deskripsi, instagram_url, urutan, aktif) {
     document.getElementById('modal-title').innerText = 'Edit Foto Galeri';
-    document.getElementById('form-data').action = '/admin/galeri/' + data.id;
+    document.getElementById('form-data').action = `/admin/galeri/${id}`;
     document.getElementById('form-method').value = 'PUT';
     
-    document.getElementById('judul').value = data.judul;
-    document.getElementById('instagram_url').value = data.instagram_url;
-    document.getElementById('urutan').value = data.urutan;
-    document.getElementById('aktif').checked = data.aktif ? true : false;
+    document.getElementById('judul').value = judul;
+    document.getElementById('deskripsi').value = deskripsi || '';
+    document.getElementById('instagram_url').value = instagram_url;
+    document.getElementById('urutan').value = urutan;
+    document.getElementById('aktif').checked = aktif ? true : false;
     
     document.getElementById('foto').required = false;
     document.getElementById('foto-req').style.display = 'none';

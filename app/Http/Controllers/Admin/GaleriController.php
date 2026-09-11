@@ -19,6 +19,7 @@ class GaleriController extends Controller
     {
         $request->validate([
             'judul'         => 'nullable|string|max:200',
+            'deskripsi'     => 'nullable|string',
             'instagram_url' => 'nullable|string|max:500',
             'urutan'        => 'nullable|integer',
             'foto'          => 'nullable|image|max:5120',
@@ -33,6 +34,7 @@ class GaleriController extends Controller
 
         Galeri::create([
             'judul'         => $request->judul ?? '',
+            'deskripsi'     => $request->deskripsi,
             'foto_url'      => $foto_url,
             'instagram_url' => $request->instagram_url ?? '#',
             'urutan'        => $request->urutan ?? 0,
@@ -46,6 +48,7 @@ class GaleriController extends Controller
     {
         $request->validate([
             'judul'         => 'nullable|string|max:200',
+            'deskripsi'     => 'nullable|string',
             'instagram_url' => 'nullable|string|max:500',
             'urutan'        => 'nullable|integer',
             'foto'          => 'nullable|image|max:5120',
@@ -53,6 +56,7 @@ class GaleriController extends Controller
 
         $data = [
             'judul'         => $request->judul ?? '',
+            'deskripsi'     => $request->deskripsi,
             'instagram_url' => $request->instagram_url ?? '#',
             'urutan'        => $request->urutan ?? 0,
             'aktif'         => $request->has('aktif') ? 1 : 0,

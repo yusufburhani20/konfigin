@@ -10,7 +10,7 @@ class Galeri extends Model
     protected $table = 'galeri';
     public $timestamps = false;
 
-    protected $fillable = ['judul', 'foto_url', 'instagram_url', 'urutan', 'aktif'];
+    protected $fillable = ['judul', 'deskripsi', 'foto_url', 'instagram_url', 'urutan', 'aktif'];
 
     protected $casts = ['aktif' => 'boolean'];
 
