@@ -3,20 +3,19 @@
 @section('title', 'Portofolio - ' . ($site_name ?? 'Konfigin IT Solutions'))
 
 @section('content')
-<main class="w-full pt-20">
+<main class="w-full">
   
   <!-- HERO PORTOFOLIO -->
-  <section class="w-full bg-slate-50 py-space-4xl relative border-b border-slate-200">
-    <div class="absolute inset-0 bg-gradient-to-b from-sky-50 to-white -z-10"></div>
-    <div class="max-w-[1240px] mx-auto px-space-lg text-center mt-12">
-      <div class="inline-flex items-center gap-space-2xs px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 mb-6">
-        <span class="material-symbols-outlined text-indigo-600 text-[16px]">gallery_thumbnail</span>
-        <span class="font-label-caps text-label-caps text-indigo-700 font-semibold uppercase">KARYA KAMI</span>
+  <section class="w-full relative text-[#dfe2ef] border-b border-slate-800/50" style="background-color: #0a0e17;">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-space-lg pt-32 sm:pt-36 lg:pt-32 pb-16 sm:pb-24 text-center">
+      <div class="inline-flex items-center gap-space-2xs px-3 py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md shadow-inner shadow-primary/10 mb-6">
+        <span class="material-symbols-outlined text-tertiary text-[16px]">gallery_thumbnail</span>
+        <span class="text-[11px] text-tertiary font-semibold uppercase tracking-wider">KARYA KAMI</span>
       </div>
-      <h1 class="font-display-hero text-[40px] md:text-[56px] font-extrabold tracking-tight text-slate-900 leading-tight">
+      <h1 class="font-display-hero text-[40px] md:text-[56px] font-extrabold tracking-tight text-white leading-tight">
         Portofolio & Project
       </h1>
-      <p class="font-body-lg text-body-lg text-slate-600 max-w-2xl mx-auto mt-4">
+      <p class="font-body-lg text-body-lg text-slate-200 max-w-2xl mx-auto mt-4">
         Eksplorasi berbagai implementasi sistem, pengembangan perangkat lunak, dan infrastruktur jaringan yang telah sukses kami selesaikan.
       </p>
     </div>
