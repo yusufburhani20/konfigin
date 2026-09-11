@@ -297,16 +297,20 @@
     
     <!-- Logo -->
     <a class="flex items-center gap-3 group" href="{{ route('home') }}">
-      <div class="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
-        <span class="material-symbols-outlined text-secondary text-[22px]">terminal</span>
-      </div>
-      <div class="flex flex-col leading-none">
-        <div class="flex items-center gap-1.5">
-          <span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">konfigin</span>
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+      @if(!empty($site_settings['site_logo']))
+        <img src="{{ asset($site_settings['site_logo']) }}" alt="{{ $site_name ?? 'Logo' }}" class="h-10 w-auto object-contain">
+      @else
+        <div class="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary text-[22px]">terminal</span>
         </div>
-        <span class="font-label-caps text-[10px] uppercase tracking-widest mt-0.5 logo-sub">IT SOLUTIONS</span>
-      </div>
+        <div class="flex flex-col leading-none">
+          <div class="flex items-center gap-1.5">
+            <span class="font-headline-sm text-headline-sm font-bold tracking-tight logo-text">{{ $site_name ?? 'konfigin' }}</span>
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          </div>
+          <span class="font-label-caps text-[10px] uppercase tracking-widest mt-0.5 logo-sub">IT SOLUTIONS</span>
+        </div>
+      @endif
     </a>
     
     <!-- Nav Links (Desktop) -->
@@ -458,7 +462,13 @@
 
 @yield('content')
 
-<footer class="w-full bg-blue-900 py-space-4xl text-sky-100 border-t border-blue-800 text-left"><div class="max-w-[1240px] mx-auto px-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl mb-space-3xl text-left"><div class="lg:col-span-4 space-y-space-md text-left"><div class="flex items-center gap-space-xs"><div class="w-10 h-10 rounded-lg bg-sky-600 flex items-center justify-center shadow-md shadow-sky-500/20"><span class="material-symbols-outlined text-white text-[24px]">terminal</span></div><div class="flex flex-col text-left"><span class="font-headline-sm text-headline-sm font-bold text-white tracking-tight">{{ $site_name ?? 'konfigin' }}</span><span class="font-label-caps text-label-caps text-sky-300 uppercase font-semibold">IT SOLUTIONS</span></div></div><p class="font-body-md text-body-md text-sky-200 leading-relaxed text-left">{{ $site_settings['site_tagline'] ?? 'Mitra transformasi teknologi digital, integrasi jaringan enterprise, dan perancangan perangkat lunak tersentralisasi tanpa dependensi berlebih.' }}</p></div><div class="lg:col-span-3 space-y-space-md text-left"><h3 class="font-headline-sm text-headline-sm text-white font-bold text-left">Layanan Inti</h3><ul class="space-y-space-xs text-left"><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">Aplikasi Sekolah &amp; Salira</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">HRIS Enterprise</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">IT Jaringan &amp; MikroTik Cloud</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">Custom Web &amp; SaaS Scalability</a></li></ul></div><div class="lg:col-span-2 space-y-space-md text-left"><h3 class="font-headline-sm text-headline-sm text-white font-bold text-left">Navigasi Cepat</h3><ul class="space-y-space-xs text-left"><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="beranda" href="#">Beranda</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="produk-dan-portofolio" href="#layanan-utama">Portofolio Sistem</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="keunggulan" href="#keunggulan">Keunggulan Operasional</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="paket-harga" href="#paket-harga">Paket Harga Fleksibel</a></li></ul></div><div class="lg:col-span-3 space-y-space-md text-left"><h3 class="font-headline-sm text-headline-sm text-white font-bold text-left">Hubungi Kami</h3>
+<footer class="w-full bg-blue-900 py-space-4xl text-sky-100 border-t border-blue-800 text-left"><div class="max-w-[1240px] mx-auto px-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl mb-space-3xl text-left"><div class="lg:col-span-4 space-y-space-md text-left"><div class="flex items-center gap-space-xs">
+@if(!empty($site_settings['site_logo']))
+<img src="{{ asset($site_settings['site_logo']) }}" alt="{{ $site_name ?? 'Logo' }}" class="h-10 w-auto object-contain">
+@else
+<div class="w-10 h-10 rounded-lg bg-sky-600 flex items-center justify-center shadow-md shadow-sky-500/20"><span class="material-symbols-outlined text-white text-[24px]">terminal</span></div><div class="flex flex-col text-left"><span class="font-headline-sm text-headline-sm font-bold text-white tracking-tight">{{ $site_name ?? 'konfigin' }}</span><span class="font-label-caps text-label-caps text-sky-300 uppercase font-semibold">IT SOLUTIONS</span></div>
+@endif
+</div><p class="font-body-md text-body-md text-sky-200 leading-relaxed text-left">{{ $site_settings['site_tagline'] ?? 'Mitra transformasi teknologi digital, integrasi jaringan enterprise, dan perancangan perangkat lunak tersentralisasi tanpa dependensi berlebih.' }}</p></div><div class="lg:col-span-3 space-y-space-md text-left"><h3 class="font-headline-sm text-headline-sm text-white font-bold text-left">Layanan Inti</h3><ul class="space-y-space-xs text-left"><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">Aplikasi Sekolah &amp; Salira</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">HRIS Enterprise</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">IT Jaringan &amp; MikroTik Cloud</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="layanan" href="#layanan-utama">Custom Web &amp; SaaS Scalability</a></li></ul></div><div class="lg:col-span-2 space-y-space-md text-left"><h3 class="font-headline-sm text-headline-sm text-white font-bold text-left">Navigasi Cepat</h3><ul class="space-y-space-xs text-left"><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="beranda" href="#">Beranda</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="produk-dan-portofolio" href="#layanan-utama">Portofolio Sistem</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="keunggulan" href="#keunggulan">Keunggulan Operasional</a></li><li class="font-body-md text-body-md text-sky-200 hover:text-sky-700 transition-colors text-left"><a data-path="paket-harga" href="#paket-harga">Paket Harga Fleksibel</a></li></ul></div><div class="lg:col-span-3 space-y-space-md text-left"><h3 class="font-headline-sm text-headline-sm text-white font-bold text-left">Hubungi Kami</h3>
 <div class="space-y-space-xs">
 @if(!empty($global_kontak))
   @if(!empty($global_kontak->whatsapp))
