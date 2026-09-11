@@ -79,119 +79,61 @@
 </div>
 
 <!-- Modal Form -->
-<div id="formModal" class="modal">
-  <div class="modal-content" style="max-width: 500px;">
+<div class="modal" id="modal-form">
+  <div class="modal-dialog">
     <div class="modal-header">
-      <h3 id="modalTitle">Tambah Klien</h3>
-      <button class="modal-close" onclick="closeFormModal()">&times;</button>
+      <h3 class="modal-title" id="modal-title">Tambah Klien</h3>
+      <button class="modal-close" onclick="closeModal('modal-form')"><i class="fas fa-times"></i></button>
     </div>
-    <form id="clientForm" action="/admin/clients" method="POST" enctype="multipart/form-data">
-      @csrf
-      <input type="hidden" name="_method" id="formMethod" value="POST">
-      
-      <div class="form-group">
-        <label class="form-label" for="name">Nama Klien / Perusahaan</label>
-        <input type="text" id="name" name="name" class="form-input">
-      </div>
-      
-      <div class="form-group">
-        <label class="form-label" for="url">URL Website (Opsional)</label>
-        <input type="text" id="url" name="url" class="form-input" placeholder="https://...">
-      </div>
+    <div class="modal-body">
+      <form id="form-data" action="/admin/clients" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="_method" id="form-method" value="POST">
+        
+        <div class="form-group">
+          <label class="form-label" for="name">Nama Klien / Perusahaan</label>
+          <input type="text" id="name" name="name" class="form-input">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="url">URL Website (Opsional)</label>
+          <input type="text" id="url" name="url" class="form-input" placeholder="https://...">
+        </div>
 
-      <div class="form-group">
-        <label class="form-label" for="logo">Logo</label>
-        <input type="file" id="logo" name="logo" class="form-input" accept="image/*">
-        <div class="form-help">Biarkan kosong jika tidak ingin mengubah logo saat edit.</div>
-      </div>
-      
-      <div class="form-group">
-        <label class="form-label" for="urutan">Urutan Tampil</label>
-        <input type="number" id="urutan" name="urutan" class="form-input" value="0">
-      </div>
-      
-      <div class="form-group" style="display:flex; align-items:center; gap:8px;">
-        <input type="checkbox" id="aktif" name="aktif" value="1" checked>
-        <label for="aktif" style="margin:0;">Tampilkan Klien</label>
-      </div>
+        <div class="form-group">
+          <label class="form-label" for="logo">Logo <span id="logo-req" style="color:red">*</span></label>
+          <input type="file" id="logo" name="logo" class="form-input" accept="image/*">
+          <div class="form-help"><span id="logo-help" style="display:none;color:var(--accent)">Biarkan kosong jika tidak ingin mengubah logo saat edit.</span></div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="urutan">Urutan Tampil</label>
+          <input type="number" id="urutan" name="urutan" class="form-input" value="0">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">
+            <input type="checkbox" id="aktif" name="aktif" value="1" checked> Aktif (Tampilkan)
+          </label>
+        </div>
 
-      <div style="margin-top: 1.5rem; display:flex; justify-content:flex-end; gap:10px;">
-        <button type="button" class="btn" style="background:#e2e8f0; color:#475569;" onclick="closeFormModal()">Batal</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-    </form>
+        <div style="margin-top:2rem; display:flex; justify-content:flex-end; gap:1rem">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-form')">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
-<style>
-/* Simple Modal CSS */
-.modal {
-  display: none;
-  position: fixed !important;
-  z-index: 9999 !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.7);
-  align-items: center;
-  justify-content: center;
-}
-.modal.show {
-  display: flex;
-}
-.modal-content {
-  background-color: #1e293b; /* Dark background to match dashboard */
-  color: #f1f5f9;
-  margin: auto;
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  border: 1px solid #334155;
-}
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 1rem;
-}
-.modal-header h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  color: #f8fafc;
-}
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #94a3b8;
-}
-.modal-close:hover {
-  color: #f1f5f9;
-}
-/* Force inputs to be dark in modal */
-.modal-content .form-input {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
-  border: 1px solid #334155 !important;
-}
-.modal-content .form-label {
-  color: #cbd5e1 !important;
-}
-</style>
+@endsection
 
+@push('scripts')
 <script>
 function openFormModal(id = null, name = '', url = '', urutan = 0, aktif = true) {
-  const modal = document.getElementById('formModal');
-  const form = document.getElementById('clientForm');
-  const methodInput = document.getElementById('formMethod');
-  const title = document.getElementById('modalTitle');
+  const methodInput = document.getElementById('form-method');
+  const form = document.getElementById('form-data');
+  const title = document.getElementById('modal-title');
   
   if(id) {
     title.innerText = 'Edit Klien';
@@ -203,8 +145,9 @@ function openFormModal(id = null, name = '', url = '', urutan = 0, aktif = true)
     document.getElementById('urutan').value = urutan;
     document.getElementById('aktif').checked = aktif;
     
-    // Logo is not required on edit
     document.getElementById('logo').removeAttribute('required');
+    document.getElementById('logo-req').style.display = 'none';
+    document.getElementById('logo-help').style.display = 'inline';
   } else {
     title.innerText = 'Tambah Klien';
     form.action = `/admin/clients`;
@@ -214,16 +157,12 @@ function openFormModal(id = null, name = '', url = '', urutan = 0, aktif = true)
     document.getElementById('urutan').value = 0;
     document.getElementById('aktif').checked = true;
     
-    // Logo is required on create
     document.getElementById('logo').setAttribute('required', 'required');
+    document.getElementById('logo-req').style.display = 'inline';
+    document.getElementById('logo-help').style.display = 'none';
   }
   
-  modal.classList.add('show');
-}
-
-function closeFormModal() {
-  const modal = document.getElementById('formModal');
-  modal.classList.remove('show');
+  window.openModal('modal-form');
 }
 </script>
-@endsection
+@endpush
