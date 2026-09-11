@@ -127,15 +127,18 @@
   background: #64748b; 
 }
 </style>
-<script>
-    const galeriData = @json($galeri->map(function($item) { 
+@php
+    $galeriArray = $galeri->map(function($item) { 
         return [
             'judul' => $item->judul,
             'deskripsi' => $item->deskripsi ?? 'Tidak ada deskripsi tambahan untuk proyek ini.',
             'foto_url' => asset($item->foto_url),
             'instagram_url' => $item->instagram_url
         ];
-    }));
+    })->toArray();
+@endphp
+<script>
+    const galeriData = @json($galeriArray);
     
     let currentIndex = 0;
     const lightbox = document.getElementById('lightbox');
