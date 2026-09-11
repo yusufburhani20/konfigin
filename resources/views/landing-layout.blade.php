@@ -334,54 +334,113 @@
 
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 bg-[#0a0e17]/97 backdrop-blur-xl z-40 hidden flex-col pt-24 px-6 pb-6 transform transition-transform translate-x-full duration-300">
-  <button id="close-menu-btn" class="absolute top-6 right-6 p-2 text-white hover:bg-white/10 rounded-lg">
-    <span class="material-symbols-outlined">close</span>
-  </button>
-  <nav class="flex flex-col gap-6 text-center mt-8">
-    <a href="#" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Beranda</a>
-    <a href="#layanan-utama" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Layanan</a>
-    <a href="#layanan-utama" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Produk &amp; Portofolio</a>
-    <a href="#keunggulan" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Keunggulan</a>
-    <a href="#paket-harga" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Paket Harga</a>
-    <a href="#kontak-konsultasi" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Kontak</a>
-    <a href="{{ route('portofolio.index') }}" class="mobile-link text-xl font-semibold text-white hover:text-sky-400 transition-colors">Galeri</a>
-  </nav>
-  <div class="mt-auto pt-8">
-    <a href="#kontak-konsultasi" class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[16px] font-bold shadow-lg">
-      <span>Konsultasi Gratis</span>
-      <span class="material-symbols-outlined">arrow_forward</span>
-    </a>
+<div id="mobile-menu" class="fixed inset-0 bg-[#0a0e17]/95 backdrop-blur-xl z-40 hidden flex-col pt-24 pb-8 transform transition-all duration-300 ease-in-out opacity-0 translate-x-8">
+  <div class="flex flex-col h-full overflow-y-auto px-6 pb-6">
+    <nav class="flex flex-col gap-2 mt-4">
+      <a href="#" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white transition-all shadow-sm">
+        <span class="material-symbols-outlined text-sky-400 text-[22px]">home</span>
+        <span class="text-[17px] font-semibold">Beranda</span>
+      </a>
+      <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">miscellaneous_services</span>
+        <span class="text-[17px] font-medium">Layanan Inti</span>
+      </a>
+      <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">inventory_2</span>
+        <span class="text-[17px] font-medium">Produk &amp; Portofolio</span>
+      </a>
+      <a href="#keunggulan" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">emoji_events</span>
+        <span class="text-[17px] font-medium">Keunggulan Operasional</span>
+      </a>
+      <a href="#paket-harga" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">payments</span>
+        <span class="text-[17px] font-medium">Paket Harga</span>
+      </a>
+      <a href="#kontak-konsultasi" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">support_agent</span>
+        <span class="text-[17px] font-medium">Kontak &amp; Bantuan</span>
+      </a>
+      <div class="h-px bg-slate-800/60 my-2"></div>
+      <a href="{{ route('portofolio.index') }}" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">photo_library</span>
+        <span class="text-[17px] font-medium">Galeri Sistem</span>
+      </a>
+    </nav>
+    
+    <div class="mt-auto pt-8 flex flex-col gap-6">
+      <!-- Footer Info -->
+      <div class="flex items-center justify-center gap-8">
+        <a href="https://wa.me/6281288009910" class="flex flex-col items-center gap-1.5 text-slate-400 hover:text-emerald-400 transition-colors">
+          <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center shadow-inner shadow-black/20"><span class="material-symbols-outlined text-[20px]">chat</span></div>
+          <span class="text-[10px] font-semibold uppercase tracking-wider">WhatsApp</span>
+        </a>
+        <a href="mailto:halo@konfigin.com" class="flex flex-col items-center gap-1.5 text-slate-400 hover:text-sky-400 transition-colors">
+          <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center shadow-inner shadow-black/20"><span class="material-symbols-outlined text-[20px]">mail</span></div>
+          <span class="text-[10px] font-semibold uppercase tracking-wider">Email</span>
+        </a>
+      </div>
+
+      <!-- Thumb-friendly Close Button -->
+      <button id="close-menu-thumb-btn" class="mx-auto w-14 h-14 flex items-center justify-center rounded-full bg-slate-700/80 text-white border border-slate-600 hover:bg-slate-600 hover:scale-105 active:scale-95 transition-all shadow-lg backdrop-blur-md">
+        <span class="material-symbols-outlined text-[28px]">close</span>
+      </button>
+
+      <!-- Sticky CTA Button -->
+      <a href="#kontak-konsultasi" class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-headline-sm text-[16px] font-bold shadow-lg shadow-sky-500/20 active:scale-[0.98] transition-all sticky bottom-0">
+        <span>Konsultasi Gratis</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const closeMenuThumbBtn = document.getElementById('close-menu-thumb-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
+  let menuIcon = null;
+
+  if (mobileMenuBtn) {
+    menuIcon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+  }
+
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    if (isMenuOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
 
   function openMenu() {
+    isMenuOpen = true;
     mobileMenu.classList.remove('hidden');
     // slight delay to allow display block to apply before transform
     setTimeout(() => {
-      mobileMenu.classList.remove('translate-x-full');
-      mobileMenu.classList.add('translate-x-0');
+      mobileMenu.classList.remove('opacity-0', 'translate-x-8');
+      mobileMenu.classList.add('opacity-100', 'translate-x-0');
     }, 10);
     document.body.style.overflow = 'hidden';
+    if(menuIcon) menuIcon.textContent = 'close';
   }
 
   function closeMenu() {
-    mobileMenu.classList.remove('translate-x-0');
-    mobileMenu.classList.add('translate-x-full');
+    isMenuOpen = false;
+    mobileMenu.classList.remove('opacity-100', 'translate-x-0');
+    mobileMenu.classList.add('opacity-0', 'translate-x-8');
     setTimeout(() => {
       mobileMenu.classList.add('hidden');
     }, 300);
     document.body.style.overflow = '';
+    if(menuIcon) menuIcon.textContent = 'menu';
   }
 
-  if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
-  if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+  if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+  if(closeMenuThumbBtn) closeMenuThumbBtn.addEventListener('click', closeMenu);
   mobileLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
