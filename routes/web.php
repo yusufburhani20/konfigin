@@ -64,6 +64,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/settings',  [SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings',  [SettingsController::class, 'update'])->name('settings.update');
 
+        // Clients & Partners
+        Route::resource('clients', \App\Http\Controllers\Admin\ClientController::class)->except(['show']);
+
         // Menus
         Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class)->except(['show']);
 

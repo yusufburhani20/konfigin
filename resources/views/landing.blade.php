@@ -372,6 +372,75 @@
 </div>
 </section>
 
+<!-- OUR CLIENTS SECTION -->
+<section class="w-full bg-white py-space-3xl relative border-b border-slate-200 overflow-hidden" id="our-clients">
+  <div class="max-w-[1240px] mx-auto px-space-lg mb-space-lg text-center">
+    <div class="inline-flex items-center gap-space-2xs px-3 py-1 rounded-full bg-slate-50 border border-slate-200">
+      <span class="material-symbols-outlined text-slate-500 text-[16px]">handshake</span>
+      <span class="font-label-caps text-label-caps text-slate-600 font-semibold uppercase">KLIEN & PARTNER</span>
+    </div>
+    <h2 class="font-headline-lg text-headline-lg font-bold text-slate-900 mt-3">Dipercaya Oleh</h2>
+  </div>
+  
+  @if(isset($clients) && $clients->count() > 0)
+    <div class="client-marquee-container relative w-full overflow-hidden flex items-center">
+      <div class="client-marquee flex items-center gap-16 whitespace-nowrap">
+        @foreach($clients as $client)
+          <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+            @if(!empty($client->url) && $client->url !== '#')
+              <a href="{{ $client->url }}" target="_blank" rel="noopener">
+                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]" title="{{ $client->name }}">
+              </a>
+            @else
+              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]" title="{{ $client->name }}">
+            @endif
+          </div>
+        @endforeach
+        <!-- Duplicate for infinite scroll -->
+        @foreach($clients as $client)
+          <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true">
+            @if(!empty($client->url) && $client->url !== '#')
+              <a href="{{ $client->url }}" target="_blank" rel="noopener" tabindex="-1">
+                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]">
+              </a>
+            @else
+              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]">
+            @endif
+          </div>
+        @endforeach
+      </div>
+    </div>
+  @else
+    <p class="text-center text-slate-500 font-body-md py-8">Belum ada klien yang ditampilkan.</p>
+  @endif
+</section>
+
+@push('scripts')
+<style>
+.client-marquee-container {
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 1.5rem 0;
+}
+.client-marquee {
+  display: flex;
+  width: fit-content;
+  animation: marquee 25s linear infinite;
+  padding-left: 4rem; /* Initial offset so it doesn't jump */
+}
+.client-marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 2rem)); } /* -50% of the total width which includes the duplicated set, minus half the gap */
+}
+</style>
+@endpush
+
 <!-- 5. DUAL CTA SECTION -->
 <section id="kontak-konsultasi" class="w-full bg-slate-50 py-space-4xl relative border-b border-slate-200">
 <div class="max-w-[1240px] mx-auto px-space-lg">

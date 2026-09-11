@@ -25,6 +25,7 @@ class HomeController extends Controller
             'eservice'      => Eservice::aktif()->get(),
             'keunggulan'    => Keunggulan::aktif()->get(),
             'kontak'        => Kontak::query()->first(),
+            'clients'       => \App\Models\Client::aktif()->orderBy('urutan')->get(),
         ]);
     }
 }

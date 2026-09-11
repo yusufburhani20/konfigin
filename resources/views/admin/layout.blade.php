@@ -56,6 +56,9 @@
       <a href="{{ route('admin.keunggulan.index') }}" class="sidebar-link {{ request()->routeIs('admin.keunggulan.*') ? 'active' : '' }}" id="nav-keunggulan">
         <i class="fas fa-star"></i> Keunggulan
       </a>
+      <a href="{{ route('admin.clients.index') }}" class="sidebar-link {{ request()->routeIs('admin.clients.*') ? 'active' : '' }}" id="nav-clients">
+        <i class="fas fa-handshake"></i> Klien &amp; Partner
+      </a>
       <a href="{{ route('admin.kontak.edit') }}" class="sidebar-link {{ request()->routeIs('admin.kontak.*') ? 'active' : '' }}" id="nav-kontak">
         <i class="fas fa-phone-alt"></i> Kontak
       </a>
