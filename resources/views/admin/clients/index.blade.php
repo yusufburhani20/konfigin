@@ -79,8 +79,8 @@
 </div>
 
 <!-- Modal Form -->
-<div class="modal" id="modal-form">
-  <div class="modal-dialog">
+<div class="modal-overlay" id="modal-form">
+  <div class="modal">
     <div class="modal-header">
       <h3 class="modal-title" id="modal-title">Tambah Klien</h3>
       <button class="modal-close" onclick="closeModal('modal-form')"><i class="fas fa-times"></i></button>
