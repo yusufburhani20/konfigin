@@ -38,9 +38,6 @@
               @if($item->deskripsi)
               <p class="font-body-md text-slate-600 mt-3 leading-relaxed flex-1">{{ $item->deskripsi }}</p>
               @endif
-              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-sm font-semibold text-slate-400">{{ $item->created_at->format('M Y') }}</span>
-              </div>
             </div>
           </div>
           @endforeach
