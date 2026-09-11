@@ -64,6 +64,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/settings',  [SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings',  [SettingsController::class, 'update'])->name('settings.update');
 
+        // Menus
+        Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class)->except(['show']);
+
         // Users
         Route::get('/users',                 [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
         Route::post('/users',                [App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');

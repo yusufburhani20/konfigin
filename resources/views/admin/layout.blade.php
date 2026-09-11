@@ -41,6 +41,9 @@
       <a href="{{ route('admin.settings.index') }}" class="sidebar-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" id="nav-settings">
         <i class="fas fa-cog"></i> Pengaturan Umum
       </a>
+      <a href="{{ route('admin.menus.index') }}" class="sidebar-link {{ request()->routeIs('admin.menus.*') ? 'active' : '' }}" id="nav-menus">
+        <i class="fas fa-bars"></i> Menu Navigasi
+      </a>
       <a href="{{ route('admin.kurikulum.index') }}" class="sidebar-link {{ request()->routeIs('admin.kurikulum.*') ? 'active' : '' }}" id="nav-kurikulum">
         <i class="fas fa-box-open"></i> Produk Aplikasi
       </a>

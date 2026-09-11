@@ -25,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('site_settings', $settings);
                 $view->with('site_name', $settings['site_name'] ?? 'Konfigin IT Solutions');
                 $view->with('site_logo', $settings['site_logo'] ?? null);
+
+                $global_menus = \App\Models\Menu::active()->ordered()->get();
+                $view->with('global_menus', $global_menus);
             } catch (\Exception $e) {
                 // Ignore if table doesn't exist yet
             }

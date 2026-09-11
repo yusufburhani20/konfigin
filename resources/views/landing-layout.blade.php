@@ -309,11 +309,18 @@
     
     <!-- Nav Links (Desktop) -->
     <nav class="hidden lg:flex items-center gap-space-md">
-      <a class="px-3 py-1 nav-link nav-active font-semibold" data-path="beranda" href="{{ route('home') }}">Home</a>
-      <a class="px-3 py-1 nav-link" data-path="layanan" href="#layanan-utama">Layanan</a>
-      <a class="px-3 py-1 nav-link" data-path="produk" href="#layanan-utama">Produk</a>
-      <a class="px-3 py-1 nav-link" data-path="keunggulan" href="#keunggulan">Blog</a>
-      <a class="px-3 py-1 nav-link" data-path="kontak" href="#kontak-konsultasi">Kontak</a>
+      @if(isset($global_menus) && $global_menus->count() > 0)
+        @foreach($global_menus as $menu)
+          <a class="px-3 py-1 nav-link {{ request()->is(ltrim(parse_url($menu->url, PHP_URL_PATH), '/')) ? 'nav-active font-semibold' : '' }}" href="{{ $menu->url }}">{{ $menu->name }}</a>
+        @endforeach
+      @else
+        <!-- Fallback if no menus in DB yet -->
+        <a class="px-3 py-1 nav-link nav-active font-semibold" data-path="beranda" href="{{ route('home') }}">Home</a>
+        <a class="px-3 py-1 nav-link" data-path="layanan" href="#layanan-utama">Layanan</a>
+        <a class="px-3 py-1 nav-link" data-path="produk" href="#layanan-utama">Produk</a>
+        <a class="px-3 py-1 nav-link" data-path="keunggulan" href="{{ route('blog.index') }}">Blog</a>
+        <a class="px-3 py-1 nav-link" data-path="portofolio" href="{{ route('portofolio.index') }}">Portofolio</a>
+      @endif
     </nav>
     
     <!-- Right Actions -->
@@ -337,31 +344,36 @@
 <div id="mobile-menu" class="fixed inset-0 bg-[#0a0e17]/95 backdrop-blur-xl z-40 hidden flex-col pt-24 pb-8 transform transition-all duration-300 ease-in-out opacity-0 translate-x-8">
   <div class="flex flex-col h-full overflow-y-auto px-6 pb-6">
     <nav class="flex flex-col gap-2 mt-4">
-      <a href="{{ route('home') }}" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white transition-all shadow-sm">
-        <span class="material-symbols-outlined text-sky-400 text-[22px]">home</span>
-        <span class="text-[17px] font-semibold">Home</span>
-      </a>
-      <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">layers</span>
-        <span class="text-[17px] font-medium">Layanan</span>
-      </a>
-      <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">inventory_2</span>
-        <span class="text-[17px] font-medium">Produk</span>
-      </a>
-      <a href="#keunggulan" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">article</span>
-        <span class="text-[17px] font-medium">Blog</span>
-      </a>
-      <a href="#kontak-konsultasi" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">support_agent</span>
-        <span class="text-[17px] font-medium">Kontak</span>
-      </a>
-      <div class="h-px bg-slate-800/60 my-2"></div>
-      <a href="{{ route('portofolio.index') }}" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">photo_library</span>
-        <span class="text-[17px] font-medium">Portofolio</span>
-      </a>
+      @if(isset($global_menus) && $global_menus->count() > 0)
+        @foreach($global_menus as $menu)
+          <a href="{{ $menu->url }}" class="mobile-link {{ request()->is(ltrim(parse_url($menu->url, PHP_URL_PATH), '/')) ? 'active' : '' }} flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
+            <span class="material-symbols-outlined text-slate-400">{{ $menu->icon ?? 'link' }}</span>
+            <span class="text-[17px] font-semibold">{{ $menu->name }}</span>
+          </a>
+        @endforeach
+      @else
+        <!-- Fallback if no menus -->
+        <a href="{{ route('home') }}" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors active">
+          <span class="material-symbols-outlined text-slate-400">home</span>
+          <span class="text-[17px] font-semibold">Home</span>
+        </a>
+        <a href="#layanan-utama" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
+          <span class="material-symbols-outlined text-slate-400">apps</span>
+          <span class="text-[17px] font-semibold">Layanan</span>
+        </a>
+        <a href="#layanan-utama" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
+          <span class="material-symbols-outlined text-slate-400">inventory_2</span>
+          <span class="text-[17px] font-semibold">Produk</span>
+        </a>
+        <a href="{{ route('blog.index') }}" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
+          <span class="material-symbols-outlined text-slate-400">book</span>
+          <span class="text-[17px] font-semibold">Blog</span>
+        </a>
+        <a href="{{ route('portofolio.index') }}" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
+          <span class="material-symbols-outlined text-slate-400">photo_library</span>
+          <span class="text-[17px] font-semibold">Portofolio</span>
+        </a>
+      @endif
     </nav>
     
     <div class="mt-auto pt-8 flex flex-col gap-6">
