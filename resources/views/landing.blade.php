@@ -386,21 +386,25 @@
     <div class="client-marquee-container relative w-full overflow-hidden flex items-center">
       <div class="{{ $clients->count() > 6 ? 'client-marquee' : 'flex justify-center w-full' }} items-center gap-16 whitespace-nowrap">
         @foreach($clients as $client)
-          <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+          <div class="group relative client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300" style="padding-bottom: 2rem;">
             @if(!empty($client->url) && $client->url !== '#')
               <a href="{{ $client->url }}" target="_blank" rel="noopener">
-                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]" title="{{ $client->name }}">
+                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]">
               </a>
             @else
-              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]" title="{{ $client->name }}">
+              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]">
             @endif
+            
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-3 rounded shadow-md pointer-events-none whitespace-nowrap z-10">
+              {{ $client->name }}
+            </div>
           </div>
         @endforeach
         
         @if($clients->count() > 6)
         <!-- Duplicate for infinite scroll -->
         @foreach($clients as $client)
-          <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true">
+          <div class="group relative client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" style="padding-bottom: 2rem;">
             @if(!empty($client->url) && $client->url !== '#')
               <a href="{{ $client->url }}" target="_blank" rel="noopener" tabindex="-1">
                 <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]">
@@ -408,6 +412,10 @@
             @else
               <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]">
             @endif
+            
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-3 rounded shadow-md pointer-events-none whitespace-nowrap z-10">
+              {{ $client->name }}
+            </div>
           </div>
         @endforeach
         @endif
