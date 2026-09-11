@@ -389,10 +389,10 @@
           <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
             @if(!empty($client->url) && $client->url !== '#')
               <a href="{{ $client->url }}" target="_blank" rel="noopener">
-                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]" title="{{ $client->name }}">
+                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]" title="{{ $client->name }}">
               </a>
             @else
-              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]" title="{{ $client->name }}">
+              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]" title="{{ $client->name }}">
             @endif
           </div>
         @endforeach
@@ -403,10 +403,10 @@
           <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true">
             @if(!empty($client->url) && $client->url !== '#')
               <a href="{{ $client->url }}" target="_blank" rel="noopener" tabindex="-1">
-                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]">
+                <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]">
               </a>
             @else
-              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain max-w-[150px]">
+              <img src="{{ asset($client->logo_url) }}" alt="{{ $client->name }}" class="h-24 w-auto object-contain max-w-[200px]">
             @endif
           </div>
         @endforeach
