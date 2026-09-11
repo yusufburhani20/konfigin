@@ -294,7 +294,7 @@
   <div class="h-20 max-w-[1240px] mx-auto px-space-lg flex items-center justify-between">
     
     <!-- Logo -->
-    <a class="flex items-center gap-3 group" href="#">
+    <a class="flex items-center gap-3 group" href="{{ route('home') }}">
       <div class="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
         <span class="material-symbols-outlined text-secondary text-[22px]">terminal</span>
       </div>
@@ -309,7 +309,7 @@
     
     <!-- Nav Links (Desktop) -->
     <nav class="hidden lg:flex items-center gap-space-md">
-      <a class="px-3 py-1 nav-link nav-active font-semibold" data-path="beranda" href="#">Home</a>
+      <a class="px-3 py-1 nav-link nav-active font-semibold" data-path="beranda" href="{{ route('home') }}">Home</a>
       <a class="px-3 py-1 nav-link" data-path="layanan" href="#layanan-utama">Layanan</a>
       <a class="px-3 py-1 nav-link" data-path="produk" href="#layanan-utama">Produk</a>
       <a class="px-3 py-1 nav-link" data-path="keunggulan" href="#keunggulan">Blog</a>
@@ -337,7 +337,7 @@
 <div id="mobile-menu" class="fixed inset-0 bg-[#0a0e17]/95 backdrop-blur-xl z-40 hidden flex-col pt-24 pb-8 transform transition-all duration-300 ease-in-out opacity-0 translate-x-8">
   <div class="flex flex-col h-full overflow-y-auto px-6 pb-6">
     <nav class="flex flex-col gap-2 mt-4">
-      <a href="#" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white transition-all shadow-sm">
+      <a href="{{ route('home') }}" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white transition-all shadow-sm">
         <span class="material-symbols-outlined text-sky-400 text-[22px]">home</span>
         <span class="text-[17px] font-semibold">Home</span>
       </a>
