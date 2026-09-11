@@ -23,10 +23,10 @@
 <span class="text-[10px] sm:text-[11px] text-tertiary uppercase tracking-wider font-semibold">PREMIUM IT SOLUTIONS &amp; CUSTOM SOFTWARE</span>
 </div>
 <h1 class="text-[32px] sm:text-[40px] lg:text-[56px] font-extrabold tracking-tight text-white leading-tight">
-            Infrastruktur Jaringan Sekolah, Perkantoran &amp; <span class="text-primary">Aplikasi Custom</span>
+            {!! $hero_title !!}
 </h1>
 <p class="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">
-            Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus â€” kepemilikan penuh selamanya tanpa biaya langganan bulanan.
+            {{ $hero_subtitle }}
           </p>
 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4 w-full sm:w-auto">
 @if(isset($kontak) && $kontak)

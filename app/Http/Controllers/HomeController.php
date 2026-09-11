@@ -16,6 +16,8 @@ class HomeController extends Controller
         $settings = Setting::allAsArray();
 
         return view('landing', [
+            'hero_title'    => $settings['hero_title']    ?? 'Infrastruktur Jaringan Sekolah, Perkantoran & <span class="text-primary">Aplikasi Custom</span>',
+            'hero_subtitle' => $settings['hero_subtitle'] ?? 'Konfigin IT Solutions menghadirkan aplikasi kustom premium dan instalasi jaringan handal berlisensi sekali putus — kepemilikan penuh selamanya tanpa biaya langganan bulanan.',
             'site_name'     => $settings['site_name']     ?? 'Konfigin IT Solutions',
             'site_logo'     => $settings['site_logo']     ?? null,
             'kurikulum'     => Kurikulum::aktif()->get(),

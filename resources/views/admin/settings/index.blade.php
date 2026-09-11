@@ -53,6 +53,23 @@
           </div>
         </div>
 
+        <!-- Section Hero & Profil -->
+        <div class="settings-section" style="grid-column: span 2;">
+          <h3 class="section-title-small"><i class="fas fa-home"></i> Pengaturan Teks Beranda (Hero)</h3>
+
+          <div class="form-group">
+            <label class="form-label" for="hero_title">Judul Utama (Hero Title)</label>
+            <input type="text" id="hero_title" name="hero_title" class="form-input" value="{{ old('hero_title', $settings['hero_title'] ?? '') }}">
+            <div class="form-help">Teks besar yang muncul pertama kali di beranda. Anda bisa menggunakan tag HTML <code>&lt;span class="text-primary"&gt;teks&lt;/span&gt;</code> untuk mewarnai bagian tertentu.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hero_subtitle">Sub Judul (Hero Subtitle)</label>
+            <textarea id="hero_subtitle" name="hero_subtitle" class="form-input" rows="3">{{ old('hero_subtitle', $settings['hero_subtitle'] ?? '') }}</textarea>
+            <div class="form-help">Teks deskripsi di bawah judul utama beranda.</div>
+          </div>
+        </div>
+
       </div>
 
       <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border)">
