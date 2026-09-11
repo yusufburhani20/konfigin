@@ -127,14 +127,14 @@
 /* Simple Modal CSS */
 .modal {
   display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed !important;
+  z-index: 9999 !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
   overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   align-items: center;
   justify-content: center;
 }
@@ -142,33 +142,47 @@
   display: flex;
 }
 .modal-content {
-  background-color: #fff;
+  background-color: #1e293b; /* Dark background to match dashboard */
+  color: #f1f5f9;
   margin: auto;
   padding: 1.5rem;
   border-radius: 8px;
   width: 90%;
   max-width: 500px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  border: 1px solid #334155;
 }
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #334155;
   padding-bottom: 1rem;
 }
 .modal-header h3 {
   margin: 0;
   font-size: 1.25rem;
-  color: #1e293b;
+  color: #f8fafc;
 }
 .modal-close {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #64748b;
+  color: #94a3b8;
+}
+.modal-close:hover {
+  color: #f1f5f9;
+}
+/* Force inputs to be dark in modal */
+.modal-content .form-input {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+}
+.modal-content .form-label {
+  color: #cbd5e1 !important;
 }
 </style>
 

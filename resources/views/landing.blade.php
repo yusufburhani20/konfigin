@@ -384,7 +384,7 @@
   
   @if(isset($clients) && $clients->count() > 0)
     <div class="client-marquee-container relative w-full overflow-hidden flex items-center">
-      <div class="client-marquee flex items-center gap-16 whitespace-nowrap">
+      <div class="{{ $clients->count() > 4 ? 'client-marquee' : 'flex justify-center w-full' }} items-center gap-16 whitespace-nowrap">
         @foreach($clients as $client)
           <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
             @if(!empty($client->url) && $client->url !== '#')
@@ -396,6 +396,8 @@
             @endif
           </div>
         @endforeach
+        
+        @if($clients->count() > 4)
         <!-- Duplicate for infinite scroll -->
         @foreach($clients as $client)
           <div class="client-logo-wrapper inline-flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true">
@@ -408,6 +410,7 @@
             @endif
           </div>
         @endforeach
+        @endif
       </div>
     </div>
   @else
