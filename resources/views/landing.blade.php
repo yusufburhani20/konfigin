@@ -353,7 +353,7 @@
   @foreach($galeri->take(6) as $item)
   <div class="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all border border-slate-200">
     <div class="aspect-video w-full overflow-hidden bg-slate-100">
-      <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <img src="{{ asset($item->foto_url) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
     </div>
     <div class="p-space-md">
       <h3 class="font-headline-sm text-headline-sm font-bold text-slate-900">{{ $item->judul }}</h3>

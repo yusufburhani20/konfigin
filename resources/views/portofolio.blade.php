@@ -95,7 +95,7 @@
                   <div id="lb-desc" class="font-body-md text-slate-300 leading-relaxed whitespace-pre-wrap flex-1 text-sm md:text-base"></div>
                   <div class="mt-8 pt-6 border-t border-slate-700">
                       <a id="lb-link" href="#" target="_blank" class="inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold transition-colors">
-                          <span class="material-symbols-outlined text-[20px]">open_in_new</span> Kunjungi Instagram
+                          <span class="material-symbols-outlined text-[20px]">open_in_new</span> Selengkapnya
                       </a>
                   </div>
               </div>
