@@ -342,7 +342,7 @@
         <span class="text-[17px] font-semibold">Home</span>
       </a>
       <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">miscellaneous_services</span>
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">layers</span>
         <span class="text-[17px] font-medium">Layanan</span>
       </a>
       <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
