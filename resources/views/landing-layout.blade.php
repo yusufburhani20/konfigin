@@ -339,32 +339,28 @@
     <nav class="flex flex-col gap-2 mt-4">
       <a href="#" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white transition-all shadow-sm">
         <span class="material-symbols-outlined text-sky-400 text-[22px]">home</span>
-        <span class="text-[17px] font-semibold">Beranda</span>
+        <span class="text-[17px] font-semibold">Home</span>
       </a>
       <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
         <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">miscellaneous_services</span>
-        <span class="text-[17px] font-medium">Layanan Inti</span>
+        <span class="text-[17px] font-medium">Layanan</span>
       </a>
       <a href="#layanan-utama" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
         <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">inventory_2</span>
-        <span class="text-[17px] font-medium">Produk &amp; Portofolio</span>
+        <span class="text-[17px] font-medium">Produk</span>
       </a>
       <a href="#keunggulan" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">emoji_events</span>
-        <span class="text-[17px] font-medium">Keunggulan Operasional</span>
-      </a>
-      <a href="#paket-harga" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
-        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">payments</span>
-        <span class="text-[17px] font-medium">Paket Harga</span>
+        <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">article</span>
+        <span class="text-[17px] font-medium">Blog</span>
       </a>
       <a href="#kontak-konsultasi" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
         <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">support_agent</span>
-        <span class="text-[17px] font-medium">Kontak &amp; Bantuan</span>
+        <span class="text-[17px] font-medium">Kontak</span>
       </a>
       <div class="h-px bg-slate-800/60 my-2"></div>
       <a href="{{ route('portofolio.index') }}" class="mobile-link group flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all">
         <span class="material-symbols-outlined text-slate-400 group-hover:text-sky-400 text-[22px]">photo_library</span>
-        <span class="text-[17px] font-medium">Galeri Sistem</span>
+        <span class="text-[17px] font-medium">Portofolio</span>
       </a>
     </nav>
     
