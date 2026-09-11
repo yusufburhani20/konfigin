@@ -7,15 +7,9 @@
 <div class="flex flex-col w-full overflow-hidden">
 <!-- 1. HERO SECTION (Dark Mode Preserved) -->
 <div class="relative w-full text-[#dfe2ef]">
-  <!-- Video Background -->
-  <video class="absolute inset-0 w-full h-full object-cover -z-20" autoplay loop muted playsinline aria-hidden="true" style="object-position: center; filter: brightness(0.7);">
-    <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
-  </video>
-  <!-- Overlay to ensure text readability -->
-  <div class="absolute inset-0 bg-[#0a0e17]/70 backdrop-blur-[2px] -z-10"></div>
+  <!-- Background -->
+  <div class="absolute inset-0 bg-[#0a0e17] -z-10"></div>
   
-<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="absolute top-48 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
 <section class="max-w-[1240px] mx-auto px-4 sm:px-space-lg pt-28 sm:pt-32 lg:pt-24 pb-16 sm:pb-space-3xl w-full min-h-screen flex items-center">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-space-xl items-center">
 <!-- Hero Copy -->

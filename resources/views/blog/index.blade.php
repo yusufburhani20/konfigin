@@ -242,13 +242,7 @@
 @section('content')
 <!-- ===== HERO SECTION (Synced) ===== -->
 <section id="hero" aria-label="Blog Hero Section" style="min-height: 45vh; padding: 140px 2rem 4rem;">
-    <!-- Video Background -->
-    <video class="hero-video-bg" autoplay loop muted playsinline aria-hidden="true">
-        <source src="{{ asset('assets/img/global_network_background_animation.mp4') }}" type="video/mp4">
-    </video>
-
-    <div class="hero-bg" aria-hidden="true">
-        <div class="hero-dots"></div>
+    <div class="hero-bg" aria-hidden="true" style="background-color: #0a0e17;">
     </div>
     
     <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
