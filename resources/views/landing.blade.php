@@ -477,9 +477,12 @@
 </div>
 <div class="pt-6 md:pt-space-xl mt-auto">
 @if(isset($kontak) && $kontak)
-<a class="flex flex-col sm:flex-row items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 font-headline-sm text-[14px] sm:text-[15px] font-bold shadow-md hover:shadow-lg transition-all text-center" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[20px]">send</span>
-<span>Hubungi WhatsApp ({{ $kontak->whatsapp }})</span>
+<a class="flex items-center justify-center gap-2.5 w-full py-3.5 px-4 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 shadow-md hover:shadow-lg transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[24px] shrink-0">send</span>
+<div class="flex flex-col text-left">
+<span class="font-headline-sm text-[14px] sm:text-[15px] font-bold leading-tight">Hubungi WhatsApp</span>
+<span class="text-[11px] sm:text-[12px] font-medium opacity-80 mt-0.5">{{ $kontak->whatsapp }}</span>
+</div>
 </a>
 @endif
 </div>
@@ -497,9 +500,12 @@
 </div>
 <div class="pt-6 md:pt-space-xl mt-auto">
 @if(isset($kontak) && $kontak)
-<a class="flex flex-col sm:flex-row items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-white hover:bg-sky-50 text-sky-800 font-headline-sm text-[14px] sm:text-[15px] font-bold shadow-md hover:shadow-lg transition-all text-center" href="mailto:{{ $kontak->email }}">
-<span class="material-symbols-outlined text-[20px]">drafts</span>
-<span>Kirim Email Resmi ({{ $kontak->email }})</span>
+<a class="flex items-center justify-center gap-2.5 w-full py-3.5 px-4 rounded-xl bg-white hover:bg-sky-50 text-sky-800 shadow-md hover:shadow-lg transition-all" href="mailto:{{ $kontak->email }}">
+<span class="material-symbols-outlined text-[24px] shrink-0">drafts</span>
+<div class="flex flex-col text-left">
+<span class="font-headline-sm text-[14px] sm:text-[15px] font-bold leading-tight">Kirim Email Resmi</span>
+<span class="text-[11px] sm:text-[12px] font-medium opacity-80 mt-0.5">{{ $kontak->email }}</span>
+</div>
 </a>
 @endif
 </div>

@@ -354,30 +354,30 @@
         @foreach($global_menus as $menu)
           <a href="{{ $menu->url }}" class="mobile-link {{ request()->is(ltrim(parse_url($menu->url, PHP_URL_PATH), '/')) ? 'active' : '' }} flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
             <span class="material-symbols-outlined text-slate-400">{{ $menu->icon ?? 'link' }}</span>
-            <span class="text-[17px] font-semibold">{{ $menu->name }}</span>
+            <span class="text-[17px] font-semibold text-slate-200">{{ $menu->name }}</span>
           </a>
         @endforeach
       @else
         <!-- Fallback if no menus -->
         <a href="{{ route('home') }}" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors active">
           <span class="material-symbols-outlined text-slate-400">home</span>
-          <span class="text-[17px] font-semibold">Home</span>
+          <span class="text-[17px] font-semibold text-slate-200">Home</span>
         </a>
         <a href="#layanan-utama" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
           <span class="material-symbols-outlined text-slate-400">apps</span>
-          <span class="text-[17px] font-semibold">Layanan</span>
+          <span class="text-[17px] font-semibold text-slate-200">Layanan</span>
         </a>
         <a href="#layanan-utama" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
           <span class="material-symbols-outlined text-slate-400">inventory_2</span>
-          <span class="text-[17px] font-semibold">Produk</span>
+          <span class="text-[17px] font-semibold text-slate-200">Produk</span>
         </a>
         <a href="{{ route('blog.index') }}" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
           <span class="material-symbols-outlined text-slate-400">book</span>
-          <span class="text-[17px] font-semibold">Blog</span>
+          <span class="text-[17px] font-semibold text-slate-200">Blog</span>
         </a>
         <a href="{{ route('portofolio.index') }}" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
           <span class="material-symbols-outlined text-slate-400">photo_library</span>
-          <span class="text-[17px] font-semibold">Portofolio</span>
+          <span class="text-[17px] font-semibold text-slate-200">Portofolio</span>
         </a>
       @endif
     </nav>
@@ -385,13 +385,25 @@
     <div class="mt-auto pt-8 flex flex-col gap-6">
       <!-- Footer Info -->
       <div class="flex items-center justify-center gap-8">
-        <a href="https://wa.me/6281288009910" class="flex flex-col items-center gap-1.5 text-slate-400 hover:text-emerald-400 transition-colors">
+        @php
+          $wa_link = 'https://wa.me/6281288009910';
+          $email_link = 'mailto:halo@konfigin.com';
+          if(isset($global_kontak) && $global_kontak) {
+            if(!empty($global_kontak->whatsapp)) {
+              $wa_link = 'https://wa.me/' . preg_replace('/[^0-9]/', '', $global_kontak->whatsapp);
+            }
+            if(!empty($global_kontak->email)) {
+              $email_link = 'mailto:' . $global_kontak->email;
+            }
+          }
+        @endphp
+        <a href="{{ $wa_link }}" class="flex flex-col items-center gap-1.5 text-slate-400 hover:text-emerald-400 transition-colors" target="_blank" rel="noopener noreferrer">
           <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center shadow-inner shadow-black/20"><span class="material-symbols-outlined text-[20px]">chat</span></div>
-          <span class="text-[10px] font-semibold uppercase tracking-wider">WhatsApp</span>
+          <span class="text-[10px] font-semibold uppercase tracking-wider text-slate-300">WhatsApp</span>
         </a>
-        <a href="mailto:halo@konfigin.com" class="flex flex-col items-center gap-1.5 text-slate-400 hover:text-sky-400 transition-colors">
+        <a href="{{ $email_link }}" class="flex flex-col items-center gap-1.5 text-slate-400 hover:text-sky-400 transition-colors">
           <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center shadow-inner shadow-black/20"><span class="material-symbols-outlined text-[20px]">mail</span></div>
-          <span class="text-[10px] font-semibold uppercase tracking-wider">Email</span>
+          <span class="text-[10px] font-semibold uppercase tracking-wider text-slate-300">Email</span>
         </a>
       </div>
 
