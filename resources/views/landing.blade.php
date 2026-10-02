@@ -352,8 +352,8 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-lg">
   @foreach($galeri->take(6) as $item)
   <div class="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all border border-slate-200">
-    <div class="aspect-video w-full overflow-hidden bg-slate-100">
-      <img src="{{ asset($item->foto_url) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <div class="aspect-video w-full overflow-hidden bg-slate-50 flex items-center justify-center p-4">
+      <img src="{{ asset($item->foto_url) }}" alt="{{ $item->judul }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
     </div>
     <div class="p-space-md">
       <h3 class="font-headline-sm text-headline-sm font-bold text-slate-900">{{ $item->judul }}</h3>
@@ -465,19 +465,19 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg items-stretch">
 <!-- WhatsApp Priority Card -->
-<div class="p-space-xl rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+<div class="p-6 md:p-space-xl rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
 <div class="space-y-space-sm">
 <div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center">
 <span class="material-symbols-outlined text-[28px] text-white">chat</span>
 </div>
-<h3 class="font-headline-md text-headline-md font-bold text-slate-900">Konsultasi Kilat via WhatsApp</h3>
+<h3 class="font-headline-md text-headline-md font-bold text-white">Konsultasi Kilat via WhatsApp</h3>
 <p class="font-body-md text-body-md text-emerald-50 leading-relaxed">
               Hubungi tim technical consultant kami secara langsung untuk respon cepat seputar harga, penyesuaian modul fitur, dan survei teknis lokasi instalasi jaringan.
             </p>
 </div>
-<div class="pt-space-xl mt-6">
+<div class="pt-6 md:pt-space-xl mt-auto">
 @if(isset($kontak) && $kontak)
-<a class="inline-flex items-center justify-center gap-space-xs w-full py-3.5 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 font-headline-sm text-[15px] font-bold shadow-md hover:shadow-lg transition-all" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" rel="noopener noreferrer" target="_blank">
+<a class="flex flex-col sm:flex-row items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 font-headline-sm text-[14px] sm:text-[15px] font-bold shadow-md hover:shadow-lg transition-all text-center" href="https://wa.me/{{ str_replace('-', '', filter_var($kontak->whatsapp, FILTER_SANITIZE_NUMBER_INT)) }}?text=Halo%20Konfigin,%20saya%20tertarik%20ingin%20konsultasi%20layanan%20IT%20Solutions" rel="noopener noreferrer" target="_blank">
 <span class="material-symbols-outlined text-[20px]">send</span>
 <span>Hubungi WhatsApp ({{ $kontak->whatsapp }})</span>
 </a>
@@ -485,19 +485,19 @@
 </div>
 </div>
 <!-- Official RFP / Email Card -->
-<div class="p-space-xl rounded-2xl bg-gradient-to-br from-sky-600 to-blue-700 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+<div class="p-6 md:p-space-xl rounded-2xl bg-gradient-to-br from-sky-600 to-blue-700 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
 <div class="space-y-space-sm">
 <div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center">
 <span class="material-symbols-outlined text-[28px] text-white">mail</span>
 </div>
-<h3 class="font-headline-md text-headline-md font-bold text-slate-900">Kirim Penawaran via Email</h3>
+<h3 class="font-headline-md text-headline-md font-bold text-white">Kirim Penawaran via Email</h3>
 <p class="font-body-md text-body-md text-sky-50 leading-relaxed">
               Ajukan dokumen Kerangka Acuan Kerja (KAK), spesifikasi teknis, atau permintaan penawaran harga resmi (RFP) langsung ke tim engineering kami.
             </p>
 </div>
-<div class="pt-space-xl mt-6">
+<div class="pt-6 md:pt-space-xl mt-auto">
 @if(isset($kontak) && $kontak)
-<a class="inline-flex items-center justify-center gap-space-xs w-full py-3.5 rounded-xl bg-white hover:bg-sky-50 text-sky-800 font-headline-sm text-[15px] font-bold shadow-md hover:shadow-lg transition-all" href="mailto:{{ $kontak->email }}">
+<a class="flex flex-col sm:flex-row items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-white hover:bg-sky-50 text-sky-800 font-headline-sm text-[14px] sm:text-[15px] font-bold shadow-md hover:shadow-lg transition-all text-center" href="mailto:{{ $kontak->email }}">
 <span class="material-symbols-outlined text-[20px]">drafts</span>
 <span>Kirim Email Resmi ({{ $kontak->email }})</span>
 </a>
