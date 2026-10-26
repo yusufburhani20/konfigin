@@ -67,6 +67,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Clients & Partners
         Route::resource('clients', \App\Http\Controllers\Admin\ClientController::class)->except(['show']);
 
+        // Surat Penawaran (Quotations)
+        Route::get('/quotations/{quotation}/print', [App\Http\Controllers\Admin\QuotationController::class, 'print'])->name('quotations.print');
+        Route::post('/quotations/{quotation}/convert', [App\Http\Controllers\Admin\QuotationController::class, 'convert'])->name('quotations.convert');
+        Route::resource('quotations', App\Http\Controllers\Admin\QuotationController::class);
+
+        // Invoices
+        Route::get('/invoices/{invoice}/print', [App\Http\Controllers\Admin\InvoiceController::class, 'print'])->name('invoices.print');
+        Route::patch('/invoices/{invoice}/status', [App\Http\Controllers\Admin\InvoiceController::class, 'updateStatus'])->name('invoices.status');
+        Route::resource('invoices', App\Http\Controllers\Admin\InvoiceController::class);
+
         // Menus
         Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class)->except(['show']);
 

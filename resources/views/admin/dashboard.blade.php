@@ -34,12 +34,21 @@
     </div>
   </div>
   <div class="stat-card animate-on-scroll">
-    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706)">
-      <i class="fas fa-star"></i>
+    <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7)">
+      <i class="fas fa-file-contract"></i>
     </div>
     <div class="stat-info">
-      <div class="number">{{ $total_keunggulan }}</div>
-      <div class="label">Keunggulan</div>
+      <div class="number">{{ $total_quotations }}</div>
+      <div class="label">Surat Penawaran</div>
+    </div>
+  </div>
+  <div class="stat-card animate-on-scroll">
+    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669)">
+      <i class="fas fa-file-invoice-dollar"></i>
+    </div>
+    <div class="stat-info">
+      <div class="number">{{ $total_invoices }}</div>
+      <div class="label">Invoice Tagihan</div>
     </div>
   </div>
 </div>
@@ -47,6 +56,14 @@
 <div class="quick-actions">
   <h2 class="section-heading">Akses Cepat</h2>
   <div class="quick-grid">
+    <a href="{{ route('admin.quotations.create') }}" class="quick-card" id="quick-quotations-create" style="border-color: rgba(14, 165, 233, 0.35);">
+      <i class="fas fa-file-contract" style="color: #0ea5e9;"></i>
+      <span>Buat Penawaran</span>
+    </a>
+    <a href="{{ route('admin.invoices.create') }}" class="quick-card" id="quick-invoices-create" style="border-color: rgba(16, 185, 129, 0.35);">
+      <i class="fas fa-file-invoice-dollar" style="color: #10b981;"></i>
+      <span>Buat Invoice</span>
+    </a>
     <a href="{{ route('admin.posts.index') }}" class="quick-card" id="quick-posts-list" style="border-color: rgba(139, 92, 246, 0.25);">
       <i class="fas fa-newspaper" style="color: #8b5cf6;"></i>
       <span>Daftar Post</span>

@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    TJKT SMK Fadris - Admin Dashboard CSS
    ============================================ */
 
@@ -698,6 +698,99 @@ input:checked + .toggle-slider::before { transform: translateX(20px); }
 .quick-card:hover i {
   color: white;
 }
+
+/* ===== DOCUMENTS (INVOICE & QUOTATION) STYLES ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  line-height: 1;
+  text-transform: capitalize;
+}
+.badge-success { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.badge-warning { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-danger  { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+.badge-info    { background: rgba(14, 165, 233, 0.15); color: #0ea5e9; border: 1px solid rgba(14, 165, 233, 0.3); }
+.badge-secondary { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
+
+.doc-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.doc-items-table th {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.doc-items-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.doc-calc-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.doc-calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.doc-calc-row.grand-total {
+  border-top: 2px dashed var(--border);
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.stat-card-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.stat-pill {
+  background: var(--dark-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.stat-pill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+.stat-pill-icon.green { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.stat-pill-icon.orange { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.stat-pill-icon.blue { background: rgba(14, 165, 233, 0.15); color: #0ea5e9; }
+.stat-pill-val { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+.stat-pill-label { font-size: 0.78rem; color: var(--text-secondary); }
+
 
 
 

@@ -14,11 +14,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $total_quotations = 0;
+        $total_invoices = 0;
+        $total_revenue = 0;
+        try {
+            $total_quotations = \App\Models\Document::quotations()->count();
+            $total_invoices   = \App\Models\Document::invoices()->count();
+            $total_revenue    = \App\Models\Document::invoices()->where('status', 'paid')->sum('total');
+        } catch (\Exception $e) {
+            // Table might not exist yet before migration
+        }
+
         return view('admin.dashboard', [
             'total_kurikulum'  => Kurikulum::count(),
             'total_galeri'     => Galeri::count(),
             'total_eservice'   => Eservice::count(),
             'total_keunggulan' => Keunggulan::count(),
+            'total_quotations' => $total_quotations,
+            'total_invoices'   => $total_invoices,
+            'total_revenue'    => $total_revenue,
             'site_name'        => Setting::get('site_name', 'Konfigin IT Solutions'),
             'admin_nama'       => session('admin_nama', 'Admin'),
         ]);

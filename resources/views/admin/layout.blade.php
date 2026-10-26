@@ -63,6 +63,14 @@
         <i class="fas fa-phone-alt"></i> Kontak
       </a>
 
+      <div class="nav-section-title">Bisnis &amp; Keuangan</div>
+      <a href="{{ route('admin.quotations.index') }}" class="sidebar-link {{ request()->routeIs('admin.quotations.*') ? 'active' : '' }}" id="nav-quotations">
+        <i class="fas fa-file-contract"></i> Surat Penawaran
+      </a>
+      <a href="{{ route('admin.invoices.index') }}" class="sidebar-link {{ request()->routeIs('admin.invoices.*') ? 'active' : '' }}" id="nav-invoices">
+        <i class="fas fa-file-invoice-dollar"></i> Invoice / Tagihan
+      </a>
+
       <div class="nav-section-title">Akun & Sistem</div>
       <a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" id="nav-users">
         <i class="fas fa-users"></i> Pengguna (Level)
