@@ -15,7 +15,7 @@ class QuotationController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Document::quotations()->with(['items', 'client', 'invoices']);
+        $query = Document::quotations()->with(['items', 'client', 'relatedInvoices']);
 
         if ($request->filled('search')) {
             $search = $request->search;
@@ -97,7 +97,7 @@ class QuotationController extends Controller
 
     public function show(Document $quotation)
     {
-        $quotation->load(['items', 'client', 'reference', 'invoices']);
+        $quotation->load(['items', 'client', 'reference', 'relatedInvoices']);
         $settings = Setting::allAsArray();
         $kontak = Kontak::first();
 

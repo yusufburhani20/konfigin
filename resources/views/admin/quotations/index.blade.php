@@ -60,9 +60,9 @@
             <a href="{{ route('admin.quotations.show', $item->id) }}" style="font-weight:700; color:var(--primary); text-decoration:none;">
               {{ $item->number }}
             </a>
-            @if($item->invoices->count() > 0)
+            @if($item->relatedInvoices->count() > 0)
               <div style="font-size:0.72rem; color:var(--text-secondary); margin-top:2px;">
-                <i class="fas fa-link"></i> Inv: {{ $item->invoices->pluck('number')->join(', ') }}
+                <i class="fas fa-link"></i> Inv: {{ $item->relatedInvoices->pluck('number')->join(', ') }}
               </div>
             @endif
           </td>

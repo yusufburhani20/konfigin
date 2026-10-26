@@ -26,8 +26,8 @@
         </button>
       </form>
     @else
-      @if($quotation->invoices->count() > 0)
-        @foreach($quotation->invoices as $inv)
+      @if($quotation->relatedInvoices->count() > 0)
+        @foreach($quotation->relatedInvoices as $inv)
           <a href="{{ route('admin.invoices.show', $inv->id) }}" class="btn btn-sm" style="background:rgba(16, 185, 129, 0.15); color:var(--success);">
             <i class="fas fa-receipt"></i> Buka Invoice {{ $inv->number }}
           </a>

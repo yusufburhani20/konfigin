@@ -63,7 +63,7 @@ class Document extends Model
         return $this->belongsTo(Document::class, 'reference_id');
     }
 
-    public function invoices(): HasMany
+    public function relatedInvoices(): HasMany
     {
         return $this->hasMany(Document::class, 'reference_id')->where('type', 'invoice');
     }
