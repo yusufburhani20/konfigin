@@ -189,6 +189,7 @@ class QuotationController extends Controller
                 'reference_id' => $quotation->id,
                 'client_id' => $quotation->client_id,
                 'title' => $quotation->title ?? 'Tagihan untuk ' . $quotation->number,
+                'app_description' => $quotation->app_description,
                 'client_name' => $quotation->client_name,
                 'client_company' => $quotation->client_company,
                 'client_address' => $quotation->client_address,
@@ -243,6 +244,7 @@ class QuotationController extends Controller
         return $request->validate([
             'number' => 'required|string|max:50|unique:documents,number,' . $id,
             'title' => 'nullable|string|max:255',
+            'app_description' => 'nullable|string',
             'client_id' => 'nullable|exists:clients,id',
             'client_name' => 'required|string|max:255',
             'client_company' => 'nullable|string|max:255',

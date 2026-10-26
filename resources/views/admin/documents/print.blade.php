@@ -281,6 +281,76 @@
       line-height: 1.4;
     }
 
+    /* Deskripsi Aplikasi Section */
+    .app-description-section {
+      margin-top: 15px;
+      margin-bottom: 22px;
+      background: #ffffff;
+      page-break-inside: auto;
+    }
+    .app-section-header {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .app-description-content {
+      font-size: 11px;
+      color: #334155;
+      line-height: 1.55;
+    }
+    .app-description-content p {
+      margin: 0 0 8px 0;
+    }
+    .app-description-content h1,
+    .app-description-content h2,
+    .app-description-content h3,
+    .app-description-content h4 {
+      color: #0f172a;
+      margin: 12px 0 6px 0;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .app-description-content ul,
+    .app-description-content ol {
+      margin: 4px 0 8px 20px;
+      padding: 0;
+    }
+    .app-description-content li {
+      margin-bottom: 3px;
+    }
+    .app-description-content table {
+      width: 100% !important;
+      border-collapse: collapse;
+      margin: 8px 0 12px 0;
+      font-size: 10.5px;
+      page-break-inside: avoid;
+    }
+    .app-description-content th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    .app-description-content td {
+      border: 1px solid #e2e8f0;
+      padding: 5px 8px;
+      color: #334155;
+      vertical-align: top;
+    }
+    .app-description-content tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
     /* Calculation Section */
     .calc-container {
       display: flex;
@@ -570,6 +640,18 @@
     @if($document->notes)
       <div style="font-size:11.5px; color:#475569; margin-bottom:14px; font-style:italic;">
         "{{ $document->notes }}"
+      </div>
+    @endif
+
+    {{-- DESKRIPSI & SPESIFIKASI APLIKASI (JIKA ADA) --}}
+    @if(!empty($document->app_description))
+      <div class="app-description-section">
+        <div class="app-section-header">
+          <i class="fas fa-laptop-code"></i> DESKRIPSI &amp; SPESIFIKASI FITUR APLIKASI
+        </div>
+        <div class="app-description-content">
+          {!! $document->app_description !!}
+        </div>
       </div>
     @endif
 

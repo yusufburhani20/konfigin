@@ -194,6 +194,7 @@ class InvoiceController extends Controller
         return $request->validate([
             'number' => 'required|string|max:50|unique:documents,number,' . $id,
             'title' => 'nullable|string|max:255',
+            'app_description' => 'nullable|string',
             'client_id' => 'nullable|exists:clients,id',
             'client_name' => 'required|string|max:255',
             'client_company' => 'nullable|string|max:255',

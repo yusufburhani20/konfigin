@@ -14,6 +14,7 @@ class Document extends Model
         'reference_id',
         'client_id',
         'title',
+        'app_description',
         'client_name',
         'client_company',
         'client_address',
