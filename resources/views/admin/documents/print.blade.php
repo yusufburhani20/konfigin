@@ -653,17 +653,19 @@
     @endif
 
     {{-- Tanda Tangan & QR Code Validasi --}}
-    <div class="sign-section">
-      <div class="sign-box">
-        <div class="sign-title">
-          {{ $document->type === 'quotation' ? 'Disetujui Oleh (Klien),' : 'Penerima Tagihan,' }}<br>
-          <span style="visibility:hidden;">&nbsp;</span>
+    <div class="sign-section" style="{{ $document->type === 'quotation' ? 'justify-content: flex-end;' : '' }}">
+      @if($document->type !== 'quotation')
+        <div class="sign-box">
+          <div class="sign-title">
+            Penerima Tagihan,<br>
+            <span style="visibility:hidden;">&nbsp;</span>
+          </div>
+          <div style="height: 104px;"></div>
+          <div class="sign-name">{{ $document->client_name }}</div>
+          <div class="sign-position">{{ $document->client_company ?? 'Klien / Mitra' }}</div>
+          <div style="height: 14px;"></div>
         </div>
-        <div style="height: 104px;"></div>
-        <div class="sign-name">{{ $document->client_name }}</div>
-        <div class="sign-position">{{ $document->client_company ?? 'Klien / Mitra' }}</div>
-        <div style="height: 14px;"></div>
-      </div>
+      @endif
 
       <div class="sign-box">
         <div class="sign-title">
