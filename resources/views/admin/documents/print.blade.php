@@ -6,7 +6,7 @@
   <title>{{ $document->number }} - {{ $document->type === 'quotation' ? 'Surat Penawaran' : 'Invoice' }} | Konfigin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
@@ -26,7 +26,7 @@
 
     /* Action bar on screen */
     .action-bar {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto 15px auto;
       display: flex;
       justify-content: space-between;
@@ -56,10 +56,10 @@
 
     /* Paper Page for Print */
     .print-page {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
       background: #ffffff;
-      padding: 40px 45px;
+      padding: 42px 48px;
       border-radius: 6px;
       box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
       position: relative;
@@ -68,14 +68,14 @@
     /* Paid Watermark */
     .watermark-paid {
       position: absolute;
-      top: 35%;
+      top: 36%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(-25deg);
-      font-size: 75px;
+      font-size: 72px;
       font-weight: 900;
       color: rgba(16, 185, 129, 0.12);
       border: 8px solid rgba(16, 185, 129, 0.18);
-      padding: 10px 40px;
+      padding: 8px 45px;
       border-radius: 16px;
       pointer-events: none;
       text-transform: uppercase;
@@ -90,29 +90,75 @@
       align-items: flex-start;
       border-bottom: 2px solid #0f172a;
       padding-bottom: 18px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
-    .company-logo {
-      max-height: 55px;
-      margin-bottom: 6px;
-      display: block;
+
+    /* Brand Logo Khusus Kertas Putih */
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
     }
-    .company-brand {
+    .brand-icon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .b-bracket {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0284c7;
+      line-height: 1;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .b-bracket.left { left: 0; }
+    .b-bracket.right { right: 0; }
+    .b-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #0284c7;
+      display: inline-block;
+    }
+    .brand-text {
+      line-height: 1.1;
+    }
+    .b-name {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 20px;
+      font-size: 25px;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.5px;
     }
+    .b-name em {
+      font-style: normal;
+      color: #0284c7;
+    }
+    .b-sub {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
     .company-tagline {
       font-size: 11px;
-      color: #64748b;
-      margin-bottom: 6px;
-      font-weight: 500;
+      color: #475569;
+      margin-bottom: 4px;
+      font-weight: 600;
     }
     .company-meta {
       font-size: 11px;
-      color: #475569;
+      color: #64748b;
       line-height: 1.45;
     }
 
@@ -123,13 +169,13 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 22px;
       font-weight: 800;
-      color: #0ea5e9;
+      color: #0284c7;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 4px;
     }
     .doc-number {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #0f172a;
       font-family: monospace;
@@ -158,7 +204,7 @@
       border: 1px solid #e2e8f0;
       border-radius: 6px;
       padding: 14px 18px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -172,7 +218,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #0ea5e9;
+      color: #0284c7;
       margin-bottom: 4px;
     }
     .client-name {
@@ -241,14 +287,14 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 20px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
     .calc-left {
       flex: 1;
     }
     .terbilang-box {
       background: #f8fafc;
-      border-left: 3px solid #0ea5e9;
+      border-left: 3px solid #0284c7;
       padding: 10px 14px;
       font-size: 11.5px;
       color: #334155;
@@ -281,7 +327,7 @@
       margin-top: 4px;
       font-size: 14px;
       font-weight: 800;
-      color: #0ea5e9;
+      color: #0284c7;
     }
 
     /* Notes & Terms Box */
@@ -310,18 +356,18 @@
     .sign-section {
       display: flex;
       justify-content: space-between;
-      margin-top: 30px;
-      padding-top: 15px;
+      margin-top: 25px;
+      padding-top: 10px;
     }
     .sign-box {
-      width: 220px;
+      width: 250px;
       text-align: center;
       font-size: 11.5px;
     }
     .sign-title {
       font-weight: 600;
       color: #475569;
-      margin-bottom: 65px;
+      margin-bottom: 8px;
     }
     .sign-name {
       font-weight: 700;
@@ -335,6 +381,39 @@
       font-size: 10.5px;
       color: #64748b;
       margin-top: 3px;
+    }
+
+    /* Barcode / QR Signature */
+    .signature-qr-wrapper {
+      margin: 8px auto 10px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .sign-qr-img {
+      width: 82px;
+      height: 82px;
+      display: block;
+      padding: 4px;
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+    }
+    .sign-verified-badge {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #059669;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .sign-scan-hint {
+      font-size: 8px;
+      color: #94a3b8;
+      margin-top: 2px;
     }
 
     /* Footer Note */
@@ -401,24 +480,33 @@
       <div class="watermark-paid">LUNAS</div>
     @endif
 
-    {{-- KOP SURAT --}}
+    {{-- KOP SURAT RESMI KONFIGIN --}}
     <div class="kop-header">
       <div class="company-info">
-        @if(!empty($settings['site_logo']))
-          <img src="{{ asset($settings['site_logo']) }}" alt="Logo" class="company-logo">
-        @else
-          <div class="company-brand">{{ $settings['site_name'] ?? 'KONFIGIN IT SOLUTIONS' }}</div>
-        @endif
-        <div class="company-tagline">{{ $settings['site_tagline'] ?? 'IT Infrastructure & Software Development Solutions' }}</div>
+        <div class="brand-wrap">
+          <div class="brand-icon">
+            <span class="b-bracket left">{</span>
+            <span class="b-dot"></span>
+            <span class="b-bracket right">}</span>
+          </div>
+          <div class="brand-text">
+            <div class="b-name">konfig<em>in</em></div>
+            <div class="b-sub">IT SOLUTIONS</div>
+          </div>
+        </div>
+
+        <div class="company-tagline">Smart Network &amp; Premium Custom Web Development</div>
         <div class="company-meta">
           @if(!empty($kontak->alamat))
             <div>{{ $kontak->alamat }}</div>
+          @else
+            <div>Sukagalih, Sukaratu, Tasikmalaya Regency, West Java 46415</div>
           @endif
           <div>
             @if(!empty($kontak->whatsapp)) WhatsApp: {{ $kontak->whatsapp }} @endif
             @if(!empty($kontak->email)) • Email: {{ $kontak->email }} @endif
           </div>
-          <div>Website: {{ $kontak->website ?? 'https://konfigin.my.id' }}</div>
+          <div>Website: {{ $kontak->website ?? 'www.konfigin.my.id' }}</div>
         </div>
       </div>
 
@@ -524,10 +612,11 @@
           Terbilang: <strong>{{ $document->terbilang }}</strong>
         </div>
 
-        @if($document->type === 'invoice' && $document->payment_info)
+        {{-- Tampilkan rekening HANYA jika bukan berstatus lunas DAN ada info pembayaran --}}
+        @if($document->type === 'invoice' && !empty($document->payment_info) && $document->status !== 'paid')
           <div class="box-info">
             <div class="box-info-title"><i class="fas fa-university"></i> Rekening Pembayaran Resmi:</div>
-            <div style="font-family:monospace; font-size:11px; white-space:pre-line; color:#0f172a;">{{ $document->payment_info }}</div>
+            <div style="font-family:monospace; font-size:11px; white-space:pre-line; color:#0f172a; line-height:1.5;">{{ $document->payment_info }}</div>
           </div>
         @endif
       </div>
@@ -564,14 +653,17 @@
       </div>
     @endif
 
-    {{-- Tanda Tangan --}}
+    {{-- Tanda Tangan & QR Code Validasi --}}
     <div class="sign-section">
       <div class="sign-box">
         <div class="sign-title">
-          {{ $document->type === 'quotation' ? 'Disetujui Oleh (Klien),' : 'Penerima Tagihan,' }}
+          {{ $document->type === 'quotation' ? 'Disetujui Oleh (Klien),' : 'Penerima Tagihan,' }}<br>
+          <span style="visibility:hidden;">&nbsp;</span>
         </div>
+        <div style="height: 104px;"></div>
         <div class="sign-name">{{ $document->client_name }}</div>
         <div class="sign-position">{{ $document->client_company ?? 'Klien / Mitra' }}</div>
+        <div style="height: 14px;"></div>
       </div>
 
       <div class="sign-box">
@@ -579,8 +671,18 @@
           Hormat Kami,<br>
           <strong>{{ $settings['site_name'] ?? 'Konfigin IT Solutions' }}</strong>
         </div>
+
+        {{-- Barcode / QR Code Validasi Otomatis --}}
+        <div class="signature-qr-wrapper">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=0&data={{ urlencode(route('document.verify', $document->number)) }}" alt="QR Code Validasi Resmi" class="sign-qr-img">
+          <div class="sign-verified-badge">
+            <i class="fas fa-check-circle"></i> VERIFIED DIGITAL SIGNATURE
+          </div>
+        </div>
+
         <div class="sign-name">{{ $document->signer_name ?? 'Yusuf Burhani' }}</div>
-        <div class="sign-position">{{ $document->signer_title ?? 'Lead IT Consultant' }}</div>
+        <div class="sign-position">{{ $document->signer_title ?? 'Founder Konfigin IT Solutions' }}</div>
+        <div class="sign-scan-hint"><i class="fas fa-qrcode"></i> Scan barcode untuk validasi keaslian</div>
       </div>
     </div>
 

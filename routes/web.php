@@ -18,6 +18,11 @@ Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name
 Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 Route::get('/category/{slug}', [App\Http\Controllers\BlogController::class, 'category'])->name('blog.category');
 
+// Verifikasi Dokumen Publik (QR Code Scan)
+Route::get('/verify/{number}', [App\Http\Controllers\DocumentVerifyController::class, 'verify'])
+    ->where('number', '.*')
+    ->name('document.verify');
+
 // ===== ADMIN ROUTES =====
 Route::prefix('admin')->name('admin.')->group(function () {
 

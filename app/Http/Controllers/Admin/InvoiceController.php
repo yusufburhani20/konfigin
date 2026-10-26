@@ -48,9 +48,8 @@ class InvoiceController extends Controller
         $settings = Setting::allAsArray();
 
         $defaultBank = "Pembayaran dapat ditransfer melalui rekening resmi:\n"
-            . "Bank Mandiri : 177-00-1122334-5\n"
-            . "Bank BCA     : 054-082-9911\n"
-            . "A.n.         : Yusuf Burhani / Konfigin IT Solutions\n\n"
+            . "Seabank : 901177915949\n"
+            . "A.n.    : Yusuf Burhani\n\n"
             . "Harap konfirmasikan bukti transfer dengan menyertakan Nomor Invoice ini.";
 
         $defaultTerms = "1. Pembayaran jatuh tempo selambat-lambatnya 7 (tujuh) hari kerja sejak tanggal invoice diterbitkan.\n"
@@ -68,7 +67,7 @@ class InvoiceController extends Controller
                 'terms' => $defaultTerms,
                 'notes' => 'Terima kasih atas kerja samanya dalam proyek pengembangan ini.',
                 'signer_name' => $settings['signer_name'] ?? session('admin_nama', 'Yusuf Burhani'),
-                'signer_title' => $settings['signer_title'] ?? 'Lead IT Consultant / Direktur',
+                'signer_title' => $settings['signer_title'] ?? 'Founder Konfigin IT Solutions',
             ]),
             'clients' => $clients,
             'isEdit' => false,

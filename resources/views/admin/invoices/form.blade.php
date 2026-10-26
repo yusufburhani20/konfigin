@@ -160,9 +160,9 @@
         </div>
         <div class="card-body">
           <div class="form-group">
-            <label class="form-label" for="payment_info">Instruksi Pembayaran &amp; Rekening Bank <span style="color:var(--danger)">*</span></label>
-            <textarea id="payment_info" name="payment_info" class="form-input" rows="4" style="font-family:monospace; font-size:0.85rem;" required>{{ old('payment_info', $document->payment_info) }}</textarea>
-            <div class="form-help">Informasi nomor rekening bank resmi untuk transfer pembayaran invoice ini.</div>
+            <label class="form-label" for="payment_info">Instruksi Pembayaran &amp; Rekening Bank <span style="color:var(--text-secondary); font-size:0.8rem; font-weight:normal;">(Opsional)</span></label>
+            <textarea id="payment_info" name="payment_info" class="form-input" rows="4" style="font-family:monospace; font-size:0.85rem;" placeholder="Kosongkan jika tagihan sudah lunas atau tidak memerlukan info transfer bank">{{ old('payment_info', $document->payment_info) }}</textarea>
+            <div class="form-help">Informasi nomor rekening bank resmi. Kosongkan jika invoice sudah lunas.</div>
           </div>
           <div class="form-group" style="margin-top:1rem;">
             <label class="form-label" for="terms">Syarat &amp; Ketentuan Tagihan</label>

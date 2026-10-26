@@ -60,7 +60,7 @@ class QuotationController extends Controller
                 'terms' => $defaultTerms,
                 'notes' => $defaultNotes,
                 'signer_name' => $settings['signer_name'] ?? session('admin_nama', 'Yusuf Burhani'),
-                'signer_title' => $settings['signer_title'] ?? 'Lead IT Consultant / Direktur',
+                'signer_title' => $settings['signer_title'] ?? 'Founder Konfigin IT Solutions',
             ]),
             'clients' => $clients,
             'isEdit' => false,
@@ -178,11 +178,10 @@ class QuotationController extends Controller
         try {
             $invNumber = Document::generateNumber('invoice');
 
-            $defaultBank = "Pembayaran dapat ditransfer melalui:\n"
-                . "Bank BCA : 054-082-9911\n"
-                . "A.n.     : Yusuf Burhani\n"
-                . "Cabang   : Tasikmalaya\n\n"
-                . "Harap sertakan nomor invoice pada berita transfer.";
+            $defaultBank = "Pembayaran dapat ditransfer melalui rekening resmi:\n"
+                . "Seabank : 901177915949\n"
+                . "A.n.    : Yusuf Burhani\n\n"
+                . "Harap konfirmasikan bukti transfer dengan menyertakan Nomor Invoice ini.";
 
             $invoice = Document::create([
                 'type' => 'invoice',
