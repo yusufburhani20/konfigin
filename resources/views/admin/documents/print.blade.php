@@ -495,7 +495,6 @@
           </div>
         </div>
 
-        <div class="company-tagline">Smart Network &amp; Premium Custom Web Development</div>
         <div class="company-meta">
           @if(!empty($kontak->alamat))
             <div>{{ $kontak->alamat }}</div>
