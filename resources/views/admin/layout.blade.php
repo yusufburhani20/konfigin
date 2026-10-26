@@ -226,10 +226,23 @@ document.addEventListener('DOMContentLoaded', function() {
           'Accept': 'application/json'
         }
       })
-      .then(response => response.json())
-      .then(data => {
-        deployLog.innerHTML += data.log + '\n';
-        if(data.success) {
+      .then(async response => {
+        let data;
+        const text = await response.text();
+        try {
+          data = JSON.parse(text);
+        } catch(err) {
+          data = {
+            success: false,
+            log: 'Error HTTP ' + response.status + ' (' + response.statusText + ')\n' + text.substring(0, 300)
+          };
+        }
+        return { ok: response.ok, data };
+      })
+      .then(({ ok, data }) => {
+        const logContent = data.log || data.message || (ok ? 'Deployment selesai.' : 'Terjadi kesalahan sistem.');
+        deployLog.innerHTML += logContent + '\n';
+        if(ok && data.success) {
           let seconds = 3;
           deployStatus.style.color = 'var(--success)';
           
@@ -249,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       })
       .catch(error => {
-        deployLog.innerHTML += '\nError koneksi atau server: ' + error.message;
+        deployLog.innerHTML += '\nError koneksi atau server: ' + (error.message || error);
         deployStatus.innerHTML = 'Terjadi kesalahan sistem saat komunikasi dengan server.';
         deployStatus.style.color = 'var(--danger)';
         btnConfirmDeploy.disabled = false;

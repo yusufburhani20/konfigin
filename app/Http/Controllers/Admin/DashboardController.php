@@ -25,6 +25,9 @@ class DashboardController extends Controller
     }
     public function deploy(\Illuminate\Http\Request $request)
     {
+        @ini_set('max_execution_time', '300');
+        @set_time_limit(300);
+
         $deployScriptPath = base_path('deploy.sh');
         
         if (!file_exists($deployScriptPath)) {
