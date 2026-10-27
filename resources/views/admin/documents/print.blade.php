@@ -26,7 +26,8 @@
 
     /* Action bar on screen */
     .action-bar {
-      max-width: 820px;
+      width: 210mm;
+      max-width: 100%;
       margin: 0 auto 15px auto;
       display: flex;
       justify-content: space-between;
@@ -56,13 +57,21 @@
 
     /* Paper Page for Print */
     .print-page {
-      max-width: 820px;
+      width: 210mm;
+      max-width: 100%;
+      min-height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 42px 48px;
+      padding: 14mm 16mm;
       border-radius: 6px;
       box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
       position: relative;
+    }
+    .sign-spacer {
+      height: 96px;
+    }
+    .sign-spacer-bottom {
+      height: 14px;
     }
 
     /* Paid Watermark */
@@ -496,31 +505,279 @@
       text-align: center;
     }
 
-    /* PRINT MEDIA QUERY */
+    /* PRINT MEDIA QUERY & A4 RULES */
+    @page {
+      size: A4 portrait;
+      margin: 12mm 10mm 12mm 10mm;
+    }
+
     @media print {
-      body {
-        background: #ffffff;
-        padding: 0;
-        margin: 0;
-        font-size: 12px;
+      html, body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        color: #1e293b !important;
       }
+
       .action-bar {
         display: none !important;
       }
+
       .print-page {
-        box-shadow: none;
-        padding: 15mm 15mm;
-        max-width: 100%;
-        margin: 0;
-        border-radius: 0;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        background: transparent !important;
       }
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
+
+      /* Force background graphics in Chrome, Edge, and PDF printers */
       * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      /* Mencegah pemotongan baris tabel (anti-slice across pages) */
+      table {
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+      }
+
+      tr {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      td, th {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      thead {
+        display: table-header-group !important;
+      }
+
+      tfoot {
+        display: table-footer-group !important;
+      }
+
+      /* Mencegah blok penting terpotong setengah */
+      .kop-header,
+      .client-section,
+      .calc-container,
+      .box-info,
+      .sign-section,
+      .print-footer {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      h1, h2, h3, h4, h5, h6, 
+      .app-section-header, 
+      .section-label, 
+      .box-info-title {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      /* Spasi & tipografi proporsional untuk kertas A4 */
+      .kop-header {
+        padding-bottom: 10px !important;
+        margin-bottom: 12px !important;
+      }
+      .brand-wrap {
+        gap: 8px !important;
+        margin-bottom: 3px !important;
+      }
+      .b-name {
+        font-size: 20px !important;
+      }
+      .b-sub {
+        font-size: 8px !important;
+      }
+      .company-meta {
+        font-size: 9.5px !important;
+        line-height: 1.3 !important;
+      }
+      .doc-title {
+        font-size: 17px !important;
+        margin-bottom: 2px !important;
+      }
+      .doc-number {
+        font-size: 11.5px !important;
+      }
+      .doc-meta-table {
+        margin-top: 4px !important;
+        font-size: 10px !important;
+      }
+      .doc-meta-table td {
+        padding: 1px 3px !important;
+      }
+
+      .client-section {
+        padding: 8px 12px !important;
+        margin-bottom: 10px !important;
+        font-size: 10.5px !important;
+      }
+      .client-name {
+        font-size: 12.5px !important;
+      }
+      .client-details {
+        font-size: 9.5px !important;
+      }
+      .project-title {
+        font-size: 11.5px !important;
+      }
+
+      /* Items Table in Print */
+      .items-table {
+        margin-bottom: 12px !important;
+      }
+      .items-table th {
+        padding: 6px 8px !important;
+        font-size: 9.5px !important;
+      }
+      .items-table td {
+        padding: 6px 8px !important;
+        font-size: 10px !important;
+      }
+      .item-title {
+        font-size: 10.5px !important;
+      }
+      .item-desc {
+        font-size: 9px !important;
+        line-height: 1.35 !important;
+      }
+
+      /* TinyEditor Description in Print */
+      .app-description-section {
+        margin-top: 10px !important;
+        margin-bottom: 14px !important;
+      }
+      .app-section-header {
+        font-size: 10.5px !important;
+        margin-bottom: 6px !important;
+        padding-bottom: 3px !important;
+      }
+      .app-description-content {
+        font-size: 10px !important;
+        line-height: 1.45 !important;
+      }
+      .app-description-content p {
+        margin: 0 0 5px 0 !important;
+      }
+      .app-description-content h1,
+      .app-description-content h2,
+      .app-description-content h3,
+      .app-description-content h4 {
+        margin: 8px 0 4px 0 !important;
+        font-size: 11px !important;
+      }
+      .app-description-content ul,
+      .app-description-content ol {
+        margin: 3px 0 6px 16px !important;
+      }
+      .app-description-content table {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 6px 0 10px 0 !important;
+        font-size: 9.5px !important;
+      }
+      .app-description-content th {
+        padding: 4px 6px !important;
+        font-size: 9.5px !important;
+        background: #f1f5f9 !important;
+      }
+      .app-description-content td {
+        padding: 4px 6px !important;
+        font-size: 9.5px !important;
+      }
+
+      /* Calculation Box in Print */
+      .calc-container {
+        margin-bottom: 10px !important;
+        gap: 12px !important;
+      }
+      .terbilang-box {
+        padding: 6px 10px !important;
+        font-size: 10px !important;
+        margin-bottom: 6px !important;
+      }
+      .calc-table {
+        width: 260px !important;
+        font-size: 10px !important;
+      }
+      .calc-table td {
+        padding: 2px 4px !important;
+      }
+      .total-row td {
+        padding: 5px 8px !important;
+        font-size: 11.5px !important;
+      }
+
+      /* Notes & Terms Box */
+      .box-info {
+        padding: 6px 10px !important;
+        font-size: 9.5px !important;
+        margin-bottom: 8px !important;
+        line-height: 1.4 !important;
+      }
+      .box-info-title {
+        font-size: 9px !important;
+        margin-bottom: 2px !important;
+      }
+
+      /* Signature Section */
+      .sign-section {
+        margin-top: 12px !important;
+        padding-top: 4px !important;
+      }
+      .sign-box {
+        width: 210px !important;
+        font-size: 10px !important;
+      }
+      .sign-title {
+        font-size: 10px !important;
+        margin-bottom: 4px !important;
+      }
+      .sign-spacer {
+        height: 76px !important;
+      }
+      .signature-qr-wrapper {
+        margin: 4px auto 6px auto !important;
+      }
+      .sign-qr-img {
+        width: 70px !important;
+        height: 70px !important;
+        padding: 2px !important;
+      }
+      .sign-verified-badge {
+        font-size: 7.5px !important;
+        margin-top: 2px !important;
+      }
+      .sign-name {
+        font-size: 10.5px !important;
+        min-width: 140px !important;
+        padding-bottom: 2px !important;
+      }
+      .sign-position {
+        font-size: 9px !important;
+      }
+      .sign-scan-hint {
+        font-size: 7.5px !important;
+      }
+
+      .print-footer {
+        margin-top: 10px !important;
+        padding-top: 6px !important;
+        font-size: 8px !important;
       }
     }
   </style>
@@ -742,10 +999,10 @@
             Penerima Tagihan,<br>
             <span style="visibility:hidden;">&nbsp;</span>
           </div>
-          <div style="height: 104px;"></div>
+          <div class="sign-spacer"></div>
           <div class="sign-name">{{ $document->client_name }}</div>
           <div class="sign-position">{{ $document->client_company ?? 'Klien / Mitra' }}</div>
-          <div style="height: 14px;"></div>
+          <div class="sign-spacer-bottom"></div>
         </div>
       @endif
 
