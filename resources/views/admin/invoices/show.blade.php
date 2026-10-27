@@ -106,6 +106,17 @@
       </div>
     @endif
 
+    @if($invoice->app_description)
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1.5rem;">
+        <h4 style="font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:0.75rem; display:flex; align-items:center; gap:8px;">
+          <i class="fas fa-laptop-code" style="color:var(--primary);"></i> Deskripsi &amp; Spesifikasi Fitur Aplikasi
+        </h4>
+        <div style="font-size:0.9rem; color:var(--text-body); line-height:1.6;">
+          {!! $invoice->app_description !!}
+        </div>
+      </div>
+    @endif
+
     {{-- Tabel Item Tagihan --}}
     <h3 style="font-size:1rem; font-weight:600; margin-bottom:0.75rem;"><i class="fas fa-list-ul" style="color:var(--primary); margin-right:6px;"></i>Rincian Tagihan Layanan</h3>
     <div class="table-responsive" style="margin-bottom:1.5rem;">

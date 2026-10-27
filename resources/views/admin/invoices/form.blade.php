@@ -153,6 +153,29 @@
         </div>
       </div>
 
+      {{-- Card Deskripsi Aplikasi (TinyEditor) --}}
+      <div class="card">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 class="card-title">
+            <i class="fas fa-laptop-code" style="color:var(--primary); margin-right:8px;"></i>Deskripsi Aplikasi &amp; Spesifikasi Teknis
+          </h2>
+          <span style="font-size:0.8rem; color:var(--text-secondary); background:rgba(255,255,255,0.05); padding:4px 8px; border-radius:4px;">
+            <i class="fas fa-table" style="margin-right:4px;"></i>TinyEditor (Tabel &amp; Formatter)
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="app_description">
+              Rincian Modul, Fitur &amp; Spesifikasi Teknis Aplikasi <span style="font-size:0.8rem; color:var(--text-secondary); font-weight:normal;">(Opsional - Tampil di lembar cetak invoice)</span>
+            </label>
+            <textarea id="app_description" name="app_description" class="form-input" rows="12">{{ old('app_description', $document->app_description) }}</textarea>
+            <div class="form-help" style="margin-top:8px;">
+              Anda dapat menyusun detail aplikasi, membuat tabel modul fitur, daftar spesifikasi hosting/database, maupun rincian deliverables invoice ini.
+            </div>
+          </div>
+        </div>
+      </div>
+
       {{-- Card Instruksi Pembayaran & Rekening --}}
       <div class="card">
         <div class="card-header">
@@ -391,5 +414,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
   recalculateAll();
 });
+</script>
+
+<!-- TinyEditor untuk Deskripsi Aplikasi -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#app_description',
+    height: 420,
+    menubar: 'edit insert view format table tools help',
+    plugins: [
+      'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
+      'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+      'insertdatetime', 'table', 'help', 'wordcount'
+    ],
+    toolbar: 'undo redo | blocks fontfamily fontsize | ' +
+      'bold italic underline forecolor backcolor | alignleft aligncenter ' +
+      'alignright alignjustify | bullist numlist outdent indent | ' +
+      'table tableinsertdialog tabledelete | removeformat | code fullscreen',
+    table_default_attributes: {
+      border: '1'
+    },
+    table_default_styles: {
+      'border-collapse': 'collapse',
+      'width': '100%'
+    },
+    table_responsive_width: true,
+    content_style: 'body { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 1.6; color: #1e293b; background: #ffffff; padding: 12px; } table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; } th, td { border: 1px solid #cbd5e1; padding: 8px 12px; } th { background-color: #f1f5f9; font-weight: 600; text-align: left; }',
+    branding: false,
+    promotion: false,
+    setup: function (editor) {
+      editor.on('change', function () {
+        editor.save();
+      });
+    }
+  });
+
+  const invForm = document.querySelector('form');
+  if (invForm) {
+    invForm.addEventListener('submit', function () {
+      if (typeof tinymce !== 'undefined') {
+        tinymce.triggerSave();
+      }
+    });
+  }
 </script>
 @endsection
